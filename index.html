@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Vinzs Studios — 紫音工房</title>
 
     <meta
         name="description"
-        content="Vinzs Studios — Voice Acting, Dubbing e Fandub."
+        content="Vinzs Studios — Voice Acting, Dublagem, Fandub e criação de vozes."
     >
 
-    <meta name="theme-color" content="#5B2A62">
+    <meta name="theme-color" content="#08050D">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
@@ -27,25 +23,41 @@
 
     <style>
 
-        :root {
+        /* =========================================================
+           VINZS STUDIOS — 3.1
+           ========================================================= */
 
+        :root {
             --black: #040607;
-            --dark: #0B0710;
-            --dark-purple: #160B1C;
+            --background: #08050D;
+            --surface: #100A17;
+            --surface-light: #171020;
+
             --purple: #5B2A62;
             --blue: #4928C2;
             --magenta: #BF40FA;
-            --light-purple: #E3D9FC;
-            --soft-purple: #D6B4D8;
-            --gold: #C9A86A;
-            --text: #F5F0FA;
-            --muted: #B8A9C3;
-            --glass: rgba(255,255,255,0.055);
-            --border: rgba(227,217,252,0.14);
-            --gold-border: rgba(201,168,106,0.32);
 
+            --lavender: #E3D9FC;
+            --soft: #C8BBD4;
+            --muted: #9D91A8;
+
+            --gold: #C9A86A;
+
+            --border: rgba(227, 217, 252, 0.12);
+            --glass: rgba(255,255,255,0.045);
+
+            --radius-lg: 30px;
+            --radius-md: 20px;
+            --radius-sm: 13px;
+
+            --shadow:
+                0 25px 70px rgba(0,0,0,.35);
         }
 
+
+        /* =========================================================
+           RESET
+           ========================================================= */
 
         * {
             margin: 0;
@@ -60,10 +72,9 @@
 
 
         body {
-
             min-height: 100vh;
 
-            color: var(--text);
+            color: var(--lavender);
 
             font-family:
                 "Noto Sans JP",
@@ -71,59 +82,47 @@
                 sans-serif;
 
             background:
-
                 radial-gradient(
-                    circle at 15% 10%,
-                    rgba(73,40,194,0.32),
+                    circle at 10% 10%,
+                    rgba(73,40,194,.24),
                     transparent 28%
                 ),
 
                 radial-gradient(
-                    circle at 85% 25%,
-                    rgba(191,64,250,0.22),
-                    transparent 28%
+                    circle at 90% 20%,
+                    rgba(191,64,250,.16),
+                    transparent 25%
                 ),
 
                 radial-gradient(
-                    circle at 50% 90%,
-                    rgba(91,42,98,0.35),
+                    circle at 50% 100%,
+                    rgba(91,42,98,.25),
                     transparent 35%
                 ),
 
-                linear-gradient(
-                    135deg,
-                    #040607,
-                    #0D0712 50%,
-                    #160B1C
-                );
-
-            background-attachment: fixed;
+                var(--background);
 
             overflow-x: hidden;
-
         }
 
 
         body::before {
-
             content: "";
 
             position: fixed;
-
             inset: 0;
 
             pointer-events: none;
 
-            opacity: 0.15;
+            opacity: .12;
 
             background-image:
-
                 radial-gradient(
-                    rgba(227,217,252,0.45) 1px,
+                    rgba(227,217,252,.5) 1px,
                     transparent 1px
                 );
 
-            background-size: 45px 45px;
+            background-size: 42px 42px;
 
             mask-image:
                 linear-gradient(
@@ -133,44 +132,6 @@
                 );
 
             z-index: -2;
-
-        }
-
-
-        body::after {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            background:
-
-                linear-gradient(
-                    90deg,
-                    transparent 49.5%,
-                    rgba(201,168,106,0.025) 50%,
-                    transparent 50.5%
-                );
-
-            background-size: 180px 180px;
-
-            z-index: -3;
-
-        }
-
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-
-        button {
-            font-family: inherit;
         }
 
 
@@ -180,118 +141,94 @@
         }
 
 
-        /* =====================================================
-           TELA DE ENTRADA
-           ===================================================== */
+        button,
+        a {
+            font: inherit;
+        }
 
-        #loading-screen {
 
+        button {
+            border: 0;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =========================================================
+           LOADING
+           ========================================================= */
+
+        #loading {
             position: fixed;
-
             inset: 0;
 
             z-index: 99999;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             background:
-
                 radial-gradient(
-                    circle at center,
-                    rgba(91,42,98,0.35),
+                    circle,
+                    rgba(91,42,98,.35),
                     transparent 35%
                 ),
-
-                radial-gradient(
-                    circle at 50% 70%,
-                    rgba(73,40,194,0.25),
-                    transparent 45%
-                ),
-
-                #040607;
+                var(--black);
 
             transition:
-                opacity 0.9s ease,
-                visibility 0.9s ease;
-
+                opacity .8s ease,
+                visibility .8s ease;
         }
 
 
-        #loading-screen.hide {
-
+        #loading.hidden {
             opacity: 0;
-
             visibility: hidden;
-
             pointer-events: none;
-
         }
 
 
-        .loading-content {
+        .loader {
+            width: min(90%, 420px);
 
             display: flex;
-
             flex-direction: column;
-
             align-items: center;
 
             text-align: center;
-
-            animation:
-                loadingAppear
-                1.2s
-                ease;
-
         }
 
 
-        .loading-seal {
+        .loader-logo {
+            width: 100px;
+            height: 100px;
 
-            width: 105px;
-
-            height: 105px;
-
-            display: grid;
-
-            place-items: center;
-
-            margin-bottom: 22px;
+            padding: 14px;
 
             border-radius: 50%;
 
-            background:
-
-                radial-gradient(
-                    circle,
-                    rgba(191,64,250,0.20),
-                    rgba(73,40,194,0.08)
-                );
+            object-fit: cover;
 
             border:
                 1px solid
-                rgba(201,168,106,0.35);
+                rgba(201,168,106,.35);
 
             box-shadow:
                 0 0 60px
-                rgba(191,64,250,0.22);
-
-            font-size: 52px;
+                rgba(191,64,250,.25);
 
             animation:
-                sealFloat
-                3s
-                ease-in-out
-                infinite;
-
+                floating 3s ease-in-out infinite;
         }
 
 
-        .loading-jp {
+        .loader-jp {
+            margin-top: 22px;
 
             color: var(--gold);
 
@@ -299,443 +236,112 @@
                 "Noto Serif JP",
                 serif;
 
-            font-size: 15px;
+            font-size: 13px;
 
-            letter-spacing: 8px;
-
-            margin-bottom: 8px;
-
+            letter-spacing: 7px;
         }
 
 
-        .loading-title {
+        .loader-title {
+            margin-top: 8px;
 
             font-family:
                 "Noto Serif JP",
                 serif;
 
             font-size:
-                clamp(35px, 7vw, 60px);
+                clamp(34px, 8vw, 58px);
 
             font-weight: 700;
-
-            letter-spacing: 3px;
-
         }
 
 
-        .loading-title span {
-
+        .loader-title span {
             background:
-
                 linear-gradient(
                     100deg,
-                    #E3D9FC,
-                    #BF40FA,
+                    var(--lavender),
+                    var(--magenta),
                     #8E72FF
                 );
 
             -webkit-background-clip: text;
-
             background-clip: text;
 
             color: transparent;
-
         }
 
 
-        .loading-subtitle {
-
+        .loader-text {
             margin-top: 10px;
 
             color: var(--muted);
 
             font-size: 12px;
-
-            letter-spacing: 1px;
-
         }
 
 
-        .loading-line {
-
+        .loader-bar {
             width: 190px;
-
             height: 2px;
 
-            margin-top: 30px;
+            margin-top: 28px;
 
             overflow: hidden;
 
-            border-radius: 10px;
+            border-radius: 999px;
 
             background:
-                rgba(255,255,255,0.08);
-
+                rgba(255,255,255,.08);
         }
 
 
-        .loading-progress {
-
-            width: 0%;
-
+        .loader-progress {
+            width: 0;
             height: 100%;
 
             background:
-
                 linear-gradient(
                     90deg,
                     var(--blue),
                     var(--magenta)
                 );
 
-            box-shadow:
-                0 0 15px
-                rgba(191,64,250,0.7);
-
             animation:
-                loadingProgress
-                2.2s
-                ease
-                forwards;
-
+                loadProgress 2s ease forwards;
         }
 
 
-        .loading-symbols {
-
-            margin-top: 18px;
-
-            color: var(--gold);
-
-            opacity: 0.65;
-
-            font-size: 11px;
-
-        }
-
-
-        @keyframes loadingAppear {
-
-            from {
-                opacity: 0;
-                transform:
-                    translateY(20px)
-                    scale(0.96);
-            }
-
+        @keyframes loadProgress {
             to {
-                opacity: 1;
-                transform:
-                    translateY(0)
-                    scale(1);
+                width: 100%;
             }
-
         }
 
 
-        @keyframes sealFloat {
-
-            0%, 100% {
+        @keyframes floating {
+            0%,
+            100% {
                 transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-9px);
+                transform: translateY(-8px);
             }
-
         }
 
 
-        @keyframes loadingProgress {
-
-            0% {
-                width: 0%;
-            }
-
-            100% {
-                width: 100%;
-            }
-
-        }
-
-
-        /* =====================================================
-           DECORAÇÕES
-           ===================================================== */
-
-        .floating {
-
-            position: fixed;
-
-            pointer-events: none;
-
-            z-index: -1;
-
-            color: var(--soft-purple);
-
-            opacity: 0.12;
-
-            font-family:
-                "Noto Serif JP",
-                serif;
-
-            animation:
-                floatDecoration
-                8s
-                ease-in-out
-                infinite;
-
-        }
-
-
-        .floating.one {
-            top: 18%;
-            left: 4%;
-            font-size: 70px;
-        }
-
-
-        .floating.two {
-            top: 58%;
-            right: 4%;
-            font-size: 55px;
-            animation-delay: 2s;
-        }
-
-
-        .floating.three {
-            bottom: 10%;
-            left: 12%;
-            font-size: 40px;
-            animation-delay: 4s;
-        }
-
-
-        @keyframes floatDecoration {
-
-            0%, 100% {
-                transform:
-                    translateY(0)
-                    rotate(0deg);
-            }
-
-            50% {
-                transform:
-                    translateY(-15px)
-                    rotate(4deg);
-            }
-
-        }
-
-
-        /* =====================================================
-           BOTÃO DE MÚSICA
-           ===================================================== */
-
-        .music-player {
-
-            position: fixed;
-
-            right: 22px;
-
-            bottom: 22px;
-
-            z-index: 5000;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 9px;
-
-            padding: 8px 11px 8px 8px;
-
-            border:
-                1px solid
-                rgba(227,217,252,0.18);
-
-            border-radius: 999px;
-
-            background:
-                rgba(4,6,7,0.78);
-
-            backdrop-filter:
-                blur(18px);
-
-            -webkit-backdrop-filter:
-                blur(18px);
-
-            box-shadow:
-                0 12px 35px
-                rgba(0,0,0,0.35),
-                0 0 25px
-                rgba(191,64,250,0.12);
-
-            transition:
-                transform 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
-
-        }
-
-
-        .music-player:hover {
-
-            transform:
-                translateY(-4px);
-
-            border-color:
-                rgba(191,64,250,0.45);
-
-            box-shadow:
-                0 15px 40px
-                rgba(0,0,0,0.4),
-                0 0 30px
-                rgba(191,64,250,0.20);
-
-        }
-
-
-        .music-button {
-
-            width: 43px;
-
-            height: 43px;
-
-            display: grid;
-
-            place-items: center;
-
-            border: none;
-
-            border-radius: 50%;
-
-            cursor: pointer;
-
-            color: white;
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    var(--blue),
-                    var(--magenta)
-                );
-
-            box-shadow:
-                0 0 20px
-                rgba(191,64,250,0.28);
-
-            font-size: 17px;
-
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease;
-
-        }
-
-
-        .music-button:hover {
-
-            transform:
-                scale(1.08);
-
-            box-shadow:
-                0 0 28px
-                rgba(191,64,250,0.48);
-
-        }
-
-
-        .music-info {
-
-            display: flex;
-
-            flex-direction: column;
-
-            padding-right: 4px;
-
-        }
-
-
-        .music-title {
-
-            color:
-                var(--light-purple);
-
-            font-size: 10px;
-
-            font-weight: 700;
-
-            letter-spacing: 0.5px;
-
-            white-space: nowrap;
-
-        }
-
-
-        .music-status {
-
-            margin-top: 2px;
-
-            color:
-                var(--muted);
-
-            font-size: 8px;
-
-        }
-
-
-        .music-player.playing .music-button {
-
-            animation:
-                musicPulse
-                1.6s
-                ease-in-out
-                infinite;
-
-        }
-
-
-        .music-player.playing .music-status {
-
-            color:
-                var(--magenta);
-
-        }
-
-
-        @keyframes musicPulse {
-
-            0%, 100% {
-                box-shadow:
-                    0 0 18px
-                    rgba(191,64,250,0.28);
-            }
-
-            50% {
-                box-shadow:
-                    0 0 32px
-                    rgba(191,64,250,0.65);
-            }
-
-        }
-
-
-        /* =====================================================
-           NAVBAR
-           ===================================================== */
-
-        header {
-
+        /* =========================================================
+           HEADER
+           ========================================================= */
+
+        .site-header {
             position: sticky;
-
             top: 15px;
 
             z-index: 1000;
 
-            width: min(1120px, 92%);
+            width: min(1160px, 94%);
 
             margin: 15px auto 0;
 
@@ -745,104 +351,78 @@
                 1px solid
                 var(--border);
 
-            border-radius: 20px;
+            border-radius: 22px;
 
             background:
-                rgba(4,6,7,0.72);
+                rgba(4,6,7,.72);
 
             backdrop-filter:
-                blur(20px);
+                blur(22px);
 
             -webkit-backdrop-filter:
-                blur(20px);
+                blur(22px);
 
             box-shadow:
-                0 15px 45px
-                rgba(0,0,0,0.25);
-
+                0 18px 60px rgba(0,0,0,.25);
         }
 
 
-        nav {
-
+        .navbar {
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
-            gap: 15px;
-
+            gap: 20px;
         }
 
 
-        .logo {
-
+        .brand {
             display: flex;
-
             align-items: center;
 
-            gap: 10px;
+            gap: 11px;
 
-            padding-left: 8px;
-
-            white-space: nowrap;
-
+            padding-left: 5px;
         }
 
 
-        .logo-symbol {
+        .brand-image {
+            width: 43px;
+            height: 43px;
 
-            width: 40px;
+            border-radius: 50%;
 
-            height: 40px;
+            object-fit: cover;
 
-            display: grid;
-
-            place-items: center;
-
-            border-radius: 13px;
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    var(--blue),
-                    var(--magenta)
-                );
+            border:
+                1px solid
+                rgba(201,168,106,.3);
 
             box-shadow:
-                0 0 25px
-                rgba(191,64,250,0.22);
-
-            font-size: 21px;
-
+                0 0 20px
+                rgba(191,64,250,.2);
         }
 
 
-        .logo-text {
-
+        .brand-name {
             font-family:
                 "Noto Serif JP",
                 serif;
 
-            font-size: 18px;
-
+            font-size: 17px;
             font-weight: 700;
-
-            letter-spacing: 1px;
-
         }
 
 
-        .logo-text span {
+        .brand-name span {
             color: var(--magenta);
         }
 
 
-        .logo-jp {
-
+        .brand-jp {
             display: block;
+
+            margin-top: -2px;
 
             color: var(--gold);
 
@@ -850,69 +430,54 @@
                 "Noto Serif JP",
                 serif;
 
-            font-size: 9px;
+            font-size: 8px;
 
             letter-spacing: 3px;
-
-            margin-top: -2px;
-
         }
 
 
-        .nav-tabs {
-
+        .navigation {
             display: flex;
-
             align-items: center;
-
-            justify-content: center;
 
             gap: 4px;
 
             flex-wrap: wrap;
-
+            justify-content: center;
         }
 
 
-        .nav-tabs button {
-
-            border: none;
-
-            background: transparent;
-
-            color: var(--muted);
-
+        .nav-button {
             padding: 9px 12px;
 
             border-radius: 10px;
 
+            color: var(--muted);
+
+            background: transparent;
+
             cursor: pointer;
 
-            font-size: 12px;
-
+            font-size: 11px;
             font-weight: 600;
 
-            transition: 0.25s ease;
-
+            transition:
+                .25s ease;
         }
 
 
-        .nav-tabs button:hover {
-
+        .nav-button:hover {
             color: white;
 
             background:
-                rgba(191,64,250,0.10);
-
+                rgba(191,64,250,.09);
         }
 
 
-        .nav-tabs button.active {
-
+        .nav-button.active {
             color: white;
 
             background:
-
                 linear-gradient(
                     135deg,
                     var(--blue),
@@ -920,141 +485,71 @@
                 );
 
             box-shadow:
-                0 5px 20px
-                rgba(191,64,250,0.22);
-
+                0 7px 22px
+                rgba(191,64,250,.2);
         }
 
 
-        /* =====================================================
+        /* =========================================================
            MAIN
-           ===================================================== */
+           ========================================================= */
 
         main {
-
-            width: min(1100px, 90%);
+            width: min(1120px, 92%);
 
             margin: auto;
 
             padding:
-                65px
-                0
-                80px;
-
+                65px 0 90px;
         }
 
 
-        .tab {
-
+        .page {
             display: none;
 
             animation:
-                tabIn
-                0.45s
-                ease;
-
+                pageIn .45s ease;
         }
 
 
-        .tab.active {
+        .page.active {
             display: block;
         }
 
 
-        @keyframes tabIn {
-
+        @keyframes pageIn {
             from {
                 opacity: 0;
-                transform:
-                    translateY(15px);
+                transform: translateY(14px);
             }
 
             to {
                 opacity: 1;
-                transform:
-                    translateY(0);
+                transform: translateY(0);
             }
-
         }
 
 
-        /* =====================================================
-           ORNAMENTO
-           ===================================================== */
-
-        .ornament {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 14px;
-
-            margin: 30px 0;
-
-            color: var(--gold);
-
-            opacity: 0.8;
-
-        }
-
-
-        .ornament::before,
-        .ornament::after {
-
-            content: "";
-
-            width: 100px;
-
-            height: 1px;
-
-            background:
-
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    var(--gold)
-                );
-
-        }
-
-
-        .ornament::after {
-
-            background:
-
-                linear-gradient(
-                    90deg,
-                    var(--gold),
-                    transparent
-                );
-
-        }
-
-
-        /* =====================================================
+        /* =========================================================
            HERO
-           ===================================================== */
+           ========================================================= */
 
         .hero {
-
             position: relative;
-
-            min-height: 580px;
 
             display: grid;
 
             grid-template-columns:
-                1.2fr
-                0.8fr;
+                1.15fr
+                .85fr;
 
             align-items: center;
 
             gap: 50px;
 
-            padding: 65px;
+            min-height: 590px;
+
+            padding: 70px;
 
             overflow: hidden;
 
@@ -1062,120 +557,89 @@
                 1px solid
                 var(--border);
 
-            border-radius: 35px;
+            border-radius:
+                var(--radius-lg);
 
             background:
-
                 radial-gradient(
-                    circle at 80% 25%,
-                    rgba(191,64,250,0.28),
+                    circle at 85% 20%,
+                    rgba(191,64,250,.23),
                     transparent 30%
                 ),
 
                 radial-gradient(
-                    circle at 20% 80%,
-                    rgba(73,40,194,0.30),
+                    circle at 10% 85%,
+                    rgba(73,40,194,.25),
                     transparent 35%
                 ),
 
                 linear-gradient(
                     135deg,
-                    rgba(73,40,194,0.40),
-                    rgba(91,42,98,0.38),
-                    rgba(4,6,7,0.85)
+                    rgba(73,40,194,.22),
+                    rgba(91,42,98,.15),
+                    rgba(4,6,7,.7)
                 );
 
             box-shadow:
-                0 30px 80px
-                rgba(0,0,0,0.35);
-
+                var(--shadow);
         }
 
 
         .hero::before {
-
             content: "花";
 
             position: absolute;
 
-            right: 4%;
-            top: -20%;
+            right: -20px;
+            top: -70px;
 
             font-family:
                 "Noto Serif JP",
                 serif;
 
-            font-size: 330px;
+            font-size: 360px;
 
             color:
-                rgba(227,217,252,0.025);
+                rgba(227,217,252,.025);
 
             pointer-events: none;
-
         }
 
 
-        .hero::after {
-
-            content: "✦";
-
-            position: absolute;
-
-            left: 5%;
-            bottom: 8%;
-
-            color: var(--gold);
-
-            opacity: 0.45;
-
-            font-size: 25px;
-
-        }
-
-
-        .hero-text {
-
+        .hero-content {
             position: relative;
-
             z-index: 2;
-
         }
 
 
         .eyebrow {
-
             display: inline-flex;
 
-            align-items: center;
-
-            gap: 8px;
-
-            padding: 7px 13px;
+            padding:
+                7px 13px;
 
             border:
                 1px solid
-                var(--gold-border);
+                rgba(201,168,106,.3);
 
-            border-radius: 999px;
+            border-radius:
+                999px;
 
-            color: var(--light-purple);
+            color:
+                var(--soft);
 
             background:
-                rgba(201,168,106,0.05);
+                rgba(201,168,106,.04);
 
-            font-size: 11px;
+            font-size: 10px;
 
             font-weight: 700;
 
             letter-spacing: 2px;
-
-            text-transform: uppercase;
-
         }
 
 
-        .hero h1 {
-
+        .hero-title {
             margin-top: 22px;
 
             font-family:
@@ -1183,40 +647,32 @@
                 serif;
 
             font-size:
-                clamp(52px, 8vw, 92px);
+                clamp(52px, 8vw, 94px);
 
-            line-height: 0.92;
+            line-height: .9;
 
-            letter-spacing: -3px;
-
+            letter-spacing: -4px;
         }
 
 
-        .hero h1 span {
-
-            display: inline-block;
-
+        .hero-title span {
             background:
-
                 linear-gradient(
                     100deg,
-                    var(--light-purple),
+                    var(--lavender),
                     var(--magenta),
                     #8E72FF
                 );
 
             -webkit-background-clip: text;
-
             background-clip: text;
 
             color: transparent;
-
         }
 
 
-        .jp-title {
-
-            margin-top: 12px;
+        .hero-jp {
+            margin-top: 16px;
 
             color: var(--gold);
 
@@ -1224,75 +680,66 @@
                 "Noto Serif JP",
                 serif;
 
-            font-size: 17px;
+            font-size: 16px;
 
             letter-spacing: 7px;
-
         }
 
 
         .hero-description {
-
             max-width: 600px;
 
             margin-top: 22px;
 
             color: var(--muted);
 
-            font-size: 17px;
+            font-size: 16px;
 
-            line-height: 1.8;
-
+            line-height: 1.9;
         }
 
 
-        .hero-buttons {
-
+        .hero-actions {
             display: flex;
-
             flex-wrap: wrap;
 
             gap: 12px;
 
             margin-top: 30px;
-
         }
 
 
         .button {
-
             display: inline-flex;
-
             align-items: center;
-
             justify-content: center;
 
-            padding: 13px 20px;
+            padding:
+                13px 19px;
 
-            border-radius: 13px;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            transition: 0.25s ease;
+            border-radius:
+                var(--radius-sm);
 
             cursor: pointer;
 
+            font-size: 12px;
+            font-weight: 700;
+
+            transition:
+                .25s ease;
         }
 
 
         .button:hover {
-            transform: translateY(-4px);
+            transform:
+                translateY(-4px);
         }
 
 
-        .button.primary {
-
+        .button-primary {
             color: white;
 
             background:
-
                 linear-gradient(
                     135deg,
                     var(--blue),
@@ -1300,15 +747,14 @@
                 );
 
             box-shadow:
-                0 10px 30px
-                rgba(191,64,250,0.22);
-
+                0 12px 30px
+                rgba(191,64,250,.2);
         }
 
 
-        .button.secondary {
-
-            color: var(--light-purple);
+        .button-secondary {
+            color:
+                var(--lavender);
 
             border:
                 1px solid
@@ -1316,167 +762,122 @@
 
             background:
                 var(--glass);
-
         }
 
 
-        /* =====================================================
+        /* =========================================================
            MASCOTE
-           ===================================================== */
+           ========================================================= */
 
-        .mascot-area {
-
+        .hero-mascot {
             display: flex;
 
             align-items: center;
-
             justify-content: center;
-
-            position: relative;
-
         }
 
 
-        .mascot-frame {
+        .mascot-orbit {
+            position: relative;
 
-            width: 310px;
-
+            width: 320px;
             aspect-ratio: 1;
 
             display: grid;
-
             place-items: center;
-
-            position: relative;
 
             border-radius: 50%;
 
             background:
-
                 radial-gradient(
                     circle,
-                    rgba(191,64,250,0.20),
-                    transparent 60%
+                    rgba(191,64,250,.2),
+                    transparent 62%
                 );
 
             border:
                 1px solid
-                rgba(201,168,106,0.22);
+                rgba(201,168,106,.2);
 
             box-shadow:
-                0 0 80px
-                rgba(73,40,194,0.25);
+                0 0 90px
+                rgba(73,40,194,.22);
 
             animation:
-                mascotFloat
-                5s
-                ease-in-out
-                infinite;
-
+                mascotFloat 5s ease-in-out infinite;
         }
 
 
-        .mascot-frame::before {
-
+        .mascot-orbit::before {
             content: "";
 
             position: absolute;
 
             inset: 18px;
 
-            border-radius: 50%;
-
             border:
                 1px solid
-                rgba(201,168,106,0.35);
+                rgba(201,168,106,.32);
+
+            border-radius: 50%;
 
             transform:
                 rotate(45deg);
-
         }
 
 
-        .mascot-frame::after {
-
-            content:
-                "✦  ✧  ✦";
+        .mascot-orbit::after {
+            content: "✦  ✧  ✦";
 
             position: absolute;
 
             top: -18px;
 
-            color: var(--gold);
+            color:
+                var(--gold);
 
-            font-size: 15px;
+            font-size: 14px;
 
-            letter-spacing: 8px;
-
+            letter-spacing: 7px;
         }
 
 
-        .mascot {
-
-            width: 72%;
-
-            height: 72%;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            overflow: hidden;
-
-            border-radius: 50%;
-
-            background:
-                rgba(4,6,7,0.20);
-
-            border:
-                2px solid
-                rgba(227,217,252,0.12);
-
-            box-shadow:
-                0 15px 35px
-                rgba(0,0,0,0.35);
-
-        }
-
-
-        .mascot img {
-
-            width: 100%;
-
-            height: 100%;
+        .mascot-image {
+            width: 190px;
+            height: 190px;
 
             object-fit: cover;
 
-            display: block;
-
             border-radius: 50%;
 
+            border:
+                5px solid
+                rgba(227,217,252,.08);
+
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,.45),
+
+                0 0 45px
+                rgba(191,64,250,.18);
         }
 
 
-        .mic {
-
+        .mic-badge {
             position: absolute;
 
-            bottom: 28px;
-            right: 20px;
+            right: 14px;
+            bottom: 20px;
 
             width: 55px;
             height: 55px;
 
             display: grid;
-
             place-items: center;
 
             border-radius: 17px;
 
             background:
-
                 linear-gradient(
                     135deg,
                     var(--blue),
@@ -1485,16 +886,15 @@
 
             box-shadow:
                 0 10px 30px
-                rgba(191,64,250,0.35);
+                rgba(191,64,250,.35);
 
-            font-size: 25px;
-
+            font-size: 24px;
         }
 
 
         @keyframes mascotFloat {
-
-            0%, 100% {
+            0%,
+            100% {
                 transform:
                     translateY(0)
                     rotate(-1deg);
@@ -1502,39 +902,36 @@
 
             50% {
                 transform:
-                    translateY(-12px)
+                    translateY(-10px)
                     rotate(1deg);
             }
-
         }
 
 
-        /* =====================================================
-           TÍTULOS
-           ===================================================== */
+        /* =========================================================
+           SECTION HEADER
+           ========================================================= */
 
-        .heading {
+        .section-header {
             margin-bottom: 30px;
         }
 
 
-        .heading small {
+        .section-label {
+            color:
+                var(--magenta);
 
-            color: var(--magenta);
-
-            font-size: 11px;
+            font-size: 10px;
 
             font-weight: 800;
 
             letter-spacing: 3px;
 
             text-transform: uppercase;
-
         }
 
 
-        .heading h2 {
-
+        .section-title {
             margin-top: 7px;
 
             font-family:
@@ -1542,44 +939,81 @@
                 serif;
 
             font-size:
-                clamp(35px, 5vw, 55px);
+                clamp(38px, 6vw, 58px);
 
-            line-height: 1.05;
-
+            line-height: 1;
         }
 
 
-        .heading p {
+        .section-description {
+            max-width: 680px;
 
-            max-width: 650px;
+            margin-top: 13px;
 
-            margin-top: 12px;
+            color:
+                var(--muted);
 
-            color: var(--muted);
-
-            line-height: 1.7;
-
+            line-height: 1.8;
         }
 
 
-        /* =====================================================
-           CARDS
-           ===================================================== */
+        /* =========================================================
+           ORNAMENTO
+           ========================================================= */
 
-        .grid {
+        .ornament {
+            display: flex;
 
+            align-items: center;
+            justify-content: center;
+
+            gap: 14px;
+
+            margin: 40px 0;
+        }
+
+
+        .ornament::before,
+        .ornament::after {
+            content: "";
+
+            width: 110px;
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--gold)
+                );
+        }
+
+
+        .ornament::after {
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--gold),
+                    transparent
+                );
+        }
+
+
+        /* =========================================================
+           SERVICE CARDS
+           ========================================================= */
+
+        .service-grid {
             display: grid;
 
             grid-template-columns:
                 repeat(2, 1fr);
 
             gap: 18px;
-
         }
 
 
-        .card {
-
+        .service-card {
             position: relative;
 
             padding: 29px;
@@ -1590,24 +1024,18 @@
                 1px solid
                 var(--border);
 
-            border-radius: 23px;
+            border-radius:
+                var(--radius-md);
 
             background:
                 var(--glass);
 
-            backdrop-filter:
-                blur(10px);
-
             transition:
-                transform 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
-
+                .3s ease;
         }
 
 
-        .card::before {
-
+        .service-card::before {
             content: "";
 
             position: absolute;
@@ -1619,7 +1047,6 @@
             height: 1px;
 
             background:
-
                 linear-gradient(
                     90deg,
                     transparent,
@@ -1628,59 +1055,51 @@
                 );
 
             transition:
-                left 0.6s ease;
-
+                .6s ease;
         }
 
 
-        .card:hover {
-
+        .service-card:hover {
             transform:
                 translateY(-6px);
 
             border-color:
-                rgba(191,64,250,0.35);
+                rgba(191,64,250,.32);
 
             box-shadow:
                 0 20px 50px
-                rgba(0,0,0,0.22);
-
+                rgba(0,0,0,.2);
         }
 
 
-        .card:hover::before {
+        .service-card:hover::before {
             left: 100%;
         }
 
 
-        .card-icon {
-
-            width: 45px;
-            height: 45px;
+        .service-icon {
+            width: 46px;
+            height: 46px;
 
             display: grid;
-
             place-items: center;
 
-            margin-bottom: 18px;
+            margin-bottom: 17px;
 
-            border-radius: 13px;
+            border-radius: 14px;
 
             background:
-
                 linear-gradient(
                     135deg,
-                    rgba(73,40,194,0.25),
-                    rgba(191,64,250,0.18)
+                    rgba(73,40,194,.25),
+                    rgba(191,64,250,.16)
                 );
 
             font-size: 20px;
-
         }
 
 
-        .card h3 {
-
+        .service-card h3 {
             margin-bottom: 8px;
 
             font-family:
@@ -1688,50 +1107,43 @@
                 serif;
 
             font-size: 20px;
-
         }
 
 
-        .card p {
-
-            color: var(--muted);
-
-            line-height: 1.7;
+        .service-card p {
+            color:
+                var(--muted);
 
             font-size: 14px;
 
+            line-height: 1.7;
         }
 
 
-        /* =====================================================
-           PORTFÓLIO
-           ===================================================== */
+        /* =========================================================
+           PORTFOLIO
+           ========================================================= */
 
-        .projects {
-
+        .portfolio-grid {
             display: grid;
 
             grid-template-columns:
                 repeat(2, 1fr);
 
             gap: 18px;
-
         }
 
 
-        .project {
-
-            min-height: 230px;
+        .portfolio-card {
+            min-height: 240px;
 
             position: relative;
 
-            padding: 28px;
-
             display: flex;
-
             flex-direction: column;
-
             justify-content: flex-end;
+
+            padding: 28px;
 
             overflow: hidden;
 
@@ -1739,127 +1151,79 @@
                 1px solid
                 var(--border);
 
-            border-radius: 25px;
+            border-radius:
+                var(--radius-md);
 
             background:
-
                 linear-gradient(
                     145deg,
-                    rgba(73,40,194,0.24),
-                    rgba(91,42,98,0.20),
-                    rgba(4,6,7,0.6)
+                    rgba(73,40,194,.2),
+                    rgba(91,42,98,.16),
+                    rgba(4,6,7,.65)
                 );
 
-            transition: 0.3s ease;
-
+            transition:
+                .3s ease;
         }
 
 
-        .project::before {
-
-            content: "✦";
-
-            position: absolute;
-
-            right: 25px;
-            top: 20px;
-
-            color: var(--gold);
-
-            opacity: 0.7;
-
-            font-size: 22px;
-
-        }
-
-
-        .project::after {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background:
-
-                radial-gradient(
-                    circle at 80% 20%,
-                    rgba(191,64,250,0.16),
-                    transparent 30%
-                );
-
-            pointer-events: none;
-
-        }
-
-
-        .project:hover {
-
+        .portfolio-card:hover {
             transform:
                 translateY(-6px);
 
             border-color:
-                rgba(191,64,250,0.4);
-
+                rgba(191,64,250,.35);
         }
 
 
-        .project-number {
+        .portfolio-number {
+            color:
+                var(--gold);
 
-            color: var(--gold);
-
-            font-size: 10px;
+            font-size: 9px;
 
             font-weight: 800;
 
             letter-spacing: 3px;
-
         }
 
 
-        .project h3 {
-
+        .portfolio-card h3 {
             margin: 9px 0;
 
             font-family:
                 "Noto Serif JP",
                 serif;
 
-            font-size: 25px;
-
+            font-size: 24px;
         }
 
 
-        .project p {
+        .portfolio-card p {
+            color:
+                var(--muted);
 
-            color: var(--muted);
+            font-size: 13px;
 
-            font-size: 14px;
-
-            line-height: 1.6;
-
+            line-height: 1.7;
         }
 
 
-        /* =====================================================
+        /* =========================================================
            PREÇOS
-           ===================================================== */
+           ========================================================= */
 
-        .prices {
-
+        .pricing-grid {
             display: grid;
 
             grid-template-columns:
                 repeat(3, 1fr);
 
             gap: 18px;
-
         }
 
 
         .price-card {
-
             position: relative;
 
             padding: 30px;
@@ -1868,7 +1232,8 @@
                 1px solid
                 var(--border);
 
-            border-radius: 25px;
+            border-radius:
+                var(--radius-md);
 
             background:
                 var(--glass);
@@ -1876,53 +1241,49 @@
             overflow: hidden;
 
             transition:
-                transform 0.3s ease;
-
+                .3s ease;
         }
 
 
         .price-card:hover {
-            transform: translateY(-6px);
+            transform:
+                translateY(-6px);
         }
 
 
         .price-card.featured {
-
             border-color:
                 var(--magenta);
 
             box-shadow:
                 0 20px 60px
-                rgba(191,64,250,0.14);
-
+                rgba(191,64,250,.12);
         }
 
 
-        .tag {
-
+        .price-tag {
             display: inline-block;
 
-            padding: 5px 9px;
+            padding:
+                5px 9px;
 
             border-radius: 7px;
 
-            background:
-                rgba(191,64,250,0.12);
-
             color:
                 var(--magenta);
+
+            background:
+                rgba(191,64,250,.1);
 
             font-size: 9px;
 
             font-weight: 800;
 
             letter-spacing: 1px;
-
         }
 
 
         .price-card h3 {
-
             margin-top: 15px;
 
             font-family:
@@ -1930,12 +1291,10 @@
                 serif;
 
             font-size: 22px;
-
         }
 
 
         .price {
-
             margin: 16px 0;
 
             font-size: 34px;
@@ -1943,79 +1302,66 @@
             font-weight: 800;
 
             color:
-                var(--light-purple);
-
+                var(--lavender);
         }
 
 
         .price-card p {
-
-            color:
-                var(--muted);
-
-            font-size: 14px;
-
-            line-height: 1.6;
-
-        }
-
-
-        .price-card ul {
-
-            list-style: none;
-
-            margin-top: 20px;
-
-        }
-
-
-        .price-card li {
-
-            padding:
-                8px 0;
-
             color:
                 var(--muted);
 
             font-size: 13px;
 
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.05);
-
+            line-height: 1.6;
         }
 
 
-        .price-card li::before {
+        .price-list {
+            list-style: none;
 
-            content:
-                "✦";
+            margin-top: 20px;
+        }
+
+
+        .price-list li {
+            padding:
+                9px 0;
+
+            color:
+                var(--muted);
+
+            font-size: 12px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.05);
+        }
+
+
+        .price-list li::before {
+            content: "✦";
 
             margin-right: 8px;
 
             color:
                 var(--magenta);
-
         }
 
 
-        /* =====================================================
-           TERMOS
-           ===================================================== */
+        /* =========================================================
+           TERMS
+           ========================================================= */
 
         .terms {
-
             display: flex;
 
             flex-direction: column;
 
             gap: 14px;
-
         }
 
 
         .term {
-
             position: relative;
 
             padding:
@@ -2025,41 +1371,36 @@
                 1px solid
                 var(--border);
 
-            border-radius: 20px;
+            border-radius:
+                var(--radius-md);
 
             background:
                 var(--glass);
-
         }
 
 
         .term::before {
-
             content: "";
 
             position: absolute;
 
             left: 0;
-
             top: 20px;
             bottom: 20px;
 
             width: 2px;
 
-            background:
+            border-radius: 5px;
 
+            background:
                 linear-gradient(
                     var(--blue),
                     var(--magenta)
                 );
-
-            border-radius: 5px;
-
         }
 
 
         .term h3 {
-
             margin-bottom: 8px;
 
             font-family:
@@ -2067,79 +1408,66 @@
                 serif;
 
             font-size: 18px;
-
         }
 
 
         .term p {
-
             color:
                 var(--muted);
 
             font-size: 14px;
 
             line-height: 1.7;
-
         }
 
 
         .term.warning {
-
             border-color:
-                rgba(191,64,250,0.30);
+                rgba(191,64,250,.28);
 
             background:
-
                 linear-gradient(
                     135deg,
-                    rgba(191,64,250,0.10),
-                    rgba(73,40,194,0.07)
+                    rgba(191,64,250,.08),
+                    rgba(73,40,194,.06)
                 );
-
         }
 
 
-        /* =====================================================
-           SOBRE
-           ===================================================== */
+        /* =========================================================
+           ABOUT
+           ========================================================= */
 
-        .about-box {
-
-            padding: 35px;
-
-            border-radius: 27px;
+        .about {
+            padding: 36px;
 
             border:
                 1px solid
                 var(--border);
 
-            background:
+            border-radius:
+                var(--radius-lg);
 
+            background:
                 linear-gradient(
                     135deg,
-                    rgba(73,40,194,0.17),
-                    rgba(191,64,250,0.07)
+                    rgba(73,40,194,.14),
+                    rgba(191,64,250,.06)
                 );
-
         }
 
 
-        .about-box p {
+        .about p {
+            max-width: 800px;
 
             color:
                 var(--muted);
 
             line-height: 1.9;
-
-            margin-bottom: 15px;
-
-            max-width: 800px;
-
         }
 
 
         .stats {
-
             display: grid;
 
             grid-template-columns:
@@ -2147,14 +1475,12 @@
 
             gap: 12px;
 
-            margin-top: 25px;
-
+            margin-top: 28px;
         }
 
 
         .stat {
-
-            padding: 18px;
+            padding: 19px;
 
             text-align: center;
 
@@ -2165,67 +1491,58 @@
             border-radius: 16px;
 
             background:
-                rgba(255,255,255,0.035);
-
+                rgba(255,255,255,.025);
         }
 
 
         .stat strong {
-
             display: block;
 
-            color:
-                var(--light-purple);
-
-            font-family:
-                "Noto Serif JP",
-                serif;
-
-            font-size: 20px;
-
+            font-size: 21px;
         }
 
 
         .stat span {
-
             display: block;
 
-            margin-top: 4px;
+            margin-top: 5px;
 
             color:
                 var(--muted);
 
-            font-size: 10px;
+            font-size: 9px;
 
             letter-spacing: 1px;
 
             text-transform: uppercase;
-
         }
 
 
-        /* =====================================================
-           CONTATO
-           ===================================================== */
+        /* =========================================================
+           CONTACT
+           ========================================================= */
 
         .contact {
-
             position: relative;
 
             overflow: hidden;
 
             padding:
-                65px 30px;
+                75px 30px;
 
             text-align: center;
 
-            border-radius: 32px;
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-lg);
 
             background:
-
                 radial-gradient(
                     circle at 50% 0%,
-                    rgba(191,64,250,0.35),
+                    rgba(191,64,250,.3),
                     transparent 45%
                 ),
 
@@ -2233,249 +1550,186 @@
                     135deg,
                     var(--blue),
                     var(--purple),
-                    var(--dark)
+                    var(--surface)
                 );
 
-            border:
-                1px solid
-                var(--border);
-
             box-shadow:
-                0 25px 70px
-                rgba(0,0,0,0.35);
-
-        }
-
-
-        .contact::before {
-
-            content:
-                "🪷";
-
-            position: absolute;
-
-            top: 20px;
-            left: 25px;
-
-            opacity: 0.22;
-
-            font-size: 35px;
-
-        }
-
-
-        .contact::after {
-
-            content:
-                "✦";
-
-            position: absolute;
-
-            bottom: 25px;
-            right: 30px;
-
-            color:
-                var(--gold);
-
-            opacity: 0.5;
-
-            font-size: 25px;
-
+                var(--shadow);
         }
 
 
         .contact h2 {
-
             font-family:
                 "Noto Serif JP",
                 serif;
 
             font-size:
-                clamp(35px, 6vw, 58px);
+                clamp(38px, 6vw, 60px);
 
-            line-height: 1.05;
-
+            line-height: 1;
         }
 
 
         .contact p {
-
             max-width: 600px;
 
             margin:
                 15px auto 28px;
 
             color:
-                rgba(255,255,255,0.75);
+                rgba(255,255,255,.72);
 
             line-height: 1.7;
-
         }
 
 
-        .links {
-
+        .contact-links {
             display: flex;
-
-            align-items: center;
 
             justify-content: center;
 
             flex-wrap: wrap;
 
             gap: 10px;
-
         }
 
 
-        .links a {
-
+        .contact-links a {
             padding:
                 12px 17px;
 
-            border-radius: 12px;
-
             border:
                 1px solid
-                rgba(255,255,255,0.14);
+                rgba(255,255,255,.14);
+
+            border-radius:
+                var(--radius-sm);
 
             background:
-                rgba(255,255,255,0.07);
+                rgba(255,255,255,.07);
 
             font-size: 12px;
 
             font-weight: 700;
 
-            transition: 0.25s ease;
-
+            transition:
+                .25s ease;
         }
 
 
-        .links a:hover {
-
+        .contact-links a:hover {
             transform:
                 translateY(-3px);
 
             background:
-                rgba(255,255,255,0.14);
-
+                rgba(255,255,255,.14);
         }
 
 
-        /* =====================================================
+        /* =========================================================
            FOOTER
-           ===================================================== */
+           ========================================================= */
 
         footer {
-
             padding:
                 35px 15px;
 
             text-align: center;
 
-            color:
-                var(--muted);
-
-            font-size: 12px;
-
             border-top:
                 1px solid
                 var(--border);
 
+            color:
+                var(--muted);
+
+            font-size: 11px;
         }
 
 
         footer strong {
-
             color:
-                var(--light-purple);
+                var(--lavender);
 
             font-family:
                 "Noto Serif JP",
                 serif;
-
         }
 
 
         .footer-jp {
-
             margin-top: 7px;
 
             color:
                 var(--gold);
 
-            letter-spacing: 5px;
-
             font-family:
                 "Noto Serif JP",
                 serif;
 
+            letter-spacing: 5px;
         }
 
 
-        /* =====================================================
-           TABLET
-           ===================================================== */
+        /* =========================================================
+           RESPONSIVIDADE — TABLET
+           ========================================================= */
 
         @media (max-width: 900px) {
 
-            nav {
-
+            .navbar {
                 flex-direction: column;
-
-                padding:
-                    5px 0;
-
             }
 
 
-            .nav-tabs {
+            .navigation {
                 width: 100%;
             }
 
 
-            .nav-tabs button {
+            .nav-button {
                 flex: 1;
             }
 
 
             .hero {
-
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
 
                 text-align: center;
 
                 padding:
-                    50px 35px;
-
+                    55px 35px;
             }
 
 
             .hero-description {
-
                 margin-left: auto;
                 margin-right: auto;
-
             }
 
 
-            .hero-buttons {
+            .hero-actions {
                 justify-content: center;
             }
 
 
-            .mascot-area {
+            .hero-mascot {
                 order: -1;
             }
 
 
-            .mascot-frame {
-                width: 250px;
+            .mascot-orbit {
+                width: 260px;
             }
 
 
-            .prices {
+            .mascot-image {
+                width: 155px;
+                height: 155px;
+            }
+
+
+            .pricing-grid {
                 grid-template-columns:
                     1fr 1fr;
             }
@@ -2489,103 +1743,79 @@
         }
 
 
-        /* =====================================================
-           CELULAR
-           ===================================================== */
+        /* =========================================================
+           RESPONSIVIDADE — CELULAR
+           ========================================================= */
 
         @media (max-width: 650px) {
 
-            header {
-
+            .site-header {
                 top: 7px;
 
                 width: 94%;
 
                 margin-top: 7px;
-
             }
 
 
-            .logo {
-
-                width: 100%;
-
+            .brand {
                 justify-content: center;
 
-                padding: 5px 0;
-
+                width: 100%;
             }
 
 
-            .nav-tabs {
-
+            .navigation {
                 display: grid;
 
                 grid-template-columns:
                     repeat(3, 1fr);
 
                 gap: 4px;
-
             }
 
 
-            .nav-tabs button {
-
+            .nav-button {
                 min-width: 0;
 
                 padding:
-                    9px 4px;
+                    9px 3px;
 
-                font-size: 10px;
-
+                font-size: 9px;
             }
 
 
             main {
-
                 width: 92%;
 
                 padding:
-                    35px 0 55px;
-
+                    35px 0 60px;
             }
 
 
             .hero {
-
-                min-height: auto;
-
                 padding:
-                    40px 22px;
+                    42px 22px;
 
                 border-radius:
-                    27px;
-
+                    26px;
             }
 
 
-            .hero h1 {
-
+            .hero-title {
                 font-size:
                     clamp(
                         45px,
                         14vw,
-                        65px
+                        66px
                     );
-
-                letter-spacing:
-                    -2px;
-
             }
 
 
-            .jp-title {
-
+            .hero-jp {
                 font-size: 13px;
 
-                letter-spacing:
-                    4px;
-
+                letter-spacing: 4px;
             }
 
 
@@ -2594,7 +1824,7 @@
             }
 
 
-            .hero-buttons {
+            .hero-actions {
                 flex-direction: column;
             }
 
@@ -2604,78 +1834,53 @@
             }
 
 
-            .mascot-frame {
-                width: 205px;
+            .mascot-orbit {
+                width: 210px;
             }
 
 
-            .mic {
+            .mascot-image {
+                width: 125px;
+                height: 125px;
+            }
 
+
+            .mic-badge {
                 width: 45px;
-
                 height: 45px;
 
-                bottom: 15px;
-
-                right: 8px;
+                right: 4px;
+                bottom: 10px;
 
                 font-size: 20px;
-
             }
 
 
-            .grid,
-            .projects,
-            .prices {
-
-                grid-template-columns:
-                    1fr;
-
+            .service-grid,
+            .portfolio-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
             }
 
 
-            .stats {
-
-                grid-template-columns:
-                    1fr 1fr;
-
-            }
-
-
-            .card,
-            .project,
-            .price-card {
-
+            .about {
                 padding:
-                    23px;
-
-            }
-
-
-            .about-box {
-                padding:
-                    25px 20px;
+                    26px 20px;
             }
 
 
             .contact {
-
                 padding:
-                    50px 18px;
-
-                border-radius:
-                    27px;
-
+                    55px 18px;
             }
 
 
-            .links {
-                flex-direction:
-                    column;
+            .contact-links {
+                flex-direction: column;
             }
 
 
-            .links a {
+            .contact-links a {
                 width: 100%;
             }
 
@@ -2685,168 +1890,63 @@
                 width: 55px;
             }
 
-
-            .loading-seal {
-
-                width: 85px;
-
-                height: 85px;
-
-                font-size: 42px;
-
-            }
-
-
-            .loading-jp {
-
-                font-size: 12px;
-
-                letter-spacing: 6px;
-
-            }
-
-
-            .loading-title {
-                font-size: 35px;
-            }
-
-
-            .loading-subtitle {
-                font-size: 10px;
-            }
-
-
-            .music-player {
-
-                right: 12px;
-
-                bottom: 12px;
-
-                padding:
-                    6px 9px 6px 6px;
-
-            }
-
-
-            .music-button {
-
-                width: 40px;
-
-                height: 40px;
-
-            }
-
-
-            .music-title {
-                font-size: 9px;
-            }
-
-
-            .music-status {
-                font-size: 7px;
-            }
-
         }
 
 
-        /* =====================================================
-           CELULAR PEQUENO
-           ===================================================== */
+        /* =========================================================
+           REDUÇÃO DE MOVIMENTO
+           ========================================================= */
 
-        @media (max-width: 380px) {
+        @media (prefers-reduced-motion: reduce) {
 
-            .nav-tabs button {
-                font-size: 9px;
-            }
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
 
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
 
-            .logo-text {
-                font-size: 16px;
-            }
-
-
-            .hero h1 {
-                font-size:
-                    43px;
-            }
-
-
-            .stats {
-                gap: 7px;
-            }
-
-
-            .stat {
-                padding:
-                    14px 8px;
-            }
-
-
-            .loading-title {
-                font-size: 31px;
-            }
-
-
-            .music-info {
-                display: none;
+                transition-duration: .01ms !important;
             }
 
         }
 
     </style>
-
 </head>
 
 
 <body>
 
 
-    <!-- =====================================================
-         ÁUDIO
-         ===================================================== -->
+    <!-- =========================================================
+         LOADING
+         ========================================================= -->
 
-    <audio
-        id="backgroundMusic"
-        loop
-        preload="auto"
-    >
-        <source
-            src="_Egg Room (DELTARUNE Chapter 5 Soundtrack) - Toby Fox.. - Paddy (youtube).mp3"
-            type="audio/mpeg"
-        >
-    </audio>
+    <div id="loading">
 
+        <div class="loader">
 
-    <!-- =====================================================
-         TELA DE ENTRADA
-         ===================================================== -->
+            <img
+                class="loader-logo"
+                src="34993b2af43908118f8e32e9d625c857.jpg"
+                alt="Mascote do Vinzs Studios"
+            >
 
-    <div id="loading-screen">
-
-        <div class="loading-content">
-
-            <div class="loading-seal">
-                🦭
-            </div>
-
-            <div class="loading-jp">
+            <div class="loader-jp">
                 紫音工房
             </div>
 
-            <div class="loading-title">
+            <div class="loader-title">
                 VINZS <span>STUDIOS</span>
             </div>
 
-            <div class="loading-subtitle">
+            <div class="loader-text">
                 Giving voices to characters & stories.
             </div>
 
-            <div class="loading-line">
-                <div class="loading-progress"></div>
-            </div>
-
-            <div class="loading-symbols">
-                ✦　🪷　✦
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
             </div>
 
         </div>
@@ -2854,118 +1954,87 @@
     </div>
 
 
-    <!-- DECORAÇÕES -->
+    <!-- =========================================================
+         HEADER
+         ========================================================= -->
 
-    <div class="floating one">
-        花
-    </div>
+    <header class="site-header">
 
-    <div class="floating two">
-        月
-    </div>
+        <nav class="navbar">
 
-    <div class="floating three">
-        ✦
-    </div>
-
-
-    <!-- =====================================================
-         BOTÃO DE MÚSICA
-         ===================================================== -->
-
-    <div class="music-player" id="musicPlayer">
-
-        <button
-            class="music-button"
-            id="musicButton"
-            type="button"
-            aria-label="Tocar música"
-        >
-            ▶
-        </button>
-
-        <div class="music-info">
-
-            <span class="music-title">
-                ♫ Egg Room
-            </span>
-
-            <span
-                class="music-status"
-                id="musicStatus"
+            <a
+                href="#"
+                class="brand"
+                onclick="showPage('home')"
             >
-                Clique para ouvir
-            </span>
 
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         NAVBAR
-         ===================================================== -->
-
-    <header>
-
-        <nav>
-
-            <div class="logo">
-
-                <div class="logo-symbol">
-                    🦭
-                </div>
+                <img
+                    class="brand-image"
+                    src="34993b2af43908118f8e32e9d625c857.jpg"
+                    alt="Mascote"
+                >
 
                 <div>
 
-                    <div class="logo-text">
+                    <div class="brand-name">
                         VINZS <span>STUDIOS</span>
                     </div>
 
-                    <span class="logo-jp">
+                    <span class="brand-jp">
                         紫音工房
                     </span>
 
                 </div>
 
-            </div>
+            </a>
 
 
-            <div class="nav-tabs">
+            <div class="navigation">
 
                 <button
-                    class="active"
-                    onclick="openTab('inicio', this)"
+                    class="nav-button active"
+                    data-page="home"
+                    onclick="showPage('home')"
                 >
                     Início
                 </button>
 
                 <button
-                    onclick="openTab('portfolio', this)"
+                    class="nav-button"
+                    data-page="portfolio"
+                    onclick="showPage('portfolio')"
                 >
                     Portfólio
                 </button>
 
                 <button
-                    onclick="openTab('precos', this)"
+                    class="nav-button"
+                    data-page="prices"
+                    onclick="showPage('prices')"
                 >
                     Preços
                 </button>
 
                 <button
-                    onclick="openTab('termos', this)"
+                    class="nav-button"
+                    data-page="terms"
+                    onclick="showPage('terms')"
                 >
                     Termos
                 </button>
 
                 <button
-                    onclick="openTab('sobre', this)"
+                    class="nav-button"
+                    data-page="about"
+                    onclick="showPage('about')"
                 >
                     Sobre
                 </button>
 
                 <button
-                    onclick="openTab('contato', this)"
+                    class="nav-button"
+                    data-page="contact"
+                    onclick="showPage('contact')"
                 >
                     Contato
                 </button>
@@ -2977,65 +2046,70 @@
     </header>
 
 
+    <!-- =========================================================
+         MAIN
+         ========================================================= -->
+
     <main>
 
 
-        <!-- =================================================
+        <!-- =====================================================
              INÍCIO
-             ================================================= -->
+             ===================================================== -->
 
         <section
-            id="inicio"
-            class="tab active"
+            class="page active"
+            id="home"
         >
 
             <div class="hero">
 
-                <div class="hero-text">
+                <div class="hero-content">
 
                     <div class="eyebrow">
-                        🪷 VOICE ACTING
-                        · DUBBING
-                        · FANDUB
+                        🪷 VOICE ACTING · DUBBING · FANDUB
                     </div>
 
-                    <h1>
+
+                    <h1 class="hero-title">
                         VINZS
                         <br>
                         <span>STUDIOS</span>
                     </h1>
 
-                    <div class="jp-title">
+
+                    <div class="hero-jp">
                         紫音工房
                     </div>
 
+
                     <p class="hero-description">
 
-                        Giving voices to characters
-                        & stories.
+                        Giving voices to characters & stories.
 
-                        <br>
+                        <br><br>
 
-                        Um pequeno estúdio dedicado a
-                        transformar personagens, emoções
-                        e histórias em vozes.
+                        Um pequeno estúdio dedicado a transformar
+                        personagens, emoções e histórias em vozes.
 
                     </p>
 
-                    <div class="hero-buttons">
+
+                    <div class="hero-actions">
 
                         <a
+                            class="button button-primary"
                             href="https://discord.gg/ShdWqtpZc"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="button primary"
                         >
                             💬 Solicitar orçamento
                         </a>
 
+
                         <button
-                            class="button secondary"
-                            onclick="openTab('portfolio', document.querySelectorAll('.nav-tabs button')[1])"
+                            class="button button-secondary"
+                            onclick="showPage('portfolio')"
                         >
                             ✦ Conhecer o Studio
                         </button>
@@ -3045,20 +2119,17 @@
                 </div>
 
 
-                <div class="mascot-area">
+                <div class="hero-mascot">
 
-                    <div class="mascot-frame">
+                    <div class="mascot-orbit">
 
-                        <div class="mascot">
+                        <img
+                            class="mascot-image"
+                            src="34993b2af43908118f8e32e9d625c857.jpg"
+                            alt="Mascote do Vinzs Studios"
+                        >
 
-                            <img
-                                src="34993b2af43908118f8e32e9d625c857.jpg"
-                                alt="Mascote do Vinzs Studios"
-                            >
-
-                        </div>
-
-                        <div class="mic">
+                        <div class="mic-badge">
                             🎙️
                         </div>
 
@@ -3074,30 +2145,31 @@
             </div>
 
 
-            <div class="heading">
+            <div class="section-header">
 
-                <small>
-                    ✦ O Studio
-                </small>
+                <div class="section-label">
+                    ✦ O STUDIO
+                </div>
 
-                <h2>
+                <h2 class="section-title">
                     Voz para cada história.
                 </h2>
 
-                <p>
-                    O Vinzs Studios nasceu como um espaço
-                    para explorar voice acting, dublagem,
-                    personagens e projetos criativos.
+                <p class="section-description">
+                    O Vinzs Studios nasceu como um espaço para
+                    explorar voice acting, dublagem, personagens
+                    e projetos criativos.
                 </p>
 
             </div>
 
 
-            <div class="grid">
+            <div class="service-grid">
 
-                <div class="card">
 
-                    <div class="card-icon">
+                <article class="service-card">
+
+                    <div class="service-icon">
                         🎙️
                     </div>
 
@@ -3106,17 +2178,16 @@
                     </h3>
 
                     <p>
-                        Interpretação de personagens,
-                        emoções e diferentes estilos
-                        de voz.
+                        Interpretação de personagens, emoções
+                        e diferentes estilos de voz.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="card">
+                <article class="service-card">
 
-                    <div class="card-icon">
+                    <div class="service-icon">
                         🎬
                     </div>
 
@@ -3129,12 +2200,12 @@
                         animações e projetos independentes.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="card">
+                <article class="service-card">
 
-                    <div class="card-icon">
+                    <div class="service-icon">
                         🎭
                     </div>
 
@@ -3148,12 +2219,12 @@
                         diferentes.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="card">
+                <article class="service-card">
 
-                    <div class="card-icon">
+                    <div class="service-icon">
                         🪷
                     </div>
 
@@ -3162,40 +2233,40 @@
                     </h3>
 
                     <p>
-                        Projetos feitos por fãs,
-                        personagens e histórias da
-                        comunidade.
+                        Projetos feitos por fãs, personagens
+                        e histórias da comunidade.
                     </p>
 
-                </div>
+                </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- =================================================
+        <!-- =====================================================
              PORTFÓLIO
-             ================================================= -->
+             ===================================================== -->
 
         <section
+            class="page"
             id="portfolio"
-            class="tab"
         >
 
-            <div class="heading">
+            <div class="section-header">
 
-                <small>
-                    ✦ Trabalhos
-                </small>
+                <div class="section-label">
+                    ✦ TRABALHOS
+                </div>
 
-                <h2>
+                <h2 class="section-title">
                     Portfólio
                 </h2>
 
-                <p>
-                    Um espaço para reunir meus trabalhos,
-                    personagens e projetos.
+                <p class="section-description">
+                    Um espaço para reunir trabalhos,
+                    personagens e projetos do Vinzs Studios.
                 </p>
 
             </div>
@@ -3206,11 +2277,12 @@
             </div>
 
 
-            <div class="projects">
+            <div class="portfolio-grid">
 
-                <div class="project">
 
-                    <div class="project-number">
+                <article class="portfolio-card">
+
+                    <div class="portfolio-number">
                         PROJETO 01
                     </div>
 
@@ -3219,16 +2291,15 @@
                     </h3>
 
                     <p>
-                        Um novo trabalho será apresentado
-                        aqui.
+                        Um novo trabalho será apresentado aqui.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="project">
+                <article class="portfolio-card">
 
-                    <div class="project-number">
+                    <div class="portfolio-number">
                         PROJETO 02
                     </div>
 
@@ -3237,16 +2308,15 @@
                     </h3>
 
                     <p>
-                        Espaço reservado para futuros
-                        projetos.
+                        Espaço reservado para futuros projetos.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="project">
+                <article class="portfolio-card">
 
-                    <div class="project-number">
+                    <div class="portfolio-number">
                         PROJETO 03
                     </div>
 
@@ -3259,12 +2329,12 @@
                         de personagens.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="project">
+                <article class="portfolio-card">
 
-                    <div class="project-number">
+                    <div class="portfolio-number">
                         PROJETO 04
                     </div>
 
@@ -3277,33 +2347,34 @@
                         criação de personagens.
                     </p>
 
-                </div>
+                </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- =================================================
+        <!-- =====================================================
              PREÇOS
-             ================================================= -->
+             ===================================================== -->
 
         <section
-            id="precos"
-            class="tab"
+            class="page"
+            id="prices"
         >
 
-            <div class="heading">
+            <div class="section-header">
 
-                <small>
-                    ✦ Serviços
-                </small>
+                <div class="section-label">
+                    ✦ SERVIÇOS
+                </div>
 
-                <h2>
+                <h2 class="section-title">
                     Tabela de preços
                 </h2>
 
-                <p>
+                <p class="section-description">
                     Valores iniciais para os serviços
                     do Vinzs Studios.
                 </p>
@@ -3316,11 +2387,12 @@
             </div>
 
 
-            <div class="prices">
+            <div class="pricing-grid">
 
-                <div class="price-card">
 
-                    <span class="tag">
+                <article class="price-card">
+
+                    <span class="price-tag">
                         BÁSICO
                     </span>
 
@@ -3333,11 +2405,10 @@
                     </div>
 
                     <p>
-                        Para pequenas falas e
-                        participações.
+                        Para pequenas falas e participações.
                     </p>
 
-                    <ul>
+                    <ul class="price-list">
 
                         <li>
                             Até 5 falas
@@ -3353,12 +2424,12 @@
 
                     </ul>
 
-                </div>
+                </article>
 
 
-                <div class="price-card featured">
+                <article class="price-card featured">
 
-                    <span class="tag">
+                    <span class="price-tag">
                         ✦ MAIS PEDIDO
                     </span>
 
@@ -3371,11 +2442,10 @@
                     </div>
 
                     <p>
-                        Para personagens e cenas
-                        maiores.
+                        Para personagens e cenas maiores.
                     </p>
 
-                    <ul>
+                    <ul class="price-list">
 
                         <li>
                             Até 15 falas
@@ -3395,12 +2465,12 @@
 
                     </ul>
 
-                </div>
+                </article>
 
 
-                <div class="price-card">
+                <article class="price-card">
 
-                    <span class="tag">
+                    <span class="price-tag">
                         PROJETO
                     </span>
 
@@ -3417,7 +2487,7 @@
                         muitos personagens.
                     </p>
 
-                    <ul>
+                    <ul class="price-list">
 
                         <li>
                             Orçamento personalizado
@@ -3433,35 +2503,36 @@
 
                     </ul>
 
-                </div>
+                </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- =================================================
+        <!-- =====================================================
              TERMOS
-             ================================================= -->
+             ===================================================== -->
 
         <section
-            id="termos"
-            class="tab"
+            class="page"
+            id="terms"
         >
 
-            <div class="heading">
+            <div class="section-header">
 
-                <small>
-                    ✦ Informações
-                </small>
+                <div class="section-label">
+                    ✦ INFORMAÇÕES
+                </div>
 
-                <h2>
-                    Termos de condições
+                <h2 class="section-title">
+                    Termos
                 </h2>
 
-                <p>
-                    Algumas informações importantes
-                    antes de solicitar um trabalho.
+                <p class="section-description">
+                    Algumas informações importantes antes
+                    de solicitar um trabalho.
                 </p>
 
             </div>
@@ -3474,7 +2545,8 @@
 
             <div class="terms">
 
-                <div class="term">
+
+                <article class="term">
 
                     <h3>
                         💳 Pagamento
@@ -3487,116 +2559,114 @@
                         pagos conforme combinado.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="term">
+                <article class="term">
 
                     <h3>
                         🔄 Entrega e devolução
                     </h3>
 
                     <p>
-                        Caso a dublagem não seja entregue
-                        pelo Vinzs Studios, os 50% pagos
-                        antecipadamente serão devolvidos.
+                        Caso a dublagem não seja entregue pelo
+                        Vinzs Studios, os 50% pagos antecipadamente
+                        serão devolvidos.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="term warning">
+                <article class="term warning">
 
                     <h3>
                         🚫 Conteúdo não aceito
                     </h3>
 
                     <p>
-                        Não realizo dublagens NSFW,
-                        ASMR ou trabalhos envolvendo
-                        fetiches.
+                        Não realizo dublagens NSFW, ASMR ou
+                        trabalhos envolvendo fetiches.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="term">
+                <article class="term">
 
                     <h3>
                         🎙️ Revisões
                     </h3>
 
                     <p>
-                        Alterações devem ser combinadas
-                        previamente. Mudanças grandes
-                        no roteiro depois do início podem
-                        alterar o valor do projeto.
+                        Alterações devem ser combinadas previamente.
+                        Mudanças grandes no roteiro depois do início
+                        podem alterar o valor do projeto.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="term">
+                <article class="term">
 
                     <h3>
                         ⏱️ Prazo
                     </h3>
 
                     <p>
-                        O prazo será combinado antes do
-                        início do projeto e pode variar
-                        de acordo com a complexidade.
+                        O prazo será combinado antes do início
+                        do projeto e pode variar de acordo
+                        com a complexidade.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="term">
+                <article class="term">
 
                     <h3>
                         📜 Aceite
                     </h3>
 
                     <p>
-                        Ao solicitar um trabalho, o cliente
-                        declara estar de acordo com estes
-                        termos.
+                        Ao solicitar um trabalho, o cliente declara
+                        estar de acordo com estes termos.
                     </p>
 
-                </div>
+                </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- =================================================
+        <!-- =====================================================
              SOBRE
-             ================================================= -->
+             ===================================================== -->
 
         <section
-            id="sobre"
-            class="tab"
+            class="page"
+            id="about"
         >
 
-            <div class="heading">
+            <div class="section-header">
 
-                <small>
-                    ✦ Quem está por trás
-                </small>
+                <div class="section-label">
+                    ✦ QUEM ESTÁ POR TRÁS
+                </div>
 
-                <h2>
+                <h2 class="section-title">
                     Sobre o Vinz
                 </h2>
 
-                <p>
+                <p class="section-description">
                     A pessoa por trás do Vinzs Studios.
                 </p>
 
             </div>
 
 
-            <div class="about-box">
+            <div class="about">
 
                 <p>
 
@@ -3604,15 +2674,14 @@
 
                     <br><br>
 
-                    O Vinzs Studios é meu espaço para
-                    trabalhar com voz, interpretação e
-                    personagens.
+                    O Vinzs Studios é meu espaço para trabalhar
+                    com voz, interpretação e personagens.
 
                     <br><br>
 
-                    Meu objetivo é continuar evoluindo
-                    minha voz e criar interpretações que
-                    façam cada personagem parecer vivo.
+                    Meu objetivo é continuar evoluindo minha voz
+                    e criar interpretações que façam cada
+                    personagem parecer vivo.
 
                 </p>
 
@@ -3624,56 +2693,30 @@
 
                 <div class="stats">
 
+
                     <div class="stat">
-
-                        <strong>
-                            🎙️
-                        </strong>
-
-                        <span>
-                            Voice Acting
-                        </span>
-
+                        <strong>🎙️</strong>
+                        <span>Voice Acting</span>
                     </div>
 
 
                     <div class="stat">
-
-                        <strong>
-                            🎬
-                        </strong>
-
-                        <span>
-                            Dubbing
-                        </span>
-
+                        <strong>🎬</strong>
+                        <span>Dubbing</span>
                     </div>
 
 
                     <div class="stat">
-
-                        <strong>
-                            🎭
-                        </strong>
-
-                        <span>
-                            Characters
-                        </span>
-
+                        <strong>🎭</strong>
+                        <span>Characters</span>
                     </div>
 
 
                     <div class="stat">
-
-                        <strong>
-                            🦭
-                        </strong>
-
-                        <span>
-                            Seal Approved
-                        </span>
-
+                        <strong>🦭</strong>
+                        <span>Seal Approved</span>
                     </div>
+
 
                 </div>
 
@@ -3682,13 +2725,13 @@
         </section>
 
 
-        <!-- =================================================
+        <!-- =====================================================
              CONTATO
-             ================================================= -->
+             ===================================================== -->
 
         <section
-            id="contato"
-            class="tab"
+            class="page"
+            id="contact"
         >
 
             <div class="contact">
@@ -3698,13 +2741,12 @@
                 </h2>
 
                 <p>
-                    Quer solicitar um trabalho,
-                    conversar sobre um projeto ou
-                    acompanhar meu conteúdo?
+                    Quer solicitar um trabalho, conversar
+                    sobre um projeto ou acompanhar meu conteúdo?
                 </p>
 
 
-                <div class="links">
+                <div class="contact-links">
 
                     <a
                         href="https://discord.gg/ShdWqtpZc"
@@ -3747,21 +2789,18 @@
 
         </section>
 
+
     </main>
 
 
-    <!-- =====================================================
+    <!-- =========================================================
          FOOTER
-         ===================================================== -->
+         ========================================================= -->
 
     <footer>
 
         🦭 ✦
-
-        <strong>
-            VINZS STUDIOS
-        </strong>
-
+        <strong>VINZS STUDIOS</strong>
         ✦ 🎙️
 
         <div class="footer-jp">
@@ -3776,2694 +2815,82 @@
     </footer>
 
 
-    <!-- =====================================================
+    <!-- =========================================================
          JAVASCRIPT
-         ===================================================== -->
+         ========================================================= -->
 
     <script>
 
+        /* =====================================================
+           NAVEGAÇÃO
+           ===================================================== */
 
-        function openTab(tabId, button) {
+        function showPage(pageId) {
 
-            const tabs =
-                document.querySelectorAll(".tab");
+            const pages =
+                document.querySelectorAll(".page");
+
+            const buttons =
+                document.querySelectorAll(".nav-button");
 
 
-            tabs.forEach(function(tab) {
-
-                tab.classList.remove("active");
-
+            pages.forEach(page => {
+                page.classList.remove("active");
             });
 
 
-            const buttons =
-                document.querySelectorAll(
-                    ".nav-tabs button"
+            buttons.forEach(button => {
+                button.classList.remove("active");
+            });
+
+
+            const selectedPage =
+                document.getElementById(pageId);
+
+            const selectedButton =
+                document.querySelector(
+                    `.nav-button[data-page="${pageId}"]`
                 );
 
 
-            buttons.forEach(function(btn) {
-
-                btn.classList.remove("active");
-
-            });
-
-
-            const selectedTab =
-                document.getElementById(tabId);
-
-
-            if (selectedTab) {
-
-                selectedTab.classList.add("active");
-
+            if (selectedPage) {
+                selectedPage.classList.add("active");
             }
 
 
-            if (button) {
-
-                button.classList.add("active");
-
+            if (selectedButton) {
+                selectedButton.classList.add("active");
             }
 
 
             window.scrollTo({
-
                 top: 0,
-
                 behavior: "smooth"
-
             });
 
         }
 
 
-        /* =================================================
-           TELA DE ENTRADA
-           ================================================= */
+        /* =====================================================
+           LOADING
+           ===================================================== */
 
-        window.addEventListener("load", function() {
+        window.addEventListener("load", () => {
 
-            setTimeout(function() {
+            setTimeout(() => {
 
                 const loading =
-                    document.getElementById(
-                        "loading-screen"
-                    );
-
+                    document.getElementById("loading");
 
                 if (loading) {
-
-                    loading.classList.add("hide");
-
+                    loading.classList.add("hidden");
                 }
 
-            }, 2300);
+            }, 2100);
 
         });
-
-
-        /* =================================================
-           PLAYER DE MÚSICA
-           ================================================= */
-
-        const music =
-            document.getElementById("backgroundMusic");
-
-        const musicButton =
-            document.getElementById("musicButton");
-
-        const musicPlayer =
-            document.getElementById("musicPlayer");
-
-        const musicStatus =
-            document.getElementById("musicStatus");
-
-
-        let musicPlaying = false;
-
-
-        musicButton.addEventListener("click", function() {
-
-            if (!musicPlaying) {
-
-                music.play()
-                    .then(function() {
-
-                        musicPlaying = true;
-
-                        musicButton.textContent = "❚❚";
-
-                        musicStatus.textContent =
-                            "Tocando agora";
-
-                        musicPlayer.classList.add(
-                            "playing"
-                        );
-
-                    })
-                    .catch(function(error) {
-
-                        console.error(
-                            "Não foi possível tocar a música:",
-                            error
-                        );
-
-                        musicStatus.textContent =
-                            "Erro ao carregar";
-
-                    });
-
-            } else {
-
-                music.pause();
-
-                musicPlaying = false;
-
-                musicButton.textContent = "▶";
-
-                musicStatus.textContent =
-                    "Pausado";
-
-                musicPlayer.classList.remove(
-                    "playing"
-                );
-
-            }
-
-        });
-
-
-        /* =================================================
-           SE A MÚSICA TERMINAR
-           ================================================= */
-
-        music.addEventListener("ended", function() {
-
-            musicPlaying = false;
-
-            musicButton.textContent = "▶";
-
-            musicStatus.textContent =
-                "Clique para ouvir";
-
-            musicPlayer.classList.remove(
-                "playing"
-            );
-
-        });
-
 
     </script>
 
-
 </body>
-
-</html>   --gold-border:rgba(201,168,106,.32);
-}
-
-
-/* =====================================================
-   RESET
-   ===================================================== */
-
-* {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html {
-    scroll-behavior:smooth;
-}
-
-body {
-    min-height:100vh;
-    color:var(--text);
-    font-family:"Noto Sans JP",Arial,sans-serif;
-
-    background:
-        radial-gradient(circle at 15% 10%,rgba(73,40,194,.32),transparent 28%),
-        radial-gradient(circle at 85% 25%,rgba(191,64,250,.22),transparent 28%),
-        radial-gradient(circle at 50% 90%,rgba(91,42,98,.35),transparent 35%),
-        linear-gradient(135deg,#040607,#0D0712 50%,#160B1C);
-
-    background-attachment:fixed;
-    overflow-x:hidden;
-}
-
-body::before {
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.15;
-    background-image:radial-gradient(rgba(227,217,252,.45) 1px,transparent 1px);
-    background-size:45px 45px;
-    mask-image:linear-gradient(to bottom,black,transparent);
-    z-index:-2;
-}
-
-body::after {
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background:linear-gradient(
-        90deg,
-        transparent 49.5%,
-        rgba(201,168,106,.025) 50%,
-        transparent 50.5%
-    );
-    background-size:180px 180px;
-    z-index:-3;
-}
-
-a {
-    color:inherit;
-    text-decoration:none;
-}
-
-button {
-    font-family:inherit;
-}
-
-::selection {
-    background:var(--magenta);
-    color:white;
-}
-
-
-/* =====================================================
-   LOADING
-   ===================================================== */
-
-#loading-screen {
-    position:fixed;
-    inset:0;
-    z-index:99999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:
-        radial-gradient(circle at center,rgba(91,42,98,.35),transparent 35%),
-        radial-gradient(circle at 50% 70%,rgba(73,40,194,.25),transparent 45%),
-        #040607;
-
-    transition:opacity .9s ease,visibility .9s ease;
-}
-
-#loading-screen.hide {
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-}
-
-.loading-content {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    animation:loadingAppear 1.2s ease;
-}
-
-.loading-seal {
-    width:105px;
-    height:105px;
-    display:grid;
-    place-items:center;
-    margin-bottom:22px;
-    border-radius:50%;
-
-    background:
-        radial-gradient(circle,rgba(191,64,250,.20),rgba(73,40,194,.08));
-
-    border:1px solid rgba(201,168,106,.35);
-
-    box-shadow:0 0 60px rgba(191,64,250,.22);
-
-    overflow:hidden;
-
-    animation:sealFloat 3s ease-in-out infinite;
-}
-
-.loading-seal img {
-    width:76%;
-    height:76%;
-    object-fit:contain;
-    border-radius:50%;
-}
-
-.loading-jp {
-    color:var(--gold);
-    font-family:"Noto Serif JP",serif;
-    font-size:15px;
-    letter-spacing:8px;
-    margin-bottom:8px;
-}
-
-.loading-title {
-    font-family:"Noto Serif JP",serif;
-    font-size:clamp(35px,7vw,60px);
-    font-weight:700;
-    letter-spacing:3px;
-}
-
-.loading-title span {
-    background:linear-gradient(100deg,#E3D9FC,#BF40FA,#8E72FF);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-}
-
-.loading-subtitle {
-    margin-top:10px;
-    color:var(--muted);
-    font-size:12px;
-    letter-spacing:1px;
-}
-
-.loading-line {
-    width:190px;
-    height:2px;
-    margin-top:30px;
-    overflow:hidden;
-    border-radius:10px;
-    background:rgba(255,255,255,.08);
-}
-
-.loading-progress {
-    width:0;
-    height:100%;
-    background:linear-gradient(90deg,var(--blue),var(--magenta));
-    box-shadow:0 0 15px rgba(191,64,250,.7);
-    animation:loadingProgress 2.2s ease forwards;
-}
-
-.loading-symbols {
-    margin-top:18px;
-    color:var(--gold);
-    opacity:.65;
-    font-size:11px;
-}
-
-@keyframes loadingAppear {
-    from {
-        opacity:0;
-        transform:translateY(20px) scale(.96);
-    }
-    to {
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-@keyframes sealFloat {
-    0%,100% { transform:translateY(0); }
-    50% { transform:translateY(-9px); }
-}
-
-@keyframes loadingProgress {
-    from { width:0; }
-    to { width:100%; }
-}
-
-
-/* =====================================================
-   DECORAÇÕES
-   ===================================================== */
-
-.floating {
-    position:fixed;
-    pointer-events:none;
-    z-index:-1;
-    color:var(--soft-purple);
-    opacity:.12;
-    font-family:"Noto Serif JP",serif;
-    animation:floatDecoration 8s ease-in-out infinite;
-}
-
-.floating.one {
-    top:18%;
-    left:4%;
-    font-size:70px;
-}
-
-.floating.two {
-    top:58%;
-    right:4%;
-    font-size:55px;
-    animation-delay:2s;
-}
-
-.floating.three {
-    bottom:10%;
-    left:12%;
-    font-size:40px;
-    animation-delay:4s;
-}
-
-@keyframes floatDecoration {
-    0%,100% {
-        transform:translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform:translateY(-15px) rotate(4deg);
-    }
-}
-
-
-/* =====================================================
-   NAVBAR
-   ===================================================== */
-
-header {
-    position:sticky;
-    top:15px;
-    z-index:1000;
-    width:min(1120px,92%);
-    margin:15px auto 0;
-    padding:10px;
-
-    border:1px solid var(--border);
-    border-radius:20px;
-
-    background:rgba(4,6,7,.72);
-
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-
-    box-shadow:0 15px 45px rgba(0,0,0,.25);
-}
-
-nav {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-}
-
-.logo {
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding-left:8px;
-    white-space:nowrap;
-}
-
-.logo-symbol {
-    width:40px;
-    height:40px;
-    display:grid;
-    place-items:center;
-    border-radius:50%;
-
-    background:linear-gradient(135deg,var(--blue),var(--magenta));
-
-    box-shadow:0 0 25px rgba(191,64,250,.22);
-
-    overflow:hidden;
-}
-
-.logo-symbol img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.logo-text {
-    font-family:"Noto Serif JP",serif;
-    font-size:18px;
-    font-weight:700;
-    letter-spacing:1px;
-}
-
-.logo-text span {
-    color:var(--magenta);
-}
-
-.logo-jp {
-    display:block;
-    color:var(--gold);
-    font-family:"Noto Serif JP",serif;
-    font-size:9px;
-    letter-spacing:3px;
-    margin-top:-2px;
-}
-
-.nav-tabs {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:4px;
-    flex-wrap:wrap;
-}
-
-.nav-tabs button {
-    border:none;
-    background:transparent;
-    color:var(--muted);
-    padding:9px 12px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:12px;
-    font-weight:600;
-    transition:.25s ease;
-}
-
-.nav-tabs button:hover {
-    color:white;
-    background:rgba(191,64,250,.10);
-}
-
-.nav-tabs button.active {
-    color:white;
-    background:linear-gradient(135deg,var(--blue),var(--magenta));
-    box-shadow:0 5px 20px rgba(191,64,250,.22);
-}
-
-
-/* =====================================================
-   MÚSICA
-   ===================================================== */
-
-#musicButton {
-    position:fixed;
-    right:22px;
-    bottom:22px;
-
-    width:55px;
-    height:55px;
-
-    display:grid;
-    place-items:center;
-
-    border:1px solid rgba(227,217,252,.18);
-    border-radius:50%;
-
-    color:white;
-
-    background:linear-gradient(
-        135deg,
-        var(--blue),
-        var(--magenta)
-    );
-
-    box-shadow:0 8px 30px rgba(191,64,250,.30);
-
-    cursor:pointer;
-    font-size:21px;
-
-    z-index:5000;
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-}
-
-#musicButton:hover {
-    transform:scale(1.08);
-    box-shadow:0 10px 38px rgba(191,64,250,.50);
-}
-
-#musicButton.playing {
-    animation:musicPulse 2s ease-in-out infinite;
-}
-
-@keyframes musicPulse {
-    0%,100% {
-        box-shadow:0 8px 30px rgba(191,64,250,.30);
-    }
-
-    50% {
-        box-shadow:0 8px 40px rgba(191,64,250,.65);
-    }
-}
-
-
-/* =====================================================
-   MAIN
-   ===================================================== */
-
-main {
-    width:min(1100px,90%);
-    margin:auto;
-    padding:65px 0 80px;
-}
-
-.tab {
-    display:none;
-    animation:tabIn .45s ease;
-}
-
-.tab.active {
-    display:block;
-}
-
-@keyframes tabIn {
-    from {
-        opacity:0;
-        transform:translateY(15px);
-    }
-
-    to {
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-
-/* =====================================================
-   ORNAMENTO
-   ===================================================== */
-
-.ornament {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:14px;
-    margin:30px 0;
-    color:var(--gold);
-    opacity:.8;
-}
-
-.ornament::before,
-.ornament::after {
-    content:"";
-    width:100px;
-    height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold));
-}
-
-.ornament::after {
-    background:linear-gradient(90deg,var(--gold),transparent);
-}
-
-
-/* =====================================================
-   HERO
-   ===================================================== */
-
-.hero {
-    position:relative;
-    min-height:580px;
-
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    align-items:center;
-    gap:50px;
-
-    padding:65px;
-    overflow:hidden;
-
-    border:1px solid var(--border);
-    border-radius:35px;
-
-    background:
-        radial-gradient(circle at 80% 25%,rgba(191,64,250,.28),transparent 30%),
-        radial-gradient(circle at 20% 80%,rgba(73,40,194,.30),transparent 35%),
-        linear-gradient(
-            135deg,
-            rgba(73,40,194,.40),
-            rgba(91,42,98,.38),
-            rgba(4,6,7,.85)
-        );
-
-    box-shadow:0 30px 80px rgba(0,0,0,.35);
-}
-
-.hero::before {
-    content:"花";
-    position:absolute;
-    right:4%;
-    top:-20%;
-
-    font-family:"Noto Serif JP",serif;
-    font-size:330px;
-
-    color:rgba(227,217,252,.025);
-    pointer-events:none;
-}
-
-.hero::after {
-    content:"✦";
-    position:absolute;
-    left:5%;
-    bottom:8%;
-    color:var(--gold);
-    opacity:.45;
-    font-size:25px;
-}
-
-.hero-text {
-    position:relative;
-    z-index:2;
-}
-
-.eyebrow {
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    padding:7px 13px;
-
-    border:1px solid var(--gold-border);
-    border-radius:999px;
-
-    color:var(--light-purple);
-    background:rgba(201,168,106,.05);
-
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-.hero h1 {
-    margin-top:22px;
-
-    font-family:"Noto Serif JP",serif;
-    font-size:clamp(52px,8vw,92px);
-
-    line-height:.92;
-    letter-spacing:-3px;
-}
-
-.hero h1 span {
-    display:inline-block;
-
-    background:linear-gradient(
-        100deg,
-        var(--light-purple),
-        var(--magenta),
-        #8E72FF
-    );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-}
-
-.jp-title {
-    margin-top:12px;
-    color:var(--gold);
-    font-family:"Noto Serif JP",serif;
-    font-size:17px;
-    letter-spacing:7px;
-}
-
-.hero-description {
-    max-width:600px;
-    margin-top:22px;
-    color:var(--muted);
-    font-size:17px;
-    line-height:1.8;
-}
-
-.hero-buttons {
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-top:30px;
-}
-
-.button {
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:13px 20px;
-
-    border-radius:13px;
-
-    font-size:13px;
-    font-weight:700;
-
-    transition:.25s ease;
-    cursor:pointer;
-}
-
-.button:hover {
-    transform:translateY(-4px);
-}
-
-.button.primary {
-    color:white;
-
-    background:linear-gradient(
-        135deg,
-        var(--blue),
-        var(--magenta)
-    );
-
-    box-shadow:0 10px 30px rgba(191,64,250,.22);
-}
-
-.button.secondary {
-    color:var(--light-purple);
-    border:1px solid var(--border);
-    background:var(--glass);
-}
-
-
-/* =====================================================
-   MASCOTE
-   ===================================================== */
-
-.mascot-area {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-}
-
-.mascot-frame {
-    width:310px;
-    aspect-ratio:1;
-
-    display:grid;
-    place-items:center;
-
-    position:relative;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(191,64,250,.20),
-            transparent 60%
-        );
-
-    border:1px solid rgba(201,168,106,.22);
-
-    box-shadow:0 0 80px rgba(73,40,194,.25);
-
-    animation:mascotFloat 5s ease-in-out infinite;
-
-    overflow:hidden;
-}
-
-.mascot-frame::before {
-    content:"";
-    position:absolute;
-    inset:18px;
-    border-radius:50%;
-    border:1px solid rgba(201,168,106,.35);
-    transform:rotate(45deg);
-    pointer-events:none;
-}
-
-.mascot-frame::after {
-    content:"✦  ✧  ✦";
-    position:absolute;
-    top:-18px;
-    color:var(--gold);
-    font-size:15px;
-    letter-spacing:8px;
-}
-
-.mascot {
-    width:72%;
-    height:72%;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:50%;
-    overflow:hidden;
-
-    filter:drop-shadow(0 20px 25px rgba(0,0,0,.4));
-
-    z-index:1;
-}
-
-.mascot img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:50%;
-}
-
-.mic {
-    position:absolute;
-    bottom:28px;
-    right:20px;
-
-    width:55px;
-    height:55px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:50%;
-
-    background:linear-gradient(
-        135deg,
-        var(--blue),
-        var(--magenta)
-    );
-
-    box-shadow:0 10px 30px rgba(191,64,250,.35);
-
-    font-size:25px;
-    z-index:2;
-}
-
-@keyframes mascotFloat {
-    0%,100% {
-        transform:translateY(0) rotate(-1deg);
-    }
-
-    50% {
-        transform:translateY(-12px) rotate(1deg);
-    }
-}
-
-
-/* =====================================================
-   TÍTULOS
-   ===================================================== */
-
-.heading {
-    margin-bottom:30px;
-}
-
-.heading small {
-    color:var(--magenta);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:3px;
-    text-transform:uppercase;
-}
-
-.heading h2 {
-    margin-top:7px;
-    font-family:"Noto Serif JP",serif;
-    font-size:clamp(35px,5vw,55px);
-    line-height:1.05;
-}
-
-.heading p {
-    max-width:650px;
-    margin-top:12px;
-    color:var(--muted);
-    line-height:1.7;
-}
-
-
-/* =====================================================
-   CARDS
-   ===================================================== */
-
-.grid {
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-}
-
-.card {
-    position:relative;
-    padding:29px;
-    overflow:hidden;
-
-    border:1px solid var(--border);
-    border-radius:23px;
-
-    background:var(--glass);
-
-    backdrop-filter:blur(10px);
-
-    transition:
-        transform .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
-}
-
-.card::before {
-    content:"";
-    position:absolute;
-    top:0;
-    left:-100%;
-
-    width:100%;
-    height:1px;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        var(--magenta),
-        transparent
-    );
-
-    transition:left .6s ease;
-}
-
-.card:hover {
-    transform:translateY(-6px);
-    border-color:rgba(191,64,250,.35);
-    box-shadow:0 20px 50px rgba(0,0,0,.22);
-}
-
-.card:hover::before {
-    left:100%;
-}
-
-.card-icon {
-    width:45px;
-    height:45px;
-
-    display:grid;
-    place-items:center;
-
-    margin-bottom:18px;
-
-    border-radius:13px;
-
-    background:linear-gradient(
-        135deg,
-        rgba(73,40,194,.25),
-        rgba(191,64,250,.18)
-    );
-
-    font-size:20px;
-}
-
-.card h3 {
-    margin-bottom:8px;
-    font-family:"Noto Serif JP",serif;
-    font-size:20px;
-}
-
-.card p {
-    color:var(--muted);
-    line-height:1.7;
-    font-size:14px;
-}
-
-
-/* =====================================================
-   PORTFÓLIO
-   ===================================================== */
-
-.projects {
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-}
-
-.project {
-    min-height:230px;
-
-    position:relative;
-
-    padding:28px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-
-    overflow:hidden;
-
-    border:1px solid var(--border);
-    border-radius:25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(73,40,194,.24),
-            rgba(91,42,98,.20),
-            rgba(4,6,7,.6)
-        );
-
-    transition:.3s ease;
-}
-
-.project::before {
-    content:"✦";
-    position:absolute;
-    right:25px;
-    top:20px;
-    color:var(--gold);
-    opacity:.7;
-    font-size:22px;
-}
-
-.project:hover {
-    transform:translateY(-6px);
-    border-color:rgba(191,64,250,.4);
-}
-
-.project-number {
-    color:var(--gold);
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:3px;
-}
-
-.project h3 {
-    margin:9px 0;
-    font-family:"Noto Serif JP",serif;
-    font-size:25px;
-}
-
-.project p {
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.6;
-}
-
-
-/* =====================================================
-   PREÇOS
-   ===================================================== */
-
-.prices {
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.price-card {
-    position:relative;
-    padding:30px;
-
-    border:1px solid var(--border);
-    border-radius:25px;
-
-    background:var(--glass);
-
-    overflow:hidden;
-
-    transition:transform .3s ease;
-}
-
-.price-card:hover {
-    transform:translateY(-6px);
-}
-
-.price-card.featured {
-    border-color:var(--magenta);
-    box-shadow:0 20px 60px rgba(191,64,250,.14);
-}
-
-.tag {
-    display:inline-block;
-    padding:5px 9px;
-    border-radius:7px;
-
-    background:rgba(191,64,250,.12);
-    color:var(--magenta);
-
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:1px;
-}
-
-.price-card h3 {
-    margin-top:15px;
-    font-family:"Noto Serif JP",serif;
-    font-size:22px;
-}
-
-.price {
-    margin:16px 0;
-    font-size:34px;
-    font-weight:800;
-    color:var(--light-purple);
-}
-
-.price-card p {
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.6;
-}
-
-.price-card ul {
-    list-style:none;
-    margin-top:20px;
-}
-
-.price-card li {
-    padding:8px 0;
-    color:var(--muted);
-    font-size:13px;
-    border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-.price-card li::before {
-    content:"✦";
-    margin-right:8px;
-    color:var(--magenta);
-}
-
-
-/* =====================================================
-   TERMOS
-   ===================================================== */
-
-.terms {
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-}
-
-.term {
-    position:relative;
-    padding:25px 28px;
-
-    border:1px solid var(--border);
-    border-radius:20px;
-
-    background:var(--glass);
-}
-
-.term::before {
-    content:"";
-    position:absolute;
-    left:0;
-    top:20px;
-    bottom:20px;
-    width:2px;
-
-    background:linear-gradient(
-        var(--blue),
-        var(--magenta)
-    );
-
-    border-radius:5px;
-}
-
-.term h3 {
-    margin-bottom:8px;
-    font-family:"Noto Serif JP",serif;
-    font-size:18px;
-}
-
-.term p {
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.7;
-}
-
-.term.warning {
-    border-color:rgba(191,64,250,.30);
-
-    background:linear-gradient(
-        135deg,
-        rgba(191,64,250,.10),
-        rgba(73,40,194,.07)
-    );
-}
-
-
-/* =====================================================
-   SOBRE
-   ===================================================== */
-
-.about-box {
-    padding:35px;
-
-    border-radius:27px;
-    border:1px solid var(--border);
-
-    background:linear-gradient(
-        135deg,
-        rgba(73,40,194,.17),
-        rgba(191,64,250,.07)
-    );
-}
-
-.about-box p {
-    color:var(--muted);
-    line-height:1.9;
-    margin-bottom:15px;
-    max-width:800px;
-}
-
-.stats {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-    margin-top:25px;
-}
-
-.stat {
-    padding:18px;
-    text-align:center;
-
-    border:1px solid var(--border);
-    border-radius:16px;
-
-    background:rgba(255,255,255,.035);
-}
-
-.stat strong {
-    display:block;
-    color:var(--light-purple);
-    font-family:"Noto Serif JP",serif;
-    font-size:20px;
-}
-
-.stat span {
-    display:block;
-    margin-top:4px;
-    color:var(--muted);
-    font-size:10px;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
-
-
-/* =====================================================
-   CONTATO
-   ===================================================== */
-
-.contact {
-    position:relative;
-    overflow:hidden;
-
-    padding:65px 30px;
-    text-align:center;
-
-    border-radius:32px;
-    border:1px solid var(--border);
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(191,64,250,.35),
-            transparent 45%
-        ),
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--purple),
-            var(--dark)
-        );
-
-    box-shadow:0 25px 70px rgba(0,0,0,.35);
-}
-
-.contact::before {
-    content:"🪷";
-    position:absolute;
-    top:20px;
-    left:25px;
-    opacity:.22;
-    font-size:35px;
-}
-
-.contact::after {
-    content:"✦";
-    position:absolute;
-    bottom:25px;
-    right:30px;
-    color:var(--gold);
-    opacity:.5;
-    font-size:25px;
-}
-
-.contact h2 {
-    font-family:"Noto Serif JP",serif;
-    font-size:clamp(35px,6vw,58px);
-    line-height:1.05;
-}
-
-.contact p {
-    max-width:600px;
-    margin:15px auto 28px;
-    color:rgba(255,255,255,.75);
-    line-height:1.7;
-}
-
-.links {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.links a {
-    padding:12px 17px;
-    border-radius:12px;
-
-    border:1px solid rgba(255,255,255,.14);
-    background:rgba(255,255,255,.07);
-
-    font-size:12px;
-    font-weight:700;
-
-    transition:.25s ease;
-}
-
-.links a:hover {
-    transform:translateY(-3px);
-    background:rgba(255,255,255,.14);
-}
-
-
-/* =====================================================
-   FOOTER
-   ===================================================== */
-
-footer {
-    padding:35px 15px;
-    text-align:center;
-
-    color:var(--muted);
-    font-size:12px;
-
-    border-top:1px solid var(--border);
-}
-
-footer strong {
-    color:var(--light-purple);
-    font-family:"Noto Serif JP",serif;
-}
-
-.footer-jp {
-    margin-top:7px;
-    color:var(--gold);
-    letter-spacing:5px;
-    font-family:"Noto Serif JP",serif;
-}
-
-
-/* =====================================================
-   TABLET
-   ===================================================== */
-
-@media (max-width:900px) {
-
-    nav {
-        flex-direction:column;
-        padding:5px 0;
-    }
-
-    .nav-tabs {
-        width:100%;
-    }
-
-    .nav-tabs button {
-        flex:1;
-    }
-
-    .hero {
-        grid-template-columns:1fr;
-        text-align:center;
-        padding:50px 35px;
-    }
-
-    .hero-description {
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .hero-buttons {
-        justify-content:center;
-    }
-
-    .mascot-area {
-        order:-1;
-    }
-
-    .mascot-frame {
-        width:250px;
-    }
-
-    .prices {
-        grid-template-columns:1fr 1fr;
-    }
-
-    .stats {
-        grid-template-columns:1fr 1fr;
-    }
-}
-
-
-/* =====================================================
-   CELULAR
-   ===================================================== */
-
-@media (max-width:650px) {
-
-    header {
-        top:7px;
-        width:94%;
-        margin-top:7px;
-    }
-
-    .logo {
-        width:100%;
-        justify-content:center;
-        padding:5px 0;
-    }
-
-    .nav-tabs {
-        display:grid;
-        grid-template-columns:repeat(3,1fr);
-        gap:4px;
-    }
-
-    .nav-tabs button {
-        min-width:0;
-        padding:9px 4px;
-        font-size:10px;
-    }
-
-    main {
-        width:92%;
-        padding:35px 0 55px;
-    }
-
-    .hero {
-        min-height:auto;
-        padding:40px 22px;
-        border-radius:27px;
-    }
-
-    .hero h1 {
-        font-size:clamp(45px,14vw,65px);
-        letter-spacing:-2px;
-    }
-
-    .jp-title {
-        font-size:13px;
-        letter-spacing:4px;
-    }
-
-    .hero-description {
-        font-size:14px;
-    }
-
-    .hero-buttons {
-        flex-direction:column;
-    }
-
-    .button {
-        width:100%;
-    }
-
-    .mascot-frame {
-        width:205px;
-    }
-
-    .mic {
-        width:45px;
-        height:45px;
-        bottom:15px;
-        right:8px;
-        font-size:20px;
-    }
-
-    .grid,
-    .projects,
-    .prices {
-        grid-template-columns:1fr;
-    }
-
-    .stats {
-        grid-template-columns:1fr 1fr;
-    }
-
-    .card,
-    .project,
-    .price-card {
-        padding:23px;
-    }
-
-    .about-box {
-        padding:25px 20px;
-    }
-
-    .contact {
-        padding:50px 18px;
-        border-radius:27px;
-    }
-
-    .links {
-        flex-direction:column;
-    }
-
-    .links a {
-        width:100%;
-    }
-
-    .ornament::before,
-    .ornament::after {
-        width:55px;
-    }
-
-    .loading-seal {
-        width:85px;
-        height:85px;
-    }
-
-    .loading-jp {
-        font-size:12px;
-        letter-spacing:6px;
-    }
-
-    .loading-title {
-        font-size:35px;
-    }
-
-    .loading-subtitle {
-        font-size:10px;
-    }
-
-    #musicButton {
-        width:48px;
-        height:48px;
-        right:15px;
-        bottom:15px;
-        font-size:18px;
-    }
-}
-
-
-/* =====================================================
-   CELULAR PEQUENO
-   ===================================================== */
-
-@media (max-width:380px) {
-
-    .nav-tabs button {
-        font-size:9px;
-    }
-
-    .logo-text {
-        font-size:16px;
-    }
-
-    .hero h1 {
-        font-size:43px;
-    }
-
-    .stats {
-        gap:7px;
-    }
-
-    .stat {
-        padding:14px 8px;
-    }
-
-    .loading-title {
-        font-size:31px;
-    }
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<!-- =====================================================
-     MÚSICA
-     ===================================================== -->
-
-<audio id="bgMusic" loop>
-    <source src="_Egg Room (DELTARUNE Chapter 5 Soundtrack) - Toby Fox.. - Paddy (youtube).mp3" type="audio/mpeg">
-</audio>
-
-<button
-    id="musicButton"
-    onclick="toggleMusic()"
-    aria-label="Tocar música"
->
-    🎵
-</button>
-
-
-<!-- =====================================================
-     TELA DE ENTRADA
-     ===================================================== -->
-
-<div id="loading-screen">
-
-    <div class="loading-content">
-
-        <div class="loading-seal">
-            <img
-                src="34993b2af43908118f8e32e9d625c857.jpg"
-                alt="Mascote do Vinzs Studios"
-            >
-        </div>
-
-        <div class="loading-jp">
-            紫音工房
-        </div>
-
-        <div class="loading-title">
-            VINZS <span>STUDIOS</span>
-        </div>
-
-        <div class="loading-subtitle">
-            Giving voices to characters & stories.
-        </div>
-
-        <div class="loading-line">
-            <div class="loading-progress"></div>
-        </div>
-
-        <div class="loading-symbols">
-            ✦　🪷　✦
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- DECORAÇÕES -->
-
-<div class="floating one">花</div>
-<div class="floating two">月</div>
-<div class="floating three">✦</div>
-
-
-<!-- =====================================================
-     NAVBAR
-     ===================================================== -->
-
-<header>
-
-<nav>
-
-    <div class="logo">
-
-        <div class="logo-symbol">
-
-            <img
-                src="34993b2af43908118f8e32e9d625c857.jpg"
-                alt="Vinzs Studios"
-            >
-
-        </div>
-
-        <div>
-
-            <div class="logo-text">
-                VINZS <span>STUDIOS</span>
-            </div>
-
-            <span class="logo-jp">
-                紫音工房
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <div class="nav-tabs">
-
-        <button
-            class="active"
-            onclick="openTab('inicio',this)"
-        >
-            Início
-        </button>
-
-        <button
-            onclick="openTab('portfolio',this)"
-        >
-            Portfólio
-        </button>
-
-        <button
-            onclick="openTab('precos',this)"
-        >
-            Preços
-        </button>
-
-        <button
-            onclick="openTab('termos',this)"
-        >
-            Termos
-        </button>
-
-        <button
-            onclick="openTab('sobre',this)"
-        >
-            Sobre
-        </button>
-
-        <button
-            onclick="openTab('contato',this)"
-        >
-            Contato
-        </button>
-
-    </div>
-
-</nav>
-
-</header>
-
-
-<main>
-
-
-<!-- =====================================================
-     INÍCIO
-     ===================================================== -->
-
-<section id="inicio" class="tab active">
-
-<div class="hero">
-
-    <div class="hero-text">
-
-        <div class="eyebrow">
-            🪷 VOICE ACTING · DUBBING · FANDUB
-        </div>
-
-        <h1>
-            VINZS
-            <br>
-            <span>STUDIOS</span>
-        </h1>
-
-        <div class="jp-title">
-            紫音工房
-        </div>
-
-        <p class="hero-description">
-
-            Giving voices to characters & stories.
-
-            <br>
-
-            Um pequeno estúdio dedicado a transformar
-            personagens, emoções e histórias em vozes.
-
-        </p>
-
-        <div class="hero-buttons">
-
-            <a
-                href="https://discord.gg/ShdWqtpZc"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button primary"
-            >
-                💬 Solicitar orçamento
-            </a>
-
-            <button
-                class="button secondary"
-                onclick="openTab(
-                    'portfolio',
-                    document.querySelectorAll('.nav-tabs button')[1]
-                )"
-            >
-                ✦ Conhecer o Studio
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="mascot-area">
-
-        <div class="mascot-frame">
-
-            <div class="mascot">
-
-                <img
-                    src="34993b2af43908118f8e32e9d625c857.jpg"
-                    alt="Mascote foca do Vinzs Studios"
-                >
-
-            </div>
-
-            <div class="mic">
-                🎙️
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="ornament">
-    🪷
-</div>
-
-
-<div class="heading">
-
-    <small>
-        ✦ O Studio
-    </small>
-
-    <h2>
-        Voz para cada história.
-    </h2>
-
-    <p>
-        O Vinzs Studios nasceu como um espaço para
-        explorar voice acting, dublagem, personagens
-        e projetos criativos.
-    </p>
-
-</div>
-
-
-<div class="grid">
-
-    <div class="card">
-
-        <div class="card-icon">
-            🎙️
-        </div>
-
-        <h3>
-            Voice Acting
-        </h3>
-
-        <p>
-            Interpretação de personagens, emoções
-            e diferentes estilos de voz.
-        </p>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-icon">
-            🎬
-        </div>
-
-        <h3>
-            Dublagem
-        </h3>
-
-        <p>
-            Dublagens para cenas, vídeos, animações
-            e projetos independentes.
-        </p>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-icon">
-            🎭
-        </div>
-
-        <h3>
-            Personagens
-        </h3>
-
-        <p>
-            Criação e interpretação de vozes para
-            personagens com personalidades diferentes.
-        </p>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-icon">
-            🪷
-        </div>
-
-        <h3>
-            Fandub
-        </h3>
-
-        <p>
-            Projetos feitos por fãs, personagens
-            e histórias da comunidade.
-        </p>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     PORTFÓLIO
-     ===================================================== -->
-
-<section id="portfolio" class="tab">
-
-<div class="heading">
-
-    <small>
-        ✦ Trabalhos
-    </small>
-
-    <h2>
-        Portfólio
-    </h2>
-
-    <p>
-        Um espaço para reunir meus trabalhos,
-        personagens e projetos.
-    </p>
-
-</div>
-
-<div class="ornament">
-    ✦
-</div>
-
-
-<div class="projects">
-
-    <div class="project">
-
-        <div class="project-number">
-            PROJETO 01
-        </div>
-
-        <h3>
-            Em breve...
-        </h3>
-
-        <p>
-            Um novo trabalho será apresentado aqui.
-        </p>
-
-    </div>
-
-
-    <div class="project">
-
-        <div class="project-number">
-            PROJETO 02
-        </div>
-
-        <h3>
-            Em breve...
-        </h3>
-
-        <p>
-            Espaço reservado para futuros projetos.
-        </p>
-
-    </div>
-
-
-    <div class="project">
-
-        <div class="project-number">
-            PROJETO 03
-        </div>
-
-        <h3>
-            Fandub
-        </h3>
-
-        <p>
-            Projetos de fãs e interpretações de personagens.
-        </p>
-
-    </div>
-
-
-    <div class="project">
-
-        <div class="project-number">
-            PROJETO 04
-        </div>
-
-        <h3>
-            Voice Acting
-        </h3>
-
-        <p>
-            Trabalhos de interpretação e criação
-            de personagens.
-        </p>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     PREÇOS
-     ===================================================== -->
-
-<section id="precos" class="tab">
-
-<div class="heading">
-
-    <small>
-        ✦ Serviços
-    </small>
-
-    <h2>
-        Tabela de preços
-    </h2>
-
-    <p>
-        Valores iniciais para os serviços
-        do Vinzs Studios.
-    </p>
-
-</div>
-
-<div class="ornament">
-    🪷
-</div>
-
-
-<div class="prices">
-
-
-    <div class="price-card">
-
-        <span class="tag">
-            BÁSICO
-        </span>
-
-        <h3>
-            Fala curta
-        </h3>
-
-        <div class="price">
-            R$ 10
-        </div>
-
-        <p>
-            Para pequenas falas e participações.
-        </p>
-
-        <ul>
-
-            <li>
-                Até 5 falas
-            </li>
-
-            <li>
-                Interpretação simples
-            </li>
-
-            <li>
-                Entrega digital
-            </li>
-
-        </ul>
-
-    </div>
-
-
-    <div class="price-card featured">
-
-        <span class="tag">
-            ✦ MAIS PEDIDO
-        </span>
-
-        <h3>
-            Personagem
-        </h3>
-
-        <div class="price">
-            R$ 20
-        </div>
-
-        <p>
-            Para personagens e cenas maiores.
-        </p>
-
-        <ul>
-
-            <li>
-                Até 15 falas
-            </li>
-
-            <li>
-                Interpretação de personagem
-            </li>
-
-            <li>
-                Uma revisão
-            </li>
-
-            <li>
-                Entrega digital
-            </li>
-
-        </ul>
-
-    </div>
-
-
-    <div class="price-card">
-
-        <span class="tag">
-            PROJETO
-        </span>
-
-        <h3>
-            Projeto maior
-        </h3>
-
-        <div class="price">
-            Consulte
-        </div>
-
-        <p>
-            Para projetos maiores ou com
-            muitos personagens.
-        </p>
-
-        <ul>
-
-            <li>
-                Orçamento personalizado
-            </li>
-
-            <li>
-                Valor negociável
-            </li>
-
-            <li>
-                Prazo combinado
-            </li>
-
-        </ul>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     TERMOS
-     ===================================================== -->
-
-<section id="termos" class="tab">
-
-<div class="heading">
-
-    <small>
-        ✦ Informações
-    </small>
-
-    <h2>
-        Termos de condições
-    </h2>
-
-    <p>
-        Algumas informações importantes antes
-        de solicitar um trabalho.
-    </p>
-
-</div>
-
-<div class="ornament">
-    規約
-</div>
-
-
-<div class="terms">
-
-
-    <div class="term">
-
-        <h3>
-            💳 Pagamento
-        </h3>
-
-        <p>
-            50% do valor total deverá ser pago
-            antecipadamente para que o trabalho
-            seja iniciado. Os 50% restantes serão
-            pagos conforme combinado.
-        </p>
-
-    </div>
-
-
-    <div class="term">
-
-        <h3>
-            🔄 Entrega e devolução
-        </h3>
-
-        <p>
-            Caso a dublagem não seja entregue pelo
-            Vinzs Studios, os 50% pagos antecipadamente
-            serão devolvidos.
-        </p>
-
-    </div>
-
-
-    <div class="term warning">
-
-        <h3>
-            🚫 Conteúdo não aceito
-        </h3>
-
-        <p>
-            Não realizo dublagens NSFW, ASMR ou
-            trabalhos envolvendo fetiches.
-        </p>
-
-    </div>
-
-
-    <div class="term">
-
-        <h3>
-            🎙️ Revisões
-        </h3>
-
-        <p>
-            Alterações devem ser combinadas previamente.
-            Mudanças grandes no roteiro depois do início
-            podem alterar o valor do projeto.
-        </p>
-
-    </div>
-
-
-    <div class="term">
-
-        <h3>
-            ⏱️ Prazo
-        </h3>
-
-        <p>
-            O prazo será combinado antes do início
-            do projeto e pode variar de acordo
-            com a complexidade.
-        </p>
-
-    </div>
-
-
-    <div class="term">
-
-        <h3>
-            📜 Aceite
-        </h3>
-
-        <p>
-            Ao solicitar um trabalho, o cliente declara
-            estar de acordo com estes termos.
-        </p>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     SOBRE
-     ===================================================== -->
-
-<section id="sobre" class="tab">
-
-<div class="heading">
-
-    <small>
-        ✦ Quem está por trás
-    </small>
-
-    <h2>
-        Sobre o Vinz
-    </h2>
-
-    <p>
-        A pessoa por trás do Vinzs Studios.
-    </p>
-
-</div>
-
-
-<div class="about-box">
-
-    <p>
-
-        Oi! Eu sou o Vinz.
-
-        <br><br>
-
-        O Vinzs Studios é meu espaço para trabalhar
-        com voz, interpretação e personagens.
-
-        <br><br>
-
-        Meu objetivo é continuar evoluindo minha voz
-        e criar interpretações que façam cada
-        personagem parecer vivo.
-
-    </p>
-
-
-    <div class="ornament">
-        🪷
-    </div>
-
-
-    <div class="stats">
-
-        <div class="stat">
-            <strong>🎙️</strong>
-            <span>Voice Acting</span>
-        </div>
-
-        <div class="stat">
-            <strong>🎬</strong>
-            <span>Dubbing</span>
-        </div>
-
-        <div class="stat">
-            <strong>🎭</strong>
-            <span>Characters</span>
-        </div>
-
-        <div class="stat">
-            <strong>🦭</strong>
-            <span>Seal Approved</span>
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     CONTATO
-     ===================================================== -->
-
-<section id="contato" class="tab">
-
-<div class="contact">
-
-    <h2>
-        Vamos criar algo?
-    </h2>
-
-    <p>
-        Quer solicitar um trabalho, conversar
-        sobre um projeto ou acompanhar meu conteúdo?
-    </p>
-
-
-    <div class="links">
-
-        <a
-            href="https://discord.gg/ShdWqtpZc"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            💜 Discord
-        </a>
-
-        <a
-            href="https://www.tiktok.com/@vinztheseal"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            🎵 TikTok
-        </a>
-
-        <a
-            href="https://youtube.com/@vinztheseal"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            ▶️ YouTube
-        </a>
-
-        <a
-            href="https://github.com/vinztheseal"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            💻 GitHub
-        </a>
-
-    </div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
-
-<footer>
-
-    🦭 ✦
-
-    <strong>
-        VINZS STUDIOS
-    </strong>
-
-    ✦ 🎙️
-
-    <div class="footer-jp">
-        紫音工房
-    </div>
-
-    <br>
-
-    © 2026 Vinz —
-    Todos os direitos reservados.
-
-</footer>
-
-
-<!-- =====================================================
-     JAVASCRIPT
-     ===================================================== -->
-
-<script>
-
-/* =====================================================
-   ABAS
-   ===================================================== */
-
-function openTab(tabId, button) {
-
-    const tabs =
-        document.querySelectorAll(".tab");
-
-    tabs.forEach(function(tab) {
-        tab.classList.remove("active");
-    });
-
-
-    const buttons =
-        document.querySelectorAll(".nav-tabs button");
-
-    buttons.forEach(function(btn) {
-        btn.classList.remove("active");
-    });
-
-
-    const selectedTab =
-        document.getElementById(tabId);
-
-    if (selectedTab) {
-        selectedTab.classList.add("active");
-    }
-
-
-    if (button) {
-        button.classList.add("active");
-    }
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-/* =====================================================
-   LOADING
-   ===================================================== */
-
-window.addEventListener("load",function() {
-
-    setTimeout(function() {
-
-        const loading =
-            document.getElementById("loading-screen");
-
-        if (loading) {
-            loading.classList.add("hide");
-        }
-
-    },2300);
-
-});
-
-
-/* =====================================================
-   MÚSICA
-   ===================================================== */
-
-const bgMusic =
-    document.getElementById("bgMusic");
-
-const musicButton =
-    document.getElementById("musicButton");
-
-
-function toggleMusic() {
-
-    if (bgMusic.paused) {
-
-        bgMusic.play()
-            .then(function() {
-
-                musicButton.textContent = "🔊";
-
-                musicButton.classList.add("playing");
-
-                musicButton.setAttribute(
-                    "aria-label",
-                    "Pausar música"
-                );
-
-            })
-            .catch(function(error) {
-
-                console.log(
-                    "Não foi possível iniciar a música:",
-                    error
-                );
-
-            });
-
-    } else {
-
-        bgMusic.pause();
-
-        musicButton.textContent = "🎵";
-
-        musicButton.classList.remove("playing");
-
-        musicButton.setAttribute(
-            "aria-label",
-            "Tocar música"
-        );
-
-    }
-
-}
-
-</script>
-
-</body>
-    </html>
+</html>
