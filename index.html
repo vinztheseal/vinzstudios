@@ -4,26 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>VINZS STUDIOS — Vinz</title>
+  <title>VINZS STUDIOS</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    :root {
-      --purple: #7d4ca3;
-      --dark-purple: #392446;
-      --light-purple: #eee2f7;
-      --soft-purple: #f7f0fb;
-      --pink: #d9a9e8;
-      --text: #403449;
-      --muted: #806f87;
-      --white: #fffaff;
     }
 
     html {
@@ -31,224 +18,672 @@
     }
 
     body {
-      font-family: "DM Sans", sans-serif;
-      background:
-        radial-gradient(circle at 10% 10%, #ead8f5 0, transparent 25%),
-        radial-gradient(circle at 90% 30%, #e1c8ef 0, transparent 25%),
-        #f5edf8;
-      color: var(--text);
+      font-family: Arial, sans-serif;
+      background: #f3eafa;
+      color: #3b2845;
       line-height: 1.6;
     }
 
     a {
-      color: inherit;
+      text-decoration: none;
     }
 
-    /* NAVBAR */
+    /* MENU */
 
     nav {
-      position: sticky;
-      top: 15px;
-      z-index: 10;
-
+      width: 90%;
       max-width: 1100px;
-      margin: 15px auto;
+      margin: 20px auto;
+      padding: 16px 22px;
 
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
 
-      padding: 15px 22px;
+      background: #ffffff;
+      border: 1px solid #e3d2eb;
+      border-radius: 20px;
 
-      background: rgba(255, 250, 255, .88);
-      backdrop-filter: blur(15px);
-
-      border: 1px solid #eadcf0;
-      border-radius: 22px;
-
-      box-shadow: 0 10px 30px rgba(70, 40, 85, .08);
+      box-shadow: 0 8px 25px rgba(70, 40, 90, 0.08);
     }
 
     .logo {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      letter-spacing: -.5px;
-      color: var(--dark-purple);
+      font-size: 20px;
+      font-weight: bold;
+      color: #4b315d;
     }
 
     .logo span {
-      color: var(--purple);
+      color: #8754a8;
     }
 
     nav a {
-      text-decoration: none;
-      margin-left: 20px;
+      color: #72577d;
+      margin-left: 18px;
       font-size: 14px;
-      font-weight: 600;
-      color: var(--muted);
-      transition: .2s;
+      font-weight: bold;
     }
 
     nav a:hover {
-      color: var(--purple);
+      color: #8754a8;
     }
 
-    /* MAIN */
+    /* CONTEÚDO */
 
     main {
+      width: 90%;
       max-width: 1100px;
       margin: auto;
-      padding: 30px 20px 70px;
     }
 
     /* HERO */
 
     .hero {
-      min-height: 520px;
+      min-height: 480px;
+      padding: 60px;
 
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
 
-      padding: 65px;
-
-      border-radius: 35px;
-
-      background:
-        radial-gradient(circle at 85% 30%, #cfa5df, transparent 25%),
-        linear-gradient(135deg, #5d3978, #8d5baa);
-
+      background: linear-gradient(135deg, #5c3975, #9563b1);
       color: white;
 
+      border-radius: 35px;
       overflow: hidden;
-      position: relative;
 
-      box-shadow: 0 25px 60px rgba(72, 40, 90, .22);
+      box-shadow: 0 20px 45px rgba(65, 35, 80, 0.2);
     }
 
-    .hero::before {
-      content: "✦  ·  ✧  ·  ✦  ·  ✧";
-      position: absolute;
-      top: 30px;
-      right: 45px;
-      opacity: .35;
-      font-size: 22px;
-      letter-spacing: 10px;
+    .hero-text {
+      max-width: 600px;
     }
 
-    .hero::after {
-      content: "♡";
-      position: absolute;
-      bottom: -40px;
-      left: 35%;
-      font-size: 170px;
-      opacity: .06;
-    }
-
-    .eyebrow {
+    .small-title {
       font-size: 13px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      opacity: .75;
+      opacity: 0.75;
       margin-bottom: 15px;
     }
 
     .hero h1 {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(52px, 9vw, 95px);
-      line-height: .88;
-      letter-spacing: -5px;
+      font-size: clamp(50px, 9vw, 90px);
+      line-height: 0.9;
       margin-bottom: 25px;
     }
 
     .hero h1 span {
-      color: #ead5f3;
+      color: #ead5f4;
     }
 
     .hero p {
-      max-width: 540px;
       font-size: 18px;
-      opacity: .9;
+      opacity: 0.9;
       margin-bottom: 30px;
     }
 
     .button {
       display: inline-block;
-      padding: 13px 21px;
+      padding: 13px 22px;
 
       background: white;
-      color: var(--purple);
-
-      text-decoration: none;
-      font-weight: 700;
+      color: #75478f;
 
       border-radius: 14px;
-
-      transition: .2s;
+      font-weight: bold;
     }
 
     .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0,0,0,.15);
+      transform: translateY(-2px);
     }
 
     .mascot {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 170px;
-
-      filter: drop-shadow(0 20px 20px rgba(30, 15, 40, .25));
-      transform: rotate(2deg);
+      font-size: 130px;
+      padding: 20px;
     }
 
-    /* SECTIONS */
+    /* SEÇÕES */
 
     section {
-      margin-top: 80px;
+      margin-top: 75px;
     }
 
-    .section-heading {
+    .heading {
       margin-bottom: 25px;
     }
 
-    .section-heading small {
-      color: var(--purple);
-      font-weight: 700;
+    .heading small {
+      color: #8754a8;
+      font-weight: bold;
       letter-spacing: 2px;
-      text-transform: uppercase;
     }
 
-    .section-heading h2 {
-      font-family: "Space Grotesk", sans-serif;
+    .heading h2 {
       font-size: 38px;
-      color: var(--dark-purple);
-      margin-top: 4px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      max-width: 650px;
+      color: #3b2845;
       margin-top: 5px;
     }
 
-    /* ABOUT */
+    .heading p {
+      color: #806e88;
+      max-width: 650px;
+    }
+
+    /* SOBRE */
 
     .about {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 18px;
     }
 
     .box {
-      background: rgba(255,250,255,.82);
-      border: 1px solid #eadcf0;
-      border-radius: 25px;
+      background: white;
       padding: 30px;
-      box-shadow: 0 12px 30px rgba(70,40,85,.06);
+      border-radius: 25px;
+      border: 1px solid #e4d5ea;
+
+      box-shadow: 0 8px 25px rgba(70, 40, 90, 0.06);
     }
 
     .box h3 {
-      font-family: "Space Grotesk", sans-serif;
-      color:
+      margin-bottom: 10px;
+      color: #4b315d;
+    }
+
+    .box p {
+      color: #806e88;
+    }
+
+    /* ESPECIALIDADES */
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid #e4d5ea;
+
+      box-shadow: 0 8px 25px rgba(70, 40, 90, 0.06);
+
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .number {
+      color: #c4a1d3;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .card h3 {
+      margin: 8px 0;
+      color: #4b315d;
+    }
+
+    .card p {
+      color: #806e88;
+    }
+
+    /* PROJETOS */
+
+    .project {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      background: white;
+      padding: 24px;
+
+      border-radius: 20px;
+      border: 1px solid #e4d5ea;
+
+      margin-bottom: 12px;
+    }
+
+    .project h3 {
+      color: #4b315d;
+    }
+
+    .project p {
+      color: #806e88;
+    }
+
+    .project span {
+      color: #8754a8;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* CONTATO */
+
+    .contact {
+      text-align: center;
+      padding: 55px 25px;
+
+      background: linear-gradient(135deg, #4b315d, #75478f);
+
+      color: white;
+      border-radius: 30px;
+    }
+
+    .contact h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .contact p {
+      opacity: 0.8;
+      margin-bottom: 25px;
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .links a {
+      padding: 12px 18px;
+
+      color: white;
+      background: rgba(255,255,255,0.12);
+
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+
+      font-weight: bold;
+    }
+
+    .links a:hover {
+      background: rgba(255,255,255,0.22);
+    }
+
+    /* RODAPÉ */
+
+    footer {
+      text-align: center;
+      padding: 35px 10px;
+      color: #806e88;
+      font-size: 13px;
+    }
+
+    /* CELULAR */
+
+    @media (max-width: 700px) {
+
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 45px 25px;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .mascot {
+        font-size: 90px;
+      }
+
+      .about,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .project {
+        display: block;
+      }
+
+      .project span {
+        display: block;
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+
+    <div class="logo">
+      VINZS <span>STUDIOS</span>
+    </div>
+
+    <div>
+      <a href="#sobre">Sobre</a>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </div>
+
+  </nav>
+
+
+  <main>
+
+    <!-- APRESENTAÇÃO -->
+
+    <header class="hero">
+
+      <div class="hero-text">
+
+        <div class="small-title">
+          Voice Acting • Dubbing • Fandub
+        </div>
+
+        <h1>
+          VINZS<br>
+          <span>STUDIOS</span>
+        </h1>
+
+        <p>
+          Um espaço dedicado à voz, interpretação e criação
+          de personagens. Criado por Vinz.
+        </p>
+
+        <a class="button" href="#sobre">
+          Conheça meu trabalho
+        </a>
+
+      </div>
+
+      <div class="mascot">
+        🦭🎙️
+      </div>
+
+    </header>
+
+
+    <!-- SOBRE -->
+
+    <section id="sobre">
+
+      <div class="heading">
+
+        <small>01 — SOBRE</small>
+
+        <h2>
+          Olá, eu sou o Vinz.
+        </h2>
+
+      </div>
+
+
+      <div class="about">
+
+        <div class="box">
+
+          <h3>
+            🎙️ Voice Actor
+          </h3>
+
+          <p>
+            Sou um dublador em desenvolvimento, estudando e
+            praticando interpretação, dicção, expressão vocal
+            e criação de personagens.
+          </p>
+
+        </div>
+
+
+        <div class="box">
+
+          <h3>
+            💜 Minha proposta
+          </h3>
+
+          <p>
+            Quero desenvolver uma voz versátil e aprender a dar
+            personalidade e emoção para diferentes tipos de
+            personagens e histórias.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ESPECIALIDADES -->
+
+    <section id="especialidades">
+
+      <div class="heading">
+
+        <small>02 — ESPECIALIDADES</small>
+
+        <h2>
+          O que eu faço.
+        </h2>
+
+        <p>
+          Algumas áreas que fazem parte do meu desenvolvimento
+          como dublador.
+        </p>
+
+      </div>
+
+
+      <div class="cards">
+
+        <div class="card">
+
+          <div class="number">01</div>
+
+          <h3>Voice Acting</h3>
+
+          <p>
+            Interpretação de personagens, trabalhando emoção,
+            personalidade, ritmo e intenção.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="number">02</div>
+
+          <h3>Dublagem</h3>
+
+          <p>
+            Prática de sincronização, interpretação e adaptação
+            de falas para cenas.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="number">03</div>
+
+          <h3>Fandub</h3>
+
+          <p>
+            Criação e participação em projetos independentes
+            baseados em obras e personagens.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="number">04</div>
+
+          <h3>Personagens</h3>
+
+          <p>
+            Exploração de diferentes personalidades, desde
+            personagens dramáticos até vilões e personagens
+            cômicos.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROJETOS -->
+
+    <section id="projetos">
+
+      <div class="heading">
+
+        <small>03 — PROJETOS</small>
+
+        <h2>
+          Trabalhos & projetos.
+        </h2>
+
+        <p>
+          Alguns projetos que fazem parte da minha trajetória.
+        </p>
+
+      </div>
+
+
+      <div class="project">
+
+        <div>
+
+          <h3>
+            VINZS STUDIOS
+          </h3>
+
+          <p>
+            Portfólio pessoal de voice acting e dublagem.
+          </p>
+
+        </div>
+
+        <span>
+          PROJETO PESSOAL
+        </span>
+
+      </div>
+
+
+      <div class="project">
+
+        <div>
+
+          <h3>
+            Próximos projetos
+          </h3>
+
+          <p>
+            Novos trabalhos serão adicionados aqui.
+          </p>
+
+        </div>
+
+        <span>
+          EM BREVE
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTATO -->
+
+    <section id="contato">
+
+      <div class="contact">
+
+        <h2>
+          Vamos conversar?
+        </h2>
+
+        <p>
+          Para projetos, colaborações ou para conhecer meu
+          trabalho, você pode me encontrar aqui:
+        </p>
+
+
+        <div class="links">
+
+          <a
+            href="https://discord.com/users/vinztheseal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💬 Discord
+          </a>
+
+
+          <a
+            href="https://discord.gg/ShdWqtpZc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🏠 Servidor
+          </a>
+
+
+          <a
+            href="https://www.tiktok.com/@vinztheseal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🎵 TikTok
+          </a>
+
+
+          <a
+            href="https://youtube.com/@vinztheseal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ▶️ YouTube
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+
+      🦭 ✦ VINZS STUDIOS ✦ 🎙️
+
+      <br>
+
+      © 2026 Vinz — Todos os direitos reservados.
+
+    </footer>
+
+  </main>
+
+</body>
+</html>
