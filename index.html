@@ -1,2821 +1,1421 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VINZS STUDIOS — Voice Acting</title>
 
-<title>VINZS STUDIOS — Voice Acting</title>
+    <meta name="description" content="Vinzs Studios — Voice Acting, Dubbing e Fandub.">
+    <meta name="theme-color" content="#5B2A62">
 
-<style>
+    <style>
 
-/* =========================================
-   BASE
-========================================= */
+        /* =====================================================
+           PALETA
+           ===================================================== */
+
+        :root {
+            --periwinkle: #E3D9FC;
+            --magenta: #BF40FA;
+            --blue: #4928C2;
+            --purple: #5B2A62;
+            --black: #040607;
+
+            --text: #F4EEFF;
+            --muted: #B9A9C7;
+            --card: rgba(255,255,255,0.07);
+            --border: rgba(227,217,252,0.16);
+        }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-html {
-    scroll-behavior: smooth;
-}
+        /* =====================================================
+           RESET
+           ===================================================== */
 
-body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+        html {
+            scroll-behavior: smooth;
+        }
 
-    background: #040607;
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
 
-    color: #E3D9FC;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(73,40,194,.45), transparent 35%),
+                radial-gradient(circle at 85% 60%, rgba(191,64,250,.30), transparent 35%),
+                linear-gradient(135deg, #040607, #160B1C 45%, #281038);
 
-    line-height: 1.6;
+            background-attachment: fixed;
+        }
 
-    overflow-x: hidden;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    background-image:
+        button {
+            font-family: inherit;
+        }
 
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(73,40,194,.45),
-            transparent 35%
-        ),
 
-        radial-gradient(
-            circle at 90% 30%,
-            rgba(191,64,250,.25),
-            transparent 35%
-        );
+        /* =====================================================
+           NAVBAR
+           ===================================================== */
 
-    background-attachment: fixed;
-}
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
 
-a {
-    text-decoration: none;
-}
+            padding: 15px 5%;
 
+            background: rgba(4,6,7,.82);
+            backdrop-filter: blur(18px);
 
-/* =========================================
-   MENU
-========================================= */
+            border-bottom: 1px solid var(--border);
+        }
 
-nav {
+        nav {
+            max-width: 1150px;
+            margin: auto;
 
-    width: 92%;
-    max-width: 1150px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-    margin: 20px auto;
+            gap: 20px;
+        }
 
-    padding: 16px 22px;
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            white-space: nowrap;
 
-    display: flex;
+            background: linear-gradient(
+                90deg,
+                var(--periwinkle),
+                var(--magenta)
+            );
 
-    justify-content: space-between;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-    align-items: center;
+        .nav-tabs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            flex-wrap: wrap;
+        }
 
-    background:
-        rgba(4,6,7,.85);
+        .nav-tabs button {
+            border: none;
+            background: transparent;
 
-    border:
-        1px solid
-        rgba(227,217,252,.15);
+            color: var(--muted);
 
-    border-radius: 20px;
+            padding: 10px 13px;
+            border-radius: 10px;
 
-    box-shadow:
-        0 0 30px
-        rgba(73,40,194,.20);
+            cursor: pointer;
 
-    position: sticky;
+            font-size: 13px;
+            font-weight: 700;
 
-    top: 15px;
+            transition: .2s;
+        }
 
-    z-index: 100;
+        .nav-tabs button:hover {
+            color: white;
+            background: rgba(191,64,250,.12);
+        }
 
-    backdrop-filter: blur(15px);
-}
+        .nav-tabs button.active {
+            color: white;
 
-.logo {
+            background: linear-gradient(
+                135deg,
+                var(--blue),
+                var(--magenta)
+            );
 
-    font-size: 20px;
+            box-shadow: 0 5px 20px rgba(191,64,250,.25);
+        }
 
-    font-weight: bold;
 
-    color: #E3D9FC;
+        /* =====================================================
+           CONTAINER / ABAS
+           ===================================================== */
 
-    white-space: nowrap;
-}
+        main {
+            width: 90%;
+            max-width: 1100px;
 
-.logo span {
-    color: #BF40FA;
-}
+            margin: auto;
+            padding: 55px 0 70px;
+        }
 
-nav a {
+        .tab {
+            display: none;
 
-    color: #E3D9FC;
+            animation: fade .35s ease;
+        }
 
-    margin-left: 17px;
+        .tab.active {
+            display: block;
+        }
 
-    font-size: 14px;
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
 
-    font-weight: bold;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    transition: .2s;
-}
 
-nav a:hover {
+        /* =====================================================
+           INÍCIO
+           ===================================================== */
 
-    color: #BF40FA;
+        .hero {
+            min-height: 510px;
 
-    text-shadow:
-        0 0 12px
-        #BF40FA;
-}
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
+            gap: 45px;
 
-/* =========================================
-   CONTEÚDO
-========================================= */
+            padding: 65px;
 
-main {
+            border: 1px solid var(--border);
+            border-radius: 35px;
 
-    width: 92%;
+            overflow: hidden;
 
-    max-width: 1150px;
+            background:
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(191,64,250,.45),
+                    transparent 30%
+                ),
 
-    margin: auto;
-}
+                linear-gradient(
+                    135deg,
+                    #4928C2,
+                    #5B2A62 55%,
+                    #160B1C
+                );
 
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.35);
+        }
 
-/* =========================================
-   HERO
-========================================= */
+        .hero-text {
+            max-width: 650px;
+        }
 
-.hero {
+        .small-title {
+            color: var(--periwinkle);
 
-    min-height: 520px;
+            font-size: 13px;
+            font-weight: bold;
 
-    padding: 65px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
 
-    display: flex;
+            margin-bottom: 17px;
+        }
 
-    align-items: center;
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 88px);
+            line-height: .9;
 
-    justify-content: space-between;
+            margin-bottom: 25px;
+        }
 
-    background:
+        .hero h1 span {
+            color: var(--periwinkle);
+        }
 
-        radial-gradient(
-            circle at 15% 30%,
-            #4928C2,
-            transparent 35%
-        ),
+        .hero p {
+            max-width: 600px;
 
-        radial-gradient(
-            circle at 85% 60%,
-            #BF40FA,
-            transparent 35%
-        ),
+            color: rgba(255,255,255,.78);
 
-        #5B2A62;
+            font-size: 18px;
+            line-height: 1.6;
 
-    color: #E3D9FC;
+            margin-bottom: 30px;
+        }
 
-    border-radius: 35px;
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
 
-    overflow: hidden;
+        .button {
+            display: inline-block;
 
-    box-shadow:
+            padding: 13px 20px;
 
-        0 0 35px
-        rgba(191,64,250,.25),
+            border-radius: 13px;
 
-        inset 0 0 60px
-        rgba(73,40,194,.25);
+            font-weight: bold;
 
-    position: relative;
-}
+            transition: .2s;
+        }
 
-.hero::before {
+        .button.primary {
+            background: white;
+            color: #4928C2;
+        }
 
-    content:
-        "✦  ✧  ·  ✦  ·  ✧  ✦";
+        .button.secondary {
+            background: rgba(255,255,255,.1);
+            color: white;
 
-    position: absolute;
+            border: 1px solid rgba(255,255,255,.2);
+        }
 
-    top: 30px;
+        .button:hover {
+            transform: translateY(-3px);
+        }
 
-    right: 40px;
+        .mascot {
+            font-size: 130px;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,.25));
+        }
 
-    opacity: .5;
 
-    font-size: 20px;
+        /* =====================================================
+           TÍTULOS
+           ===================================================== */
 
-    letter-spacing: 8px;
-}
+        .heading {
+            margin-bottom: 30px;
+        }
 
-.hero-text {
-    max-width: 620px;
-}
+        .heading small {
+            color: var(--magenta);
 
-.small-title {
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
 
-    font-size: 13px;
+        .heading h2 {
+            font-size: clamp(32px, 5vw, 50px);
+            margin-top: 7px;
+        }
 
-    letter-spacing: 3px;
+        .heading p {
+            color: var(--muted);
+            margin-top: 10px;
+            line-height: 1.6;
+        }
 
-    text-transform: uppercase;
 
-    opacity: .8;
+        /* =====================================================
+           CARDS
+           ===================================================== */
 
-    margin-bottom: 18px;
-}
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
 
-.hero h1 {
+        .card {
+            padding: 28px;
 
-    font-size:
-        clamp(52px, 9vw, 95px);
+            background: var(--card);
 
-    line-height: .88;
+            border: 1px solid var(--border);
+            border-radius: 24px;
 
-    letter-spacing: -4px;
+            backdrop-filter: blur(10px);
 
-    margin-bottom: 25px;
-}
+            transition: .2s;
+        }
 
-.hero h1 span {
+        .card:hover {
+            transform: translateY(-4px);
 
-    color: #BF40FA;
+            border-color: rgba(191,64,250,.4);
 
-    text-shadow:
-        0 0 25px
-        rgba(191,64,250,.7);
-}
+            box-shadow:
+                0 15px 35px rgba(0,0,0,.2);
+        }
 
-.hero p {
+        .card h3 {
+            margin-bottom: 10px;
+        }
 
-    font-size: 18px;
+        .card p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
 
-    max-width: 570px;
 
-    opacity: .9;
+        /* =====================================================
+           PORTFÓLIO
+           ===================================================== */
 
-    margin-bottom: 30px;
-}
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
 
-.button {
+        .project {
+            min-height: 190px;
 
-    display: inline-block;
+            padding: 28px;
 
-    padding: 14px 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
-    background: #BF40FA;
+            border: 1px solid var(--border);
+            border-radius: 24px;
 
-    color: #040607;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(73,40,194,.22),
+                    rgba(191,64,250,.08)
+                );
+        }
 
-    border-radius: 14px;
+        .project-number {
+            color: var(--magenta);
 
-    font-weight: bold;
+            font-size: 13px;
+            font-weight: bold;
 
-    box-shadow:
-        0 0 20px
-        rgba(191,64,250,.4);
+            letter-spacing: 2px;
+        }
 
-    transition: .2s;
-}
+        .project h3 {
+            margin: 10px 0;
+            font-size: 23px;
+        }
 
-.button:hover {
+        .project p {
+            color: var(--muted);
+            line-height: 1.5;
+        }
 
-    transform:
-        translateY(-3px);
 
-    box-shadow:
-        0 0 30px
-        rgba(191,64,250,.7);
-}
+        /* =====================================================
+           PREÇOS
+           ===================================================== */
 
-.mascot {
+        .prices {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
 
-    font-size: 140px;
+        .price-card {
+            padding: 30px;
 
-    padding: 20px;
+            border-radius: 25px;
 
-    filter:
-        drop-shadow(
-            0 0 25px
-            rgba(191,64,250,.6)
-        );
-}
+            background: var(--card);
 
+            border: 1px solid var(--border);
 
-/* =========================================
-   SEÇÕES
-========================================= */
+            position: relative;
+            overflow: hidden;
+        }
 
-section {
-    margin-top: 85px;
-}
+        .price-card.featured {
+            border-color: var(--magenta);
 
-.heading {
-    margin-bottom: 28px;
-}
+            box-shadow:
+                0 15px 45px rgba(191,64,250,.15);
+        }
 
-.heading small {
+        .price-card .tag {
+            display: inline-block;
 
-    color: #BF40FA;
+            padding: 5px 9px;
 
-    font-weight: bold;
+            margin-bottom: 15px;
 
-    letter-spacing: 2px;
-}
+            border-radius: 8px;
 
-.heading h2 {
+            background: rgba(191,64,250,.15);
 
-    font-size: 40px;
+            color: var(--magenta);
 
-    color: #E3D9FC;
+            font-size: 11px;
+            font-weight: bold;
+        }
 
-    margin-top: 5px;
-}
+        .price-card h3 {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
 
-.heading p {
+        .price {
+            font-size: 36px;
+            font-weight: 800;
 
-    color: #B7A8CF;
+            color: var(--periwinkle);
 
-    max-width: 680px;
+            margin: 18px 0;
+        }
 
-    margin-top: 6px;
-}
+        .price-card p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
 
+        .price-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
 
-/* =========================================
-   BOXES
-========================================= */
+        .price-card li {
+            color: var(--muted);
+            margin: 10px 0;
+        }
 
-.about {
+        .price-card li::before {
+            content: "✦ ";
+            color: var(--magenta);
+        }
 
-    display: grid;
 
-    grid-template-columns:
-        repeat(2, 1fr);
+        /* =====================================================
+           TERMOS
+           ===================================================== */
 
-    gap: 18px;
-}
+        .terms {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
 
-.box {
+        .term {
+            padding: 24px;
 
-    background:
-        rgba(91,42,98,.35);
+            background: var(--card);
 
-    padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
 
-    border-radius: 25px;
+        .term h3 {
+            margin-bottom: 9px;
+        }
 
-    border:
-        1px solid
-        rgba(227,217,252,.12);
+        .term p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
 
-    box-shadow:
-        0 0 25px
-        rgba(73,40,194,.12);
+        .warning {
+            border-color: rgba(191,64,250,.45);
 
-    backdrop-filter: blur(10px);
-}
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(191,64,250,.13),
+                    rgba(73,40,194,.10)
+                );
+        }
 
-.box h3 {
 
-    margin-bottom: 10px;
+        /* =====================================================
+           CONTATO
+           ===================================================== */
 
-    color: #E3D9FC;
-}
+        .contact {
+            text-align: center;
 
-.box p {
-    color: #B7A8CF;
-}
+            padding: 60px 25px;
 
+            border-radius: 30px;
 
-/* =========================================
-   ESPECIALIDADES
-========================================= */
+            background:
+                linear-gradient(
+                    135deg,
+                    #4928C2,
+                    #BF40FA
+                );
 
-.cards {
+            box-shadow:
+                0 20px 60px rgba(191,64,250,.2);
+        }
 
-    display: grid;
+        .contact h2 {
+            font-size: clamp(35px, 6vw, 55px);
+            margin-bottom: 10px;
+        }
 
-    grid-template-columns:
-        repeat(2, 1fr);
+        .contact p {
+            color: rgba(255,255,255,.82);
+            margin-bottom: 28px;
+        }
 
-    gap: 18px;
-}
+        .links {
+            display: flex;
 
-.card {
+            justify-content: center;
+            flex-wrap: wrap;
 
-    background:
-        rgba(91,42,98,.35);
+            gap: 10px;
+        }
 
-    padding: 28px;
+        .links a {
+            padding: 12px 18px;
 
-    border-radius: 24px;
+            color: white;
 
-    border:
-        1px solid
-        rgba(227,217,252,.12);
+            background: rgba(0,0,0,.18);
 
-    box-shadow:
-        0 0 25px
-        rgba(73,40,194,.12);
+            border: 1px solid rgba(255,255,255,.2);
 
-    transition: .2s;
-}
+            border-radius: 12px;
 
-.card:hover {
+            font-weight: bold;
 
-    transform:
-        translateY(-5px);
+            transition: .2s;
+        }
 
-    border-color:
-        rgba(191,64,250,.5);
+        .links a:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,.15);
+        }
 
-    box-shadow:
-        0 0 30px
-        rgba(191,64,250,.25);
-}
 
-.number {
+        /* =====================================================
+           RODAPÉ
+           ===================================================== */
 
-    color: #BF40FA;
+        footer {
+            text-align: center;
 
-    font-weight: bold;
+            padding: 30px 15px;
 
-    font-size: 13px;
-}
+            color: var(--muted);
 
-.card h3 {
+            font-size: 13px;
 
-    margin: 8px 0;
+            border-top: 1px solid var(--border);
+        }
 
-    color: #E3D9FC;
-}
+        footer strong {
+            color: var(--periwinkle);
+        }
 
-.card p {
-    color: #B7A8CF;
-}
 
+        /* =====================================================
+           CELULAR
+           ===================================================== */
 
-/* =========================================
-   PROJETOS
-========================================= */
+        @media (max-width: 800px) {
 
-.project {
+            header {
+                padding: 12px 4%;
+            }
 
-    display: flex;
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
 
-    justify-content:
-        space-between;
+            .nav-tabs {
+                width: 100%;
+            }
 
-    align-items: center;
+            .nav-tabs button {
+                flex: 1;
+                min-width: 70px;
+                padding: 9px 6px;
+                font-size: 11px;
+            }
 
-    background:
-        rgba(91,42,98,.35);
+            main {
+                width: 92%;
+                padding-top: 30px;
+            }
 
-    padding: 25px;
+            .hero {
+                min-height: auto;
 
-    border-radius: 20px;
+                flex-direction: column;
 
-    border:
-        1px solid
-        rgba(227,217,252,.12);
+                text-align: center;
 
-    margin-bottom: 13px;
+                padding: 45px 25px;
+            }
 
-    box-shadow:
-        0 0 20px
-        rgba(73,40,194,.10);
-}
+            .hero-buttons {
+                justify-content: center;
+            }
 
-.project h3 {
-    color: #E3D9FC;
-}
+            .hero p {
+                font-size: 16px;
+            }
 
-.project p {
-    color: #B7A8CF;
-}
+            .mascot {
+                font-size: 90px;
+            }
 
-.project span {
+            .grid,
+            .projects,
+            .prices {
+                grid-template-columns: 1fr;
+            }
 
-    color: #BF40FA;
+            .card,
+            .project,
+            .price-card {
+                padding: 23px;
+            }
 
-    font-size: 12px;
+            .contact {
+                padding: 45px 20px;
+            }
 
-    font-weight: bold;
-}
+            .links {
+                flex-direction: column;
+            }
 
+            .links a {
+                width: 100%;
+            }
+        }
 
-/* =========================================
-   PREÇOS
-========================================= */
 
-.price-grid {
+        /* =====================================================
+           CELULAR PEQUENO
+           ===================================================== */
 
-    display: grid;
+        @media (max-width: 430px) {
 
-    grid-template-columns:
-        repeat(3, 1fr);
+            .logo {
+                font-size: 17px;
+            }
 
-    gap: 18px;
-}
+            .nav-tabs {
+                gap: 3px;
+            }
 
-.price-card {
+            .nav-tabs button {
+                font-size: 10px;
+                padding: 8px 4px;
+            }
 
-    position: relative;
+            .hero h1 {
+                font-size: 48px;
+            }
 
-    background:
-        rgba(91,42,98,.35);
+            .small-title {
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
 
-    padding: 30px;
+            .hero {
+                border-radius: 25px;
+            }
+        }
 
-    border-radius: 25px;
-
-    border:
-        1px solid
-        rgba(227,217,252,.12);
-
-    box-shadow:
-        0 0 25px
-        rgba(73,40,194,.12);
-
-    transition: .2s;
-}
-
-.price-card:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        #BF40FA;
-
-    box-shadow:
-        0 0 35px
-        rgba(191,64,250,.25);
-}
-
-.price-card.featured {
-
-    border:
-        2px solid
-        #BF40FA;
-
-    box-shadow:
-        0 0 35px
-        rgba(191,64,250,.25);
-}
-
-.featured-label {
-
-    position: absolute;
-
-    top: -12px;
-
-    right: 20px;
-
-    padding: 5px 10px;
-
-    background: #BF40FA;
-
-    color: #040607;
-
-    border-radius: 20px;
-
-    font-size: 10px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-}
-
-.price-number {
-
-    color: #BF40FA;
-
-    font-size: 13px;
-
-    font-weight: bold;
-}
-
-.price-card h3 {
-
-    margin-top: 8px;
-
-    color: #E3D9FC;
-
-    font-size: 22px;
-}
-
-.price-description {
-
-    min-height: 70px;
-
-    margin-top: 8px;
-
-    color: #B7A8CF;
-
-    font-size: 14px;
-}
-
-.price {
-
-    margin: 20px 0;
-
-    color: #BF40FA;
-
-    font-size: 30px;
-
-    font-weight: bold;
-
-    text-shadow:
-        0 0 12px
-        rgba(191,64,250,.4);
-}
-
-.price-card ul {
-
-    list-style: none;
-
-    margin-bottom: 25px;
-}
-
-.price-card li {
-
-    padding: 5px 0;
-
-    color: #B7A8CF;
-
-    font-size: 14px;
-}
-
-.price-button {
-
-    display: block;
-
-    text-align: center;
-
-    padding: 12px;
-
-    background: #4928C2;
-
-    color: #E3D9FC;
-
-    border-radius: 13px;
-
-    font-weight: bold;
-
-    transition: .2s;
-}
-
-.price-button:hover {
-
-    background: #BF40FA;
-
-    color: #040607;
-
-    box-shadow:
-        0 0 20px
-        rgba(191,64,250,.5);
-}
-
-
-/* =========================================
-   TERMOS
-========================================= */
-
-.terms {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 14px;
-}
-
-.term {
-
-    background:
-        rgba(91,42,98,.35);
-
-    padding:
-        25px 28px;
-
-    border-radius: 20px;
-
-    border:
-        1px solid
-        rgba(227,217,252,.12);
-
-    box-shadow:
-        0 0 20px
-        rgba(73,40,194,.08);
-}
-
-.term h3 {
-
-    color: #E3D9FC;
-
-    margin-bottom: 8px;
-}
-
-.term p {
-    color: #B7A8CF;
-}
-
-.warning {
-
-    border-left:
-        5px solid
-        #BF40FA;
-
-    background:
-        rgba(191,64,250,.08);
-}
-
-
-/* =========================================
-   CONTATO
-========================================= */
-
-.contact {
-
-    text-align: center;
-
-    padding:
-        60px 25px;
-
-    background:
-
-        radial-gradient(
-            circle at 20% 50%,
-            #4928C2,
-            transparent 40%
-        ),
-
-        radial-gradient(
-            circle at 80% 50%,
-            #BF40FA,
-            transparent 40%
-        ),
-
-        #5B2A62;
-
-    color: #E3D9FC;
-
-    border-radius: 32px;
-
-    box-shadow:
-        0 0 40px
-        rgba(191,64,250,.2);
-}
-
-.contact h2 {
-
-    font-size: 40px;
-
-    margin-bottom: 10px;
-}
-
-.contact p {
-
-    opacity: .8;
-
-    margin-bottom: 28px;
-}
-
-.links {
-
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-}
-
-.links a {
-
-    padding:
-        12px 18px;
-
-    color: #E3D9FC;
-
-    background:
-        rgba(4,6,7,.35);
-
-    border:
-        1px solid
-        rgba(227,217,252,.2);
-
-    border-radius: 12px;
-
-    font-weight: bold;
-
-    transition: .2s;
-}
-
-.links a:hover {
-
-    background: #BF40FA;
-
-    color: #040607;
-
-    box-shadow:
-        0 0 20px
-        rgba(191,64,250,.5);
-
-    transform:
-        translateY(-2px);
-}
-
-
-/* =========================================
-   RODAPÉ
-========================================= */
-
-footer {
-
-    text-align: center;
-
-    padding:
-        40px 10px;
-
-    color: #806C99;
-
-    font-size: 13px;
-}
-
-
-/* =========================================
-   CELULAR
-========================================= */
-
-@media (max-width: 850px) {
-
-    body {
-        overflow-x: hidden;
-    }
-
-    main {
-        width: 92%;
-    }
-
-    /* MENU */
-
-    nav {
-
-        width: 92%;
-
-        padding:
-            14px 16px;
-
-        flex-direction: column;
-
-        gap: 12px;
-
-        border-radius: 18px;
-
-        position: relative;
-
-        top: 0;
-    }
-
-    .logo {
-        font-size: 18px;
-    }
-
-    nav div:last-child {
-
-        display: flex;
-
-        flex-wrap: wrap;
-
-        justify-content: center;
-
-        gap: 6px;
-    }
-
-    nav a {
-
-        margin: 0;
-
-        padding:
-            6px 8px;
-
-        font-size: 12px;
-    }
-
-
-    /* HERO */
-
-    .hero {
-
-        min-height: auto;
-
-        padding:
-            55px 25px;
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        text-align: center;
-
-        border-radius: 27px;
-
-        gap: 30px;
-    }
-
-    .hero-text {
-        max-width: 100%;
-    }
-
-    .small-title {
-
-        font-size: 11px;
-
-        letter-spacing: 2px;
-    }
-
-    .hero h1 {
-
-        font-size: 58px;
-
-        line-height: .9;
-
-        letter-spacing: -3px;
-    }
-
-    .hero p {
-
-        font-size: 15px;
-
-        max-width: 400px;
-
-        margin-left: auto;
-
-        margin-right: auto;
-    }
-
-    .mascot {
-
-        font-size: 90px;
-
-        padding: 5px;
-    }
-
-
-    /* SEÇÕES */
-
-    section {
-        margin-top: 60px;
-    }
-
-    .heading {
-        margin-bottom: 22px;
-    }
-
-    .heading h2 {
-        font-size: 32px;
-    }
-
-    .heading p {
-        font-size: 14px;
-    }
-
-
-    /* CARDS */
-
-    .about,
-    .cards,
-    .price-grid {
-
-        grid-template-columns:
-            1fr;
-    }
-
-    .box,
-    .card {
-        padding: 23px;
-    }
-
-
-    /* PROJETOS */
-
-    .project {
-
-        display: block;
-
-        padding: 22px;
-    }
-
-    .project h3 {
-        font-size: 18px;
-    }
-
-    .project p {
-        font-size: 14px;
-    }
-
-    .project span {
-
-        display: inline-block;
-
-        margin-top: 12px;
-    }
-
-
-    /* PREÇOS */
-
-    .price-card {
-        padding: 25px;
-    }
-
-    .price {
-        font-size: 28px;
-    }
-
-    .price-description {
-        min-height: auto;
-    }
-
-    .price-button {
-        padding: 14px;
-    }
-
-
-    /* TERMOS */
-
-    .term {
-
-        padding: 21px;
-
-        border-radius: 17px;
-    }
-
-    .term h3 {
-        font-size: 17px;
-    }
-
-    .term p {
-        font-size: 14px;
-    }
-
-
-    /* CONTATO */
-
-    .contact {
-
-        padding:
-            45px 20px;
-
-        border-radius: 27px;
-    }
-
-    .contact h2 {
-        font-size: 32px;
-    }
-
-    .contact p {
-        font-size: 14px;
-    }
-
-    .links {
-
-        flex-direction: column;
-
-        width: 100%;
-    }
-
-    .links a {
-
-        width: 100%;
-
-        padding: 14px;
-    }
-
-
-    /* RODAPÉ */
-
-    footer {
-
-        padding:
-            35px 10px;
-
-        font-size: 12px;
-    }
-}
-
-
-/* =========================================
-   CELULARES PEQUENOS
-========================================= */
-
-@media (max-width: 500px) {
-
-    main,
-    nav {
-        width: 94%;
-    }
-
-    .hero {
-        padding:
-            45px 18px;
-    }
-
-    .hero h1 {
-        font-size: 49px;
-    }
-
-    .hero p {
-        font-size: 14px;
-    }
-
-    .mascot {
-        font-size: 75px;
-    }
-
-    .heading h2 {
-        font-size: 28px;
-    }
-
-    .box,
-    .card,
-    .price-card {
-        padding: 20px;
-    }
-
-    .price-card h3 {
-        font-size: 20px;
-    }
-
-    .contact h2 {
-        font-size: 28px;
-    }
-}
-
-
-/* =========================================
-   TELAS GRANDES
-========================================= */
-
-@media (min-width: 1200px) {
-
-    main {
-        max-width: 1250px;
-    }
-
-    .hero {
-
-        min-height: 600px;
-
-        padding: 80px;
-    }
-
-    .hero h1 {
-        font-size: 105px;
-    }
-
-    .hero p {
-        font-size: 20px;
-    }
-
-    .mascot {
-        font-size: 170px;
-    }
-
-    section {
-        margin-top: 100px;
-    }
-}
-
-</style>
-
+    </style>
 </head>
 
 
 <body>
 
 
-<!-- =========================================
-     MENU
-========================================= -->
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
 
-<nav>
+    <header>
 
-    <div class="logo">
+        <nav>
 
-        VINZS
-        <span>STUDIOS</span>
-
-    </div>
-
-    <div>
-
-        <a href="#sobre">
-            Sobre
-        </a>
-
-        <a href="#especialidades">
-            Especialidades
-        </a>
-
-        <a href="#projetos">
-            Projetos
-        </a>
-
-        <a href="#precos">
-            Preços
-        </a>
-
-        <a href="#termos">
-            Termos
-        </a>
-
-        <a href="#contato">
-            Contato
-        </a>
-
-    </div>
-
-</nav>
-
-
-<main>
-
-
-<!-- =========================================
-     HERO
-========================================= -->
-
-<header class="hero">
-
-    <div class="hero-text">
-
-        <div class="small-title">
-
-            Voice Acting
-            •
-            Dubbing
-            •
-            Fandub
-
-        </div>
-
-
-        <h1>
-
-            VINZS
-
-            <br>
-
-            <span>
-                STUDIOS
-            </span>
-
-        </h1>
-
-
-        <p>
-
-            Um espaço dedicado à voz,
-            interpretação e criação de
-            personagens.
-
-            <br>
-
-            Criado por Vinz.
-
-        </p>
-
-
-        <a
-            class="button"
-            href="#sobre"
-        >
-
-            Conheça meu trabalho
-
-        </a>
-
-    </div>
-
-
-    <div class="mascot">
-
-        🦭🎙️
-
-    </div>
-
-</header>
-
-
-<!-- =========================================
-     SOBRE
-========================================= -->
-
-<section id="sobre">
-
-    <div class="heading">
-
-        <small>
-            01 — SOBRE
-        </small>
-
-        <h2>
-            Olá, eu sou o Vinz.
-        </h2>
-
-        <p>
-
-            Conheça um pouco sobre mim
-            e sobre o VINZS STUDIOS.
-
-        </p>
-
-    </div>
-
-
-    <div class="about">
-
-
-        <div class="box">
-
-            <h3>
-                🎙️ Voice Actor
-            </h3>
-
-            <p>
-
-                Sou um dublador em desenvolvimento,
-                estudando e praticando interpretação,
-                dicção, expressão vocal e criação
-                de personagens.
-
-            </p>
-
-        </div>
-
-
-        <div class="box">
-
-            <h3>
-                💜 Minha proposta
-            </h3>
-
-            <p>
-
-                Quero desenvolver uma voz versátil
-                e aprender a dar personalidade,
-                emoção e vida para diferentes
-                personagens e histórias.
-
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     ESPECIALIDADES
-========================================= -->
-
-<section id="especialidades">
-
-    <div class="heading">
-
-        <small>
-            02 — ESPECIALIDADES
-        </small>
-
-        <h2>
-            O que eu faço.
-        </h2>
-
-        <p>
-
-            Algumas áreas que fazem parte
-            do meu desenvolvimento como
-            dublador.
-
-        </p>
-
-    </div>
-
-
-    <div class="cards">
-
-
-        <div class="card">
-
-            <div class="number">
-                01
+            <div class="logo">
+                ✦ VINZS STUDIOS
             </div>
 
-            <h3>
-                Voice Acting
-            </h3>
+            <div class="nav-tabs">
 
-            <p>
+                <button
+                    class="active"
+                    onclick="openTab('inicio', this)">
+                    Início
+                </button>
 
-                Interpretação de personagens,
-                trabalhando emoção, personalidade,
-                ritmo e intenção.
+                <button
+                    onclick="openTab('portfolio', this)">
+                    Portfólio
+                </button>
 
-            </p>
+                <button
+                    onclick="openTab('precos', this)">
+                    Preços
+                </button>
 
-        </div>
+                <button
+                    onclick="openTab('termos', this)">
+                    Termos
+                </button>
 
+                <button
+                    onclick="openTab('contato', this)">
+                    Contato
+                </button>
 
-        <div class="card">
-
-            <div class="number">
-                02
             </div>
 
-            <h3>
-                Dublagem
-            </h3>
-
-            <p>
-
-                Dublagem de cenas,
-                vídeos e projetos audiovisuais.
-
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="number">
-                03
-            </div>
-
-            <h3>
-                Fandub
-            </h3>
-
-            <p>
-
-                Criação e participação em
-                projetos independentes.
-
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="number">
-                04
-            </div>
-
-            <h3>
-                Personagens
-            </h3>
-
-            <p>
-
-                Exploração de diferentes
-                personalidades e estilos
-                de interpretação.
-
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     PROJETOS
-========================================= -->
-
-<section id="projetos">
-
-    <div class="heading">
-
-        <small>
-            03 — PROJETOS
-        </small>
-
-        <h2>
-            Trabalhos & projetos.
-        </h2>
-
-        <p>
-
-            Alguns projetos que fazem
-            parte da minha trajetória.
-
-        </p>
-
-    </div>
-
-
-    <div class="project">
-
-        <div>
-
-            <h3>
-                VINZS STUDIOS
-            </h3>
-
-            <p>
-                Portfólio pessoal de
-                voice acting e dublagem.
-            </p>
-
-        </div>
-
-        <span>
-            PROJETO PESSOAL
-        </span>
-
-    </div>
-
-
-    <div class="project">
-
-        <div>
-
-            <h3>
-                Próximos projetos
-            </h3>
-
-            <p>
-                Novos trabalhos serão
-                adicionados aqui.
-            </p>
-
-        </div>
-
-        <span>
-            EM BREVE
-        </span>
-
-    </div>
-
-
-</section>
-
-
-<!-- =========================================
-     PREÇOS
-========================================= -->
-
-<section id="precos">
-
-    <div class="heading">
-
-        <small>
-            04 — COMISSÕES
-        </small>
-
-        <h2>
-            Tabela de preços.
-        </h2>
-
-        <p>
-
-            Valores para serviços de
-            voice acting, dublagem e fandub.
-
-        </p>
-
-    </div>
-
-
-    <div class="price-grid">
-
-
-        <div class="price-card">
-
-            <div class="price-number">
-                01
-            </div>
-
-            <h3>
-                Voice Acting
-            </h3>
-
-            <p class="price-description">
-
-                Voz para personagens,
-                OCs e projetos independentes.
-
-            </p>
-
-            <div class="price">
-                R$ 8
-            </div>
-
-            <ul>
-
-                <li>
-                    ✓ Até 30 segundos — R$ 8
-                </li>
-
-                <li>
-                    ✓ Até 1 minuto — R$ 12
-                </li>
-
-                <li>
-                    ✓ Até 2 minutos — R$ 20
-                </li>
-
-                <li>
-                    ✓ Acima de 2 minutos — A combinar
-                </li>
-
-            </ul>
-
-            <a
-                class="price-button"
-                href="https://discord.gg/ShdWqtpZc"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                Solicitar orçamento
-
-            </a>
-
-        </div>
-
-
-        <div class="price-card featured">
-
-            <div class="featured-label">
-                MAIS PROCURADO
-            </div>
-
-            <div class="price-number">
-                02
-            </div>
-
-            <h3>
-                Dublagem
-            </h3>
-
-            <p class="price-description">
-
-                Dublagem de cenas,
-                vídeos e projetos audiovisuais.
-
-            </p>
-
-            <div class="price">
-                R$ 10
-            </div>
-
-            <ul>
-
-                <li>
-                    ✓ Cena curta até 30s — R$ 10
-                </li>
-
-                <li>
-                    ✓ Até 1 minuto — R$ 15
-                </li>
-
-                <li>
-                    ✓ Até 2 minutos — R$ 25
-                </li>
-
-                <li>
-                    ✓ Projetos maiores — orçamento
-                </li>
-
-            </ul>
-
-            <a
-                class="price-button"
-                href="https://discord.gg/ShdWqtpZc"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                Solicitar orçamento
-
-            </a>
-
-        </div>
-
-
-        <div class="price-card">
-
-            <div class="price-number">
-                03
-            </div>
-
-            <h3>
-                Fandub
-            </h3>
-
-            <p class="price-description">
-
-                Participação em projetos de fãs
-                e produções independentes.
-
-            </p>
-
-            <div class="price">
-                R$ 10
-            </div>
-
-            <ul>
-
-                <li>
-                    ✓ Participação curta — R$ 10
-                </li>
-
-                <li>
-                    ✓ Até 1 minuto — R$ 15
-                </li>
-
-                <li>
-                    ✓ Até 2 minutos — R$ 25
-                </li>
-
-                <li>
-                    ✓ Projetos completos — A combinar
-                </li>
-
-            </ul>
-
-            <a
-                class="price-button"
-                href="https://discord.gg/ShdWqtpZc"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                Solicitar orçamento
-
-            </a>
-
-        </div>
-
-
-    </div>
-
-
-    <div
-        class="box"
-        style="margin-top:18px;"
-    >
-
-        <h3>
-            ✦ Extras
-        </h3>
-
-        <p>
-
-            🔄 Regravação por erro meu —
-            <strong>Grátis</strong>
-
-            <br>
-
-            🔄 Alteração solicitada pelo cliente —
-            <strong>+R$ 3</strong>
-
-            <br>
-
-            ⚡ Entrega urgente —
-            <strong>+R$ 5</strong>
-
-            <br>
-
-            🎭 Várias vozes/personagens —
-            <strong>A combinar</strong>
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     TERMOS
-========================================= -->
-
-<section id="termos">
-
-    <div class="heading">
-
-        <small>
-            05 — TERMOS
-        </small>
-
-        <h2>
-            Termos de condições.
-        </h2>
-
-        <p>
-
-            Leia as condições antes de
-            solicitar uma comissão.
-
-        </p>
-
-    </div>
-
-
-    <div class="terms">
-
-
-        <div class="term">
-
-            <h3>
-                01. Pedidos
-            </h3>
-
-            <p>
-
-                O cliente deve explicar o projeto
-                e enviar todas as informações
-                necessárias antes da gravação.
-
-                <br><br>
-
-                O orçamento pode variar dependendo
-                da duração, quantidade de falas
-                e complexidade do trabalho.
-
-            </p>
-
-        </div>
-
-
-        <div class="term warning">
-
-            <h3>
-                02. Pagamento
-            </h3>
-
-            <p>
-
-                <strong>
-                    50% do valor total deve ser pago
-                    antecipadamente
-                </strong>
-                antes do início da gravação.
-
-                <br><br>
-
-                Caso a dublagem
-                <strong>
-                    não seja entregue por responsabilidade
-                    do VINZS STUDIOS
-                </strong>,
-                os 50% pagos antecipadamente serão
-                <strong>
-                    devolvidos integralmente
-                </strong>
-                ao cliente.
-
-            </p>
-
-        </div>
-
-
-        <div class="term">
-
-            <h3>
-                03. Alterações e regravações
-            </h3>
-
-            <p>
-
-                Erros cometidos pelo dublador
-                serão corrigidos gratuitamente.
-
-                <br><br>
-
-                Alterações solicitadas pelo cliente
-                depois da gravação podem ter uma
-                taxa de <strong>R$ 3</strong>.
-
-            </p>
-
-        </div>
-
-
-        <div class="term">
-
-            <h3>
-                04. Prazo
-            </h3>
-
-            <p>
-
-                O prazo será combinado de acordo
-                com o tamanho e a complexidade
-                do projeto.
-
-            </p>
-
-        </div>
-
-
-        <div class="term warning">
-
-            <h3>
-                05. Conteúdo não aceito
-            </h3>
-
-            <p>
-
-                O VINZS STUDIOS
-                <strong>
-                    não realiza:
-                </strong>
-
-                <br><br>
-
-                🚫 Dublagens NSFW
-
-                <br>
-
-                🚫 ASMR
-
-                <br>
-
-                🚫 Conteúdo envolvendo fetiches
-
-                <br>
-
-                🚫 Conteúdo ilegal
-
-            </p>
-
-        </div>
-
-
-        <div class="term">
-
-            <h3>
-                06. Uso da gravação
-            </h3>
-
-            <p>
-
-                O cliente pode utilizar a gravação
-                para o projeto informado no pedido.
-
-            </p>
-
-        </div>
-
-
-        <div class="term">
-
-            <h3>
-                07. Cancelamentos
-            </h3>
-
-            <p>
-
-                O cancelamento deve ser comunicado
-                o quanto antes.
-
-            </p>
-
-        </div>
-
-
-        <div class="term">
-
-            <h3>
-                08. Portfólio
-            </h3>
-
-            <p>
-
-                O VINZS STUDIOS poderá solicitar
-                autorização para apresentar trabalhos
-                realizados no portfólio.
-
-            </p>
-
-        </div>
-
-
-        <div class="term">
-
-            <h3>
-                09. Comunicação
-            </h3>
-
-            <p>
-
-                A comunicação das comissões será
-                feita preferencialmente pelo Discord.
-
-            </p>
-
-        </div>
-
-
-        <div class="term warning">
-
-            <h3>
-                10. Concordância
-            </h3>
-
-            <p>
-
-                Ao solicitar uma comissão,
-                o cliente declara que
-                <strong>
-                    leu, compreendeu e concorda
-                    com estes termos.
-                </strong>
-
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     CONTATO
-========================================= -->
-
-<section id="contato">
-
-    <div class="contact">
-
-        <h2>
-            Vamos conversar?
-        </h2>
-
-        <p>
-
-            Para projetos, colaborações ou
-            para conhecer meu trabalho,
-            você pode me encontrar aqui:
-
-        </p>
-
-
-        <div class="links">
-
-
-            <a
-                href="https://discord.com/users/vinztheseal"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                💬 Discord
-
-            </a>
-
-
-            <a
-                href="https://discord.gg/ShdWqtpZc"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                🏠 Servidor
-
-            </a>
-
-
-            <a
-                href="https://www.tiktok.com/@vinztheseal"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                🎵 TikTok
-
-            </a>
-
-
-            <a
-                href="https://youtube.com/@vinztheseal"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                ▶️ YouTube
-
-            </a>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     RODAPÉ
-========================================= -->
-
-<footer>
-
-    🦭 ✦ VINZS STUDIOS ✦ 🎙️
-
-    <br><br>
-
-    © 2026 Vinz — Todos os direitos reservados.
-
-    <br>
-
-    Voice Acting • Dubbing • Fandub
-
-</footer>
-
-
-</main>
-
-</body>
-
-</html>      padding: 16px 22px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      background: #ffffff;
-      border: 1px solid #e3d2eb;
-      border-radius: 20px;
-
-      box-shadow: 0 8px 25px rgba(70, 40, 90, 0.08);
-    }
-
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-      color: #4b315d;
-    }
-
-    .logo span {
-      color: #8754a8;
-    }
-
-    nav a {
-      color: #72577d;
-      margin-left: 18px;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #8754a8;
-    }
-
-    /* CONTEÚDO */
-
-    main {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 480px;
-      padding: 60px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      background: linear-gradient(135deg, #5c3975, #9563b1);
-      color: white;
-
-      border-radius: 35px;
-      overflow: hidden;
-
-      box-shadow: 0 20px 45px rgba(65, 35, 80, 0.2);
-    }
-
-    .hero-text {
-      max-width: 600px;
-    }
-
-    .small-title {
-      font-size: 13px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      opacity: 0.75;
-      margin-bottom: 15px;
-    }
-
-    .hero h1 {
-      font-size: clamp(50px, 9vw, 90px);
-      line-height: 0.9;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 span {
-      color: #ead5f4;
-    }
-
-    .hero p {
-      font-size: 18px;
-      opacity: 0.9;
-      margin-bottom: 30px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 13px 22px;
-
-      background: white;
-      color: #75478f;
-
-      border-radius: 14px;
-      font-weight: bold;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .mascot {
-      font-size: 130px;
-      padding: 20px;
-    }
-
-    /* SEÇÕES */
-
-    section {
-      margin-top: 75px;
-    }
-
-    .heading {
-      margin-bottom: 25px;
-    }
-
-    .heading small {
-      color: #8754a8;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
-    .heading h2 {
-      font-size: 38px;
-      color: #3b2845;
-      margin-top: 5px;
-    }
-
-    .heading p {
-      color: #806e88;
-      max-width: 650px;
-    }
-
-    /* SOBRE */
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .box {
-      background: white;
-      padding: 30px;
-      border-radius: 25px;
-      border: 1px solid #e4d5ea;
-
-      box-shadow: 0 8px 25px rgba(70, 40, 90, 0.06);
-    }
-
-    .box h3 {
-      margin-bottom: 10px;
-      color: #4b315d;
-    }
-
-    .box p {
-      color: #806e88;
-    }
-
-    /* ESPECIALIDADES */
-
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .card {
-      background: white;
-      padding: 28px;
-      border-radius: 24px;
-      border: 1px solid #e4d5ea;
-
-      box-shadow: 0 8px 25px rgba(70, 40, 90, 0.06);
-
-      transition: 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-    }
-
-    .number {
-      color: #c4a1d3;
-      font-weight: bold;
-      font-size: 13px;
-    }
-
-    .card h3 {
-      margin: 8px 0;
-      color: #4b315d;
-    }
-
-    .card p {
-      color: #806e88;
-    }
-
-    /* PROJETOS */
-
-    .project {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      background: white;
-      padding: 24px;
-
-      border-radius: 20px;
-      border: 1px solid #e4d5ea;
-
-      margin-bottom: 12px;
-    }
-
-    .project h3 {
-      color: #4b315d;
-    }
-
-    .project p {
-      color: #806e88;
-    }
-
-    .project span {
-      color: #8754a8;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    /* CONTATO */
-
-    .contact {
-      text-align: center;
-      padding: 55px 25px;
-
-      background: linear-gradient(135deg, #4b315d, #75478f);
-
-      color: white;
-      border-radius: 30px;
-    }
-
-    .contact h2 {
-      font-size: 38px;
-      margin-bottom: 10px;
-    }
-
-    .contact p {
-      opacity: 0.8;
-      margin-bottom: 25px;
-    }
-
-    .links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .links a {
-      padding: 12px 18px;
-
-      color: white;
-      background: rgba(255,255,255,0.12);
-
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 12px;
-
-      font-weight: bold;
-    }
-
-    .links a:hover {
-      background: rgba(255,255,255,0.22);
-    }
-
-    /* RODAPÉ */
-
-    footer {
-      text-align: center;
-      padding: 35px 10px;
-      color: #806e88;
-      font-size: 13px;
-    }
-
-    /* CELULAR */
-
-    @media (max-width: 700px) {
-
-      nav {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      nav a {
-        margin: 0 7px;
-      }
-
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 45px 25px;
-      }
-
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .mascot {
-        font-size: 90px;
-      }
-
-      .about,
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .project {
-        display: block;
-      }
-
-      .project span {
-        display: block;
-        margin-top: 8px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <nav>
-
-    <div class="logo">
-      VINZS <span>STUDIOS</span>
-    </div>
-
-    <div>
-      <a href="#sobre">Sobre</a>
-      <a href="#especialidades">Especialidades</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#contato">Contato</a>
-    </div>
-
-  </nav>
-
-
-  <main>
-
-    <!-- APRESENTAÇÃO -->
-
-    <header class="hero">
-
-      <div class="hero-text">
-
-        <div class="small-title">
-          Voice Acting • Dubbing • Fandub
-        </div>
-
-        <h1>
-          VINZS<br>
-          <span>STUDIOS</span>
-        </h1>
-
-        <p>
-          Um espaço dedicado à voz, interpretação e criação
-          de personagens. Criado por Vinz.
-        </p>
-
-        <a class="button" href="#sobre">
-          Conheça meu trabalho
-        </a>
-
-      </div>
-
-      <div class="mascot">
-        🦭🎙️
-      </div>
+        </nav>
 
     </header>
 
 
-    <!-- SOBRE -->
+    <main>
 
-    <section id="sobre">
 
-      <div class="heading">
+        <!-- =================================================
+             ABA — INÍCIO
+             ================================================= -->
 
-        <small>01 — SOBRE</small>
+        <section id="inicio" class="tab active">
 
-        <h2>
-          Olá, eu sou o Vinz.
-        </h2>
+            <div class="hero">
 
-      </div>
+                <div class="hero-text">
 
+                    <div class="small-title">
+                        🎙️ Voice Acting · Dubbing · Fandub
+                    </div>
 
-      <div class="about">
+                    <h1>
+                        VINZS<br>
+                        <span>STUDIOS</span>
+                    </h1>
 
-        <div class="box">
+                    <p>
+                        Vozes, personagens e histórias ganhando vida.
+                        Um pequeno estúdio focado em voice acting,
+                        dublagem e projetos criativos.
+                    </p>
 
-          <h3>
-            🎙️ Voice Actor
-          </h3>
+                    <div class="hero-buttons">
 
-          <p>
-            Sou um dublador em desenvolvimento, estudando e
-            praticando interpretação, dicção, expressão vocal
-            e criação de personagens.
-          </p>
+                        <a
+                            href="https://discord.gg/ShdWqtpZc"
+                            target="_blank"
+                            class="button primary">
+                            Entrar no Discord
+                        </a>
 
-        </div>
+                        <a
+                            href="#"
+                            onclick="openTab('portfolio', document.querySelectorAll('.nav-tabs button')[1])"
+                            class="button secondary">
+                            Ver portfólio
+                        </a>
 
+                    </div>
 
-        <div class="box">
+                </div>
 
-          <h3>
-            💜 Minha proposta
-          </h3>
+                <div class="mascot">
+                    🦭
+                </div>
 
-          <p>
-            Quero desenvolver uma voz versátil e aprender a dar
-            personalidade e emoção para diferentes tipos de
-            personagens e histórias.
-          </p>
+            </div>
 
-        </div>
 
-      </div>
+            <div style="height:25px;"></div>
 
-    </section>
 
+            <div class="heading">
 
-    <!-- ESPECIALIDADES -->
+                <small>Sobre o estúdio</small>
 
-    <section id="especialidades">
+                <h2>
+                    Um espaço para dar voz.
+                </h2>
 
-      <div class="heading">
+                <p>
+                    O Vinzs Studios é meu espaço pessoal para trabalhos
+                    de voz, dublagem e projetos relacionados.
+                </p>
 
-        <small>02 — ESPECIALIDADES</small>
+            </div>
 
-        <h2>
-          O que eu faço.
-        </h2>
 
-        <p>
-          Algumas áreas que fazem parte do meu desenvolvimento
-          como dublador.
-        </p>
+            <div class="grid">
 
-      </div>
+                <div class="card">
 
+                    <h3>🎙️ Voice Acting</h3>
 
-      <div class="cards">
+                    <p>
+                        Interpretação de personagens, falas e cenas
+                        buscando combinar emoção, personalidade e
+                        intenção.
+                    </p>
 
-        <div class="card">
+                </div>
 
-          <div class="number">01</div>
 
-          <h3>Voice Acting</h3>
+                <div class="card">
 
-          <p>
-            Interpretação de personagens, trabalhando emoção,
-            personalidade, ritmo e intenção.
-          </p>
+                    <h3>🎬 Dublagem</h3>
 
-        </div>
+                    <p>
+                        Trabalhos de dublagem para projetos,
+                        vídeos, personagens e fandubs.
+                    </p>
 
+                </div>
 
-        <div class="card">
 
-          <div class="number">02</div>
+                <div class="card">
 
-          <h3>Dublagem</h3>
+                    <h3>🎭 Personagens</h3>
 
-          <p>
-            Prática de sincronização, interpretação e adaptação
-            de falas para cenas.
-          </p>
+                    <p>
+                        Vozes diferentes para personagens com
+                        personalidades e estilos variados.
+                    </p>
 
-        </div>
+                </div>
 
 
-        <div class="card">
+                <div class="card">
 
-          <div class="number">03</div>
+                    <h3>💜 Projetos</h3>
 
-          <h3>Fandub</h3>
+                    <p>
+                        Aberto a projetos criativos que envolvam
+                        voz e interpretação.
+                    </p>
 
-          <p>
-            Criação e participação em projetos independentes
-            baseados em obras e personagens.
-          </p>
+                </div>
 
-        </div>
+            </div>
 
+        </section>
 
-        <div class="card">
 
-          <div class="number">04</div>
 
-          <h3>Personagens</h3>
+        <!-- =================================================
+             ABA — PORTFÓLIO
+             ================================================= -->
 
-          <p>
-            Exploração de diferentes personalidades, desde
-            personagens dramáticos até vilões e personagens
-            cômicos.
-          </p>
+        <section id="portfolio" class="tab">
 
-        </div>
+            <div class="heading">
 
-      </div>
+                <small>Trabalhos</small>
 
-    </section>
+                <h2>Portfólio</h2>
 
+                <p>
+                    Alguns dos projetos e trabalhos realizados
+                    pelo Vinzs Studios.
+                </p>
 
-    <!-- PROJETOS -->
+            </div>
 
-    <section id="projetos">
 
-      <div class="heading">
+            <div class="projects">
 
-        <small>03 — PROJETOS</small>
+                <div class="project">
 
-        <h2>
-          Trabalhos & projetos.
-        </h2>
+                    <div>
+                        <div class="project-number">
+                            PROJETO 01
+                        </div>
 
-        <p>
-          Alguns projetos que fazem parte da minha trajetória.
-        </p>
+                        <h3>
+                            Em breve...
+                        </h3>
 
-      </div>
+                        <p>
+                            Um novo trabalho poderá aparecer aqui.
+                        </p>
+                    </div>
 
+                </div>
 
-      <div class="project">
 
-        <div>
+                <div class="project">
 
-          <h3>
-            VINZS STUDIOS
-          </h3>
+                    <div>
+                        <div class="project-number">
+                            PROJETO 02
+                        </div>
 
-          <p>
-            Portfólio pessoal de voice acting e dublagem.
-          </p>
+                        <h3>
+                            Em breve...
+                        </h3>
 
-        </div>
+                        <p>
+                            Espaço reservado para futuros trabalhos.
+                        </p>
+                    </div>
 
-        <span>
-          PROJETO PESSOAL
-        </span>
+                </div>
 
-      </div>
 
+                <div class="project">
 
-      <div class="project">
+                    <div>
+                        <div class="project-number">
+                            PROJETO 03
+                        </div>
 
-        <div>
+                        <h3>
+                            Fandubs
+                        </h3>
 
-          <h3>
-            Próximos projetos
-          </h3>
+                        <p>
+                            Projetos de fandub e interpretações.
+                        </p>
+                    </div>
 
-          <p>
-            Novos trabalhos serão adicionados aqui.
-          </p>
+                </div>
 
-        </div>
 
-        <span>
-          EM BREVE
-        </span>
+                <div class="project">
 
-      </div>
+                    <div>
+                        <div class="project-number">
+                            PROJETO 04
+                        </div>
 
-    </section>
+                        <h3>
+                            Voice Acting
+                        </h3>
 
+                        <p>
+                            Trabalhos de interpretação de personagens.
+                        </p>
+                    </div>
 
-    <!-- CONTATO -->
+                </div>
 
-    <section id="contato">
+            </div>
 
-      <div class="contact">
+        </section>
 
-        <h2>
-          Vamos conversar?
-        </h2>
 
-        <p>
-          Para projetos, colaborações ou para conhecer meu
-          trabalho, você pode me encontrar aqui:
-        </p>
 
+        <!-- =================================================
+             ABA — PREÇOS
+             ================================================= -->
 
-        <div class="links">
+        <section id="precos" class="tab">
 
-          <a
-            href="https://discord.com/users/vinztheseal"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            💬 Discord
-          </a>
+            <div class="heading">
 
+                <small>Serviços</small>
 
-          <a
-            href="https://discord.gg/ShdWqtpZc"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            🏠 Servidor
-          </a>
+                <h2>Preços</h2>
 
+                <p>
+                    Valores dos serviços do Vinzs Studios.
+                </p>
 
-          <a
-            href="https://www.tiktok.com/@vinztheseal"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            🎵 TikTok
-          </a>
+            </div>
 
 
-          <a
-            href="https://youtube.com/@vinztheseal"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            ▶️ YouTube
-          </a>
+            <div class="prices">
 
-        </div>
 
-      </div>
+                <div class="price-card">
 
-    </section>
+                    <span class="tag">
+                        BÁSICO
+                    </span>
 
+                    <h3>
+                        Fala curta
+                    </h3>
+
+                    <div class="price">
+                        R$ 10
+                    </div>
+
+                    <p>
+                        Para pequenas falas e participações.
+                    </p>
+
+                    <ul>
+                        <li>Até 5 falas</li>
+                        <li>Interpretação simples</li>
+                        <li>Entrega digital</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="price-card featured">
+
+                    <span class="tag">
+                        MAIS PEDIDO
+                    </span>
+
+                    <h3>
+                        Personagem
+                    </h3>
+
+                    <div class="price">
+                        R$ 20
+                    </div>
+
+                    <p>
+                        Para personagens e cenas maiores.
+                    </p>
+
+                    <ul>
+                        <li>Até 15 falas</li>
+                        <li>Interpretação de personagem</li>
+                        <li>Uma revisão</li>
+                        <li>Entrega digital</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="price-card">
+
+                    <span class="tag">
+                        PROJETO
+                    </span>
+
+                    <h3>
+                        Projeto maior
+                    </h3>
+
+                    <div class="price">
+                        Consulte
+                    </div>
+
+                    <p>
+                        Para projetos com grande quantidade
+                        de falas ou personagens.
+                    </p>
+
+                    <ul>
+                        <li>Orçamento personalizado</li>
+                        <li>Negociação do projeto</li>
+                        <li>Prazo combinado</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABA — TERMOS
+             ================================================= -->
+
+        <section id="termos" class="tab">
+
+            <div class="heading">
+
+                <small>Informações</small>
+
+                <h2>Termos de Condições</h2>
+
+                <p>
+                    Antes de solicitar um trabalho, leia as
+                    condições abaixo.
+                </p>
+
+            </div>
+
+
+            <div class="terms">
+
+
+                <div class="term">
+
+                    <h3>
+                        💳 Pagamento
+                    </h3>
+
+                    <p>
+                        50% do valor total deverá ser pago
+                        antecipadamente para que o trabalho
+                        seja iniciado. Os 50% restantes deverão
+                        ser pagos conforme combinado.
+                    </p>
+
+                </div>
+
+
+                <div class="term">
+
+                    <h3>
+                        🔄 Cancelamento e entrega
+                    </h3>
+
+                    <p>
+                        Caso a dublagem não seja entregue,
+                        os 50% pagos antecipadamente serão
+                        devolvidos ao cliente.
+                    </p>
+
+                </div>
+
+
+                <div class="term warning">
+
+                    <h3>
+                        🚫 Conteúdo não aceito
+                    </h3>
+
+                    <p>
+                        Não realizo dublagens NSFW, ASMR ou
+                        trabalhos envolvendo fetiches.
+                    </p>
+
+                </div>
+
+
+                <div class="term">
+
+                    <h3>
+                        🎙️ Revisões
+                    </h3>
+
+                    <p>
+                        Alterações ou refações devem ser
+                        combinadas previamente. Mudanças
+                        grandes no roteiro após o início do
+                        trabalho podem alterar o valor.
+                    </p>
+
+                </div>
+
+
+                <div class="term">
+
+                    <h3>
+                        ⏱️ Prazo
+                    </h3>
+
+                    <p>
+                        O prazo de entrega será combinado
+                        antes do início do projeto e pode
+                        variar de acordo com o tamanho do
+                        trabalho.
+                    </p>
+
+                </div>
+
+
+                <div class="term">
+
+                    <h3>
+                        📜 Aceite
+                    </h3>
+
+                    <p>
+                        Ao solicitar um trabalho, o cliente
+                        declara estar de acordo com estes
+                        termos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABA — CONTATO
+             ================================================= -->
+
+        <section id="contato" class="tab">
+
+            <div class="contact">
+
+                <h2>
+                    Vamos trabalhar juntos?
+                </h2>
+
+                <p>
+                    Entre em contato comigo através das
+                    minhas redes.
+                </p>
+
+
+                <div class="links">
+
+                    <a
+                        href="https://discord.gg/ShdWqtpZc"
+                        target="_blank">
+                        💬 Discord
+                    </a>
+
+
+                    <a
+                        href="https://www.tiktok.com/@vinztheseal"
+                        target="_blank">
+                        🎵 TikTok
+                    </a>
+
+
+                    <a
+                        href="https://youtube.com/@vinztheseal"
+                        target="_blank">
+                        ▶️ YouTube
+                    </a>
+
+
+                    <a
+                        href="https://github.com/vinztheseal"
+                        target="_blank">
+                        💻 GitHub
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div style="height:25px;"></div>
+
+
+            <div class="grid">
+
+                <div class="card">
+
+                    <h3>
+                        Discord
+                    </h3>
+
+                    <p>
+                        Para conversar comigo, tirar dúvidas
+                        ou solicitar um orçamento.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Redes sociais
+                    </h3>
+
+                    <p>
+                        Acompanhe meus trabalhos e projetos
+                        através das minhas redes.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
 
     <footer>
 
-      🦭 ✦ VINZS STUDIOS ✦ 🎙️
+        🦭 ✦ <strong>VINZS STUDIOS</strong> ✦ 🎙️
 
-      <br>
+        <br><br>
 
-      © 2026 Vinz — Todos os direitos reservados.
+        © 2026 Vinz — Todos os direitos reservados.
+
+        <br>
+
+        Voice Acting · Dubbing · Fandub
 
     </footer>
 
-  </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT — SISTEMA DE ABAS
+         ===================================================== -->
+
+    <script>
+
+        function openTab(tabId, button) {
+
+            // Esconde todas as abas
+            const tabs = document.querySelectorAll(".tab");
+
+            tabs.forEach(function(tab) {
+                tab.classList.remove("active");
+            });
+
+
+            // Remove o estado ativo dos botões
+            const buttons = document.querySelectorAll(".nav-tabs button");
+
+            buttons.forEach(function(btn) {
+                btn.classList.remove("active");
+            });
+
+
+            // Mostra a aba escolhida
+            document.getElementById(tabId).classList.add("active");
+
+
+            // Marca o botão escolhido
+            if (button) {
+                button.classList.add("active");
+            }
+
+
+            // Volta para o topo
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    </script>
+
 
 </body>
 </html>
