@@ -1,31 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VINZS STUDIOS — Voice Acting</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description" content="Vinzs Studios — Voice Acting, Dubbing e Fandub.">
-    <meta name="theme-color" content="#5B2A62">
+    <title>Vinzs Studios — 紫音工房</title>
+
+    <meta
+        name="description"
+        content="Vinzs Studios — Voice Acting, Dubbing e Fandub."
+    >
+
+    <meta
+        name="theme-color"
+        content="#5B2A62"
+    >
+
+
+    <!-- ================================
+         FONTES
+         ================================ -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
 
     <style>
 
         /* =====================================================
-           PALETA
+           VINZS STUDIOS 2.0
+           ORIENTAL / PURPLE FANTASY
            ===================================================== */
 
+
         :root {
-            --periwinkle: #E3D9FC;
-            --magenta: #BF40FA;
-            --blue: #4928C2;
-            --purple: #5B2A62;
+
             --black: #040607;
 
-            --text: #F4EEFF;
-            --muted: #B9A9C7;
-            --card: rgba(255,255,255,0.07);
-            --border: rgba(227,217,252,0.16);
+            --dark: #0B0710;
+
+            --dark-purple: #160B1C;
+
+            --purple: #5B2A62;
+
+            --blue: #4928C2;
+
+            --magenta: #BF40FA;
+
+            --light-purple: #E3D9FC;
+
+            --soft-purple: #D6B4D8;
+
+            --gold: #C9A86A;
+
+            --text: #F5F0FA;
+
+            --muted: #B8A9C3;
+
+            --glass: rgba(255,255,255,0.055);
+
+            --glass-strong: rgba(255,255,255,0.09);
+
+            --border: rgba(227,217,252,0.14);
+
+            --gold-border: rgba(201,168,106,0.32);
+
         }
 
 
@@ -39,30 +97,206 @@
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
+
             min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
+
             color: var(--text);
 
+            font-family:
+                "Noto Sans JP",
+                Arial,
+                sans-serif;
+
             background:
-                radial-gradient(circle at 15% 20%, rgba(73,40,194,.45), transparent 35%),
-                radial-gradient(circle at 85% 60%, rgba(191,64,250,.30), transparent 35%),
-                linear-gradient(135deg, #040607, #160B1C 45%, #281038);
+
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(73,40,194,0.32),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 85% 25%,
+                    rgba(191,64,250,0.22),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 50% 90%,
+                    rgba(91,42,98,0.35),
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #040607,
+                    #0D0712 50%,
+                    #160B1C
+                );
 
             background-attachment: fixed;
+
+            overflow-x: hidden;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            opacity: 0.15;
+
+            background-image:
+
+                radial-gradient(
+                    rgba(227,217,252,0.45) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent
+                );
+
+            z-index: -2;
         }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent 49.5%,
+                    rgba(201,168,106,0.025) 50%,
+                    transparent 50.5%
+                );
+
+            background-size: 180px 180px;
+
+            z-index: -3;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
 
         button {
             font-family: inherit;
+        }
+
+
+        ::selection {
+
+            background: var(--magenta);
+
+            color: white;
+        }
+
+
+        /* =====================================================
+           FLOATING DECORATIONS
+           ===================================================== */
+
+        .floating {
+
+            position: fixed;
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            color: var(--soft-purple);
+
+            opacity: 0.12;
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            animation:
+                floatDecoration 8s ease-in-out infinite;
+        }
+
+
+        .floating.one {
+
+            top: 18%;
+
+            left: 4%;
+
+            font-size: 70px;
+        }
+
+
+        .floating.two {
+
+            top: 58%;
+
+            right: 4%;
+
+            font-size: 55px;
+
+            animation-delay: 2s;
+        }
+
+
+        .floating.three {
+
+            bottom: 10%;
+
+            left: 12%;
+
+            font-size: 40px;
+
+            animation-delay: 4s;
+        }
+
+
+        @keyframes floatDecoration {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-15px)
+                    rotate(4deg);
+            }
+
         }
 
 
@@ -71,236 +305,742 @@
            ===================================================== */
 
         header {
+
             position: sticky;
-            top: 0;
-            z-index: 100;
 
-            padding: 15px 5%;
+            top: 15px;
 
-            background: rgba(4,6,7,.82);
-            backdrop-filter: blur(18px);
+            z-index: 1000;
 
-            border-bottom: 1px solid var(--border);
+            width: min(1120px, 92%);
+
+            margin: 15px auto 0;
+
+            padding: 10px;
+
+            border:
+
+                1px solid
+                var(--border);
+
+            border-radius: 20px;
+
+            background:
+
+                rgba(4,6,7,0.72);
+
+            backdrop-filter:
+                blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+
+            box-shadow:
+
+                0 15px 45px
+                rgba(0,0,0,0.25);
         }
+
 
         nav {
-            max-width: 1150px;
-            margin: auto;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
-            gap: 20px;
+            gap: 15px;
         }
+
 
         .logo {
-            font-size: 20px;
-            font-weight: 800;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding-left: 8px;
+
             white-space: nowrap;
-
-            background: linear-gradient(
-                90deg,
-                var(--periwinkle),
-                var(--magenta)
-            );
-
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
         }
 
+
+        .logo-symbol {
+
+            width: 40px;
+
+            height: 40px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 13px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--magenta)
+                );
+
+            box-shadow:
+
+                0 0 25px
+                rgba(191,64,250,0.22);
+
+            font-size: 21px;
+        }
+
+
+        .logo-text {
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        .logo-text span {
+
+            color: var(--magenta);
+        }
+
+
+        .logo-jp {
+
+            display: block;
+
+            color: var(--gold);
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            margin-top: -2px;
+        }
+
+
         .nav-tabs {
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
-            gap: 7px;
+
+            gap: 4px;
+
             flex-wrap: wrap;
         }
 
+
         .nav-tabs button {
+
             border: none;
+
             background: transparent;
 
             color: var(--muted);
 
-            padding: 10px 13px;
+            padding: 9px 12px;
+
             border-radius: 10px;
 
             cursor: pointer;
 
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
 
-            transition: .2s;
+            font-weight: 600;
+
+            transition: 0.25s ease;
         }
+
 
         .nav-tabs button:hover {
+
             color: white;
-            background: rgba(191,64,250,.12);
+
+            background:
+                rgba(191,64,250,0.10);
         }
 
+
         .nav-tabs button.active {
+
             color: white;
 
-            background: linear-gradient(
-                135deg,
-                var(--blue),
-                var(--magenta)
-            );
+            background:
 
-            box-shadow: 0 5px 20px rgba(191,64,250,.25);
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--magenta)
+                );
+
+            box-shadow:
+
+                0 5px 20px
+                rgba(191,64,250,0.22);
         }
 
 
         /* =====================================================
-           CONTAINER / ABAS
+           MAIN
            ===================================================== */
 
         main {
-            width: 90%;
-            max-width: 1100px;
+
+            width: min(1100px, 90%);
 
             margin: auto;
-            padding: 55px 0 70px;
+
+            padding:
+
+                65px
+                0
+                80px;
         }
+
 
         .tab {
+
             display: none;
 
-            animation: fade .35s ease;
+            animation:
+                tabIn
+                0.45s
+                ease;
         }
+
 
         .tab.active {
             display: block;
         }
 
-        @keyframes fade {
+
+        @keyframes tabIn {
+
             from {
+
                 opacity: 0;
-                transform: translateY(8px);
+
+                transform:
+                    translateY(15px);
             }
 
             to {
+
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
             }
         }
 
 
         /* =====================================================
-           INÍCIO
+           ORNAMENTOS
+           ===================================================== */
+
+        .ornament {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 14px;
+
+            margin: 30px 0;
+
+            color: var(--gold);
+
+            opacity: 0.8;
+        }
+
+
+        .ornament::before,
+        .ornament::after {
+
+            content: "";
+
+            width: 100px;
+
+            height: 1px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--gold)
+                );
+        }
+
+
+        .ornament::after {
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    var(--gold),
+                    transparent
+                );
+        }
+
+
+        /* =====================================================
+           HERO
            ===================================================== */
 
         .hero {
-            min-height: 510px;
 
-            display: flex;
+            position: relative;
+
+            min-height: 580px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.2fr
+                0.8fr;
+
             align-items: center;
-            justify-content: space-between;
 
-            gap: 45px;
+            gap: 50px;
 
             padding: 65px;
 
-            border: 1px solid var(--border);
-            border-radius: 35px;
-
             overflow: hidden;
 
+            border:
+
+                1px solid
+                var(--border);
+
+            border-radius: 35px;
+
             background:
+
                 radial-gradient(
-                    circle at 85% 30%,
-                    rgba(191,64,250,.45),
+                    circle at 80% 25%,
+                    rgba(191,64,250,0.28),
                     transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(73,40,194,0.30),
+                    transparent 35%
                 ),
 
                 linear-gradient(
                     135deg,
-                    #4928C2,
-                    #5B2A62 55%,
-                    #160B1C
+                    rgba(73,40,194,0.40),
+                    rgba(91,42,98,0.38),
+                    rgba(4,6,7,0.85)
                 );
 
             box-shadow:
-                0 25px 70px rgba(0,0,0,.35);
+
+                0 30px 80px
+                rgba(0,0,0,0.35);
         }
+
+
+        .hero::before {
+
+            content: "花";
+
+            position: absolute;
+
+            right: 4%;
+
+            top: -20%;
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size: 330px;
+
+            color: rgba(227,217,252,0.025);
+
+            pointer-events: none;
+        }
+
+
+        .hero::after {
+
+            content: "✦";
+
+            position: absolute;
+
+            left: 5%;
+
+            bottom: 8%;
+
+            color: var(--gold);
+
+            opacity: 0.45;
+
+            font-size: 25px;
+        }
+
 
         .hero-text {
-            max-width: 650px;
+            position: relative;
+            z-index: 2;
         }
 
-        .small-title {
-            color: var(--periwinkle);
 
-            font-size: 13px;
-            font-weight: bold;
+        .eyebrow {
 
-            letter-spacing: 4px;
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 7px 13px;
+
+            border:
+
+                1px solid
+                var(--gold-border);
+
+            border-radius: 999px;
+
+            color: var(--light-purple);
+
+            background:
+                rgba(201,168,106,0.05);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
             text-transform: uppercase;
-
-            margin-bottom: 17px;
         }
+
 
         .hero h1 {
-            font-size: clamp(48px, 8vw, 88px);
-            line-height: .9;
 
-            margin-bottom: 25px;
+            margin-top: 22px;
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size:
+                clamp(
+                    52px,
+                    8vw,
+                    92px
+                );
+
+            line-height: 0.92;
+
+            letter-spacing: -3px;
         }
+
 
         .hero h1 span {
-            color: var(--periwinkle);
+
+            display: inline-block;
+
+            background:
+
+                linear-gradient(
+                    100deg,
+                    var(--light-purple),
+                    var(--magenta),
+                    #8E72FF
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
         }
 
-        .hero p {
+
+        .jp-title {
+
+            margin-top: 12px;
+
+            color: var(--gold);
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size: 17px;
+
+            letter-spacing: 7px;
+        }
+
+
+        .hero-description {
+
             max-width: 600px;
 
-            color: rgba(255,255,255,.78);
+            margin-top: 22px;
 
-            font-size: 18px;
-            line-height: 1.6;
+            color: var(--muted);
 
-            margin-bottom: 30px;
+            font-size: 17px;
+
+            line-height: 1.8;
         }
+
 
         .hero-buttons {
+
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 12px;
+
+            margin-top: 30px;
         }
 
+
         .button {
-            display: inline-block;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
 
             padding: 13px 20px;
 
             border-radius: 13px;
 
-            font-weight: bold;
+            font-size: 13px;
 
-            transition: .2s;
+            font-weight: 700;
+
+            transition: 0.25s ease;
         }
 
-        .button.primary {
-            background: white;
-            color: #4928C2;
-        }
-
-        .button.secondary {
-            background: rgba(255,255,255,.1);
-            color: white;
-
-            border: 1px solid rgba(255,255,255,.2);
-        }
 
         .button:hover {
-            transform: translateY(-3px);
+
+            transform:
+                translateY(-4px);
         }
 
+
+        .button.primary {
+
+            color: white;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--magenta)
+                );
+
+            box-shadow:
+
+                0 10px 30px
+                rgba(191,64,250,0.22);
+        }
+
+
+        .button.secondary {
+
+            color: var(--light-purple);
+
+            border:
+
+                1px solid
+                var(--border);
+
+            background:
+                var(--glass);
+        }
+
+
+        /* =====================================================
+           MASCOTE
+           ===================================================== */
+
+        .mascot-area {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+        }
+
+
+        .mascot-frame {
+
+            width: 310px;
+
+            aspect-ratio: 1;
+
+            display: grid;
+
+            place-items: center;
+
+            position: relative;
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(191,64,250,0.20),
+                    transparent 60%
+                );
+
+            border:
+
+                1px solid
+                rgba(201,168,106,0.22);
+
+            box-shadow:
+
+                0 0 80px
+                rgba(73,40,194,0.25);
+
+            animation:
+                mascotFloat
+                5s
+                ease-in-out
+                infinite;
+        }
+
+
+        .mascot-frame::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 18px;
+
+            border-radius: 50%;
+
+            border:
+
+                1px solid
+                rgba(201,168,106,0.35);
+
+            transform:
+                rotate(45deg);
+        }
+
+
+        .mascot-frame::after {
+
+            content: "✦  ✧  ✦";
+
+            position: absolute;
+
+            top: -18px;
+
+            color: var(--gold);
+
+            font-size: 15px;
+
+            letter-spacing: 8px;
+        }
+
+
         .mascot {
-            font-size: 130px;
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,.25));
+
+            font-size: 125px;
+
+            filter:
+
+                drop-shadow(
+                    0 20px 25px
+                    rgba(0,0,0,0.4)
+                );
+        }
+
+
+        .mic {
+
+            position: absolute;
+
+            bottom: 28px;
+
+            right: 20px;
+
+            width: 55px;
+
+            height: 55px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 17px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--magenta)
+                );
+
+            box-shadow:
+
+                0 10px 30px
+                rgba(191,64,250,0.35);
+
+            font-size: 25px;
+        }
+
+
+        @keyframes mascotFloat {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    rotate(-1deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px)
+                    rotate(1deg);
+            }
         }
 
 
@@ -309,26 +1049,53 @@
            ===================================================== */
 
         .heading {
+
             margin-bottom: 30px;
         }
 
+
         .heading small {
+
             color: var(--magenta);
 
-            font-weight: bold;
+            font-size: 11px;
+
+            font-weight: 800;
+
             letter-spacing: 3px;
+
             text-transform: uppercase;
         }
 
+
         .heading h2 {
-            font-size: clamp(32px, 5vw, 50px);
+
             margin-top: 7px;
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size:
+                clamp(
+                    35px,
+                    5vw,
+                    55px
+                );
+
+            line-height: 1.05;
         }
 
+
         .heading p {
+
+            max-width: 650px;
+
+            margin-top: 12px;
+
             color: var(--muted);
-            margin-top: 10px;
-            line-height: 1.6;
+
+            line-height: 1.7;
         }
 
 
@@ -337,40 +1104,138 @@
            ===================================================== */
 
         .grid {
+
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
             gap: 18px;
         }
 
+
         .card {
-            padding: 28px;
 
-            background: var(--card);
+            position: relative;
 
-            border: 1px solid var(--border);
-            border-radius: 24px;
+            padding: 29px;
 
-            backdrop-filter: blur(10px);
+            overflow: hidden;
 
-            transition: .2s;
+            border:
+
+                1px solid
+                var(--border);
+
+            border-radius: 23px;
+
+            background:
+                var(--glass);
+
+            backdrop-filter:
+                blur(10px);
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
         }
+
+
+        .card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: -100%;
+
+            width: 100%;
+
+            height: 1px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--magenta),
+                    transparent
+                );
+
+            transition:
+                left 0.6s ease;
+        }
+
 
         .card:hover {
-            transform: translateY(-4px);
 
-            border-color: rgba(191,64,250,.4);
+            transform:
+                translateY(-6px);
+
+            border-color:
+
+                rgba(191,64,250,0.35);
 
             box-shadow:
-                0 15px 35px rgba(0,0,0,.2);
+
+                0 20px 50px
+                rgba(0,0,0,0.22);
         }
+
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+
+        .card-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: grid;
+
+            place-items: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 13px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(73,40,194,0.25),
+                    rgba(191,64,250,0.18)
+                );
+
+            font-size: 20px;
+        }
+
 
         .card h3 {
-            margin-bottom: 10px;
+
+            margin-bottom: 8px;
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size: 20px;
         }
 
+
         .card p {
+
             color: var(--muted);
-            line-height: 1.6;
+
+            line-height: 1.7;
+
+            font-size: 14px;
         }
 
 
@@ -379,48 +1244,132 @@
            ===================================================== */
 
         .projects {
+
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
             gap: 18px;
         }
 
+
         .project {
-            min-height: 190px;
+
+            min-height: 230px;
+
+            position: relative;
 
             padding: 28px;
 
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
 
-            border: 1px solid var(--border);
-            border-radius: 24px;
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            overflow: hidden;
+
+            border:
+
+                1px solid
+                var(--border);
+
+            border-radius: 25px;
 
             background:
+
                 linear-gradient(
-                    135deg,
-                    rgba(73,40,194,.22),
-                    rgba(191,64,250,.08)
+                    145deg,
+                    rgba(73,40,194,0.24),
+                    rgba(91,42,98,0.20),
+                    rgba(4,6,7,0.6)
                 );
+
+            transition: 0.3s ease;
         }
+
+
+        .project::before {
+
+            content: "✦";
+
+            position: absolute;
+
+            right: 25px;
+
+            top: 20px;
+
+            color: var(--gold);
+
+            opacity: 0.7;
+
+            font-size: 22px;
+        }
+
+
+        .project::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(191,64,250,0.16),
+                    transparent 30%
+                );
+
+            pointer-events: none;
+        }
+
+
+        .project:hover {
+
+            transform:
+                translateY(-6px);
+
+            border-color:
+                rgba(191,64,250,0.4);
+        }
+
 
         .project-number {
-            color: var(--magenta);
 
-            font-size: 13px;
-            font-weight: bold;
+            color: var(--gold);
 
-            letter-spacing: 2px;
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 3px;
         }
+
 
         .project h3 {
-            margin: 10px 0;
-            font-size: 23px;
+
+            margin:
+                9px 0;
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size: 25px;
         }
 
+
         .project p {
+
             color: var(--muted);
-            line-height: 1.5;
+
+            font-size: 14px;
+
+            line-height: 1.6;
         }
 
 
@@ -429,80 +1378,150 @@
            ===================================================== */
 
         .prices {
+
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 18px;
         }
 
+
         .price-card {
+
+            position: relative;
+
             padding: 30px;
+
+            border:
+
+                1px solid
+                var(--border);
 
             border-radius: 25px;
 
-            background: var(--card);
+            background:
+                var(--glass);
 
-            border: 1px solid var(--border);
-
-            position: relative;
             overflow: hidden;
+
+            transition:
+                transform 0.3s ease;
         }
+
+
+        .price-card:hover {
+
+            transform:
+                translateY(-6px);
+        }
+
 
         .price-card.featured {
-            border-color: var(--magenta);
+
+            border-color:
+                var(--magenta);
 
             box-shadow:
-                0 15px 45px rgba(191,64,250,.15);
+
+                0 20px 60px
+                rgba(191,64,250,0.14);
         }
 
-        .price-card .tag {
+
+        .tag {
+
             display: inline-block;
 
             padding: 5px 9px;
 
-            margin-bottom: 15px;
+            border-radius: 7px;
 
-            border-radius: 8px;
+            background:
+                rgba(191,64,250,0.12);
 
-            background: rgba(191,64,250,.15);
+            color:
+                var(--magenta);
 
-            color: var(--magenta);
+            font-size: 9px;
 
-            font-size: 11px;
-            font-weight: bold;
-        }
-
-        .price-card h3 {
-            font-size: 23px;
-            margin-bottom: 8px;
-        }
-
-        .price {
-            font-size: 36px;
             font-weight: 800;
 
-            color: var(--periwinkle);
-
-            margin: 18px 0;
+            letter-spacing: 1px;
         }
 
+
+        .price-card h3 {
+
+            margin-top: 15px;
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size: 22px;
+        }
+
+
+        .price {
+
+            margin:
+                16px 0;
+
+            font-size: 34px;
+
+            font-weight: 800;
+
+            color:
+                var(--light-purple);
+        }
+
+
         .price-card p {
-            color: var(--muted);
+
+            color:
+                var(--muted);
+
+            font-size: 14px;
+
             line-height: 1.6;
         }
 
+
         .price-card ul {
+
             list-style: none;
+
             margin-top: 20px;
         }
 
+
         .price-card li {
-            color: var(--muted);
-            margin: 10px 0;
+
+            padding:
+                8px 0;
+
+            color:
+                var(--muted);
+
+            font-size: 13px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.05);
         }
 
+
         .price-card li::before {
-            content: "✦ ";
-            color: var(--magenta);
+
+            content:
+                "✦";
+
+            margin-right: 8px;
+
+            color:
+                var(--magenta);
         }
 
 
@@ -511,38 +1530,194 @@
            ===================================================== */
 
         .terms {
+
             display: flex;
+
             flex-direction: column;
+
             gap: 14px;
         }
 
+
         .term {
-            padding: 24px;
 
-            background: var(--card);
+            position: relative;
 
-            border: 1px solid var(--border);
+            padding: 25px 28px;
+
+            border:
+
+                1px solid
+                var(--border);
+
             border-radius: 20px;
+
+            background:
+                var(--glass);
         }
+
+
+        .term::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 20px;
+
+            bottom: 20px;
+
+            width: 2px;
+
+            background:
+
+                linear-gradient(
+                    var(--blue),
+                    var(--magenta)
+                );
+
+            border-radius: 5px;
+        }
+
 
         .term h3 {
-            margin-bottom: 9px;
+
+            margin-bottom: 8px;
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size: 18px;
         }
 
+
         .term p {
-            color: var(--muted);
+
+            color:
+                var(--muted);
+
+            font-size: 14px;
+
             line-height: 1.7;
         }
 
-        .warning {
-            border-color: rgba(191,64,250,.45);
+
+        .term.warning {
+
+            border-color:
+                rgba(191,64,250,0.30);
 
             background:
+
                 linear-gradient(
                     135deg,
-                    rgba(191,64,250,.13),
-                    rgba(73,40,194,.10)
+                    rgba(191,64,250,0.10),
+                    rgba(73,40,194,0.07)
                 );
+        }
+
+
+        /* =====================================================
+           SOBRE
+           ===================================================== */
+
+        .about-box {
+
+            padding: 35px;
+
+            border-radius: 27px;
+
+            border:
+
+                1px solid
+                var(--border);
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(73,40,194,0.17),
+                    rgba(191,64,250,0.07)
+                );
+        }
+
+
+        .about-box p {
+
+            color:
+                var(--muted);
+
+            line-height: 1.9;
+
+            margin-bottom: 15px;
+
+            max-width: 800px;
+        }
+
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+
+        .stat {
+
+            padding: 18px;
+
+            text-align: center;
+
+            border:
+
+                1px solid
+                var(--border);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,0.035);
+        }
+
+
+        .stat strong {
+
+            display: block;
+
+            color:
+                var(--light-purple);
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size: 20px;
+        }
+
+
+        .stat span {
+
+            display: block;
+
+            margin-top: 4px;
+
+            color:
+                var(--muted);
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
         }
 
 
@@ -551,82 +1726,290 @@
            ===================================================== */
 
         .contact {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 65px 30px;
+
             text-align: center;
 
-            padding: 60px 25px;
-
-            border-radius: 30px;
+            border-radius: 32px;
 
             background:
+
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(191,64,250,0.35),
+                    transparent 45%
+                ),
+
                 linear-gradient(
                     135deg,
-                    #4928C2,
-                    #BF40FA
+                    var(--blue),
+                    var(--purple),
+                    var(--dark)
                 );
 
+            border:
+                1px solid
+                var(--border);
+
             box-shadow:
-                0 20px 60px rgba(191,64,250,.2);
+
+                0 25px 70px
+                rgba(0,0,0,0.35);
         }
+
+
+        .contact::before {
+
+            content:
+                "🪷";
+
+            position: absolute;
+
+            top: 20px;
+
+            left: 25px;
+
+            opacity: 0.22;
+
+            font-size: 35px;
+        }
+
+
+        .contact::after {
+
+            content:
+                "✦";
+
+            position: absolute;
+
+            bottom: 25px;
+
+            right: 30px;
+
+            color:
+                var(--gold);
+
+            opacity: 0.5;
+
+            font-size: 25px;
+        }
+
 
         .contact h2 {
-            font-size: clamp(35px, 6vw, 55px);
-            margin-bottom: 10px;
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+
+            font-size:
+                clamp(
+                    35px,
+                    6vw,
+                    58px
+                );
+
+            line-height: 1.05;
         }
+
 
         .contact p {
-            color: rgba(255,255,255,.82);
-            margin-bottom: 28px;
+
+            max-width: 600px;
+
+            margin:
+                15px auto 28px;
+
+            color:
+                rgba(255,255,255,0.75);
+
+            line-height: 1.7;
         }
 
+
         .links {
+
             display: flex;
 
+            align-items: center;
+
             justify-content: center;
+
             flex-wrap: wrap;
 
             gap: 10px;
         }
 
+
         .links a {
-            padding: 12px 18px;
 
-            color: white;
-
-            background: rgba(0,0,0,.18);
-
-            border: 1px solid rgba(255,255,255,.2);
+            padding:
+                12px 17px;
 
             border-radius: 12px;
 
-            font-weight: bold;
+            border:
 
-            transition: .2s;
+                1px solid
+                rgba(255,255,255,0.14);
+
+            background:
+                rgba(255,255,255,0.07);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            transition: 0.25s ease;
         }
 
+
         .links a:hover {
-            transform: translateY(-3px);
-            background: rgba(255,255,255,.15);
+
+            transform:
+                translateY(-3px);
+
+            background:
+                rgba(255,255,255,0.14);
         }
 
 
         /* =====================================================
-           RODAPÉ
+           FOOTER
            ===================================================== */
 
         footer {
+
+            padding:
+                35px 15px;
+
             text-align: center;
 
-            padding: 30px 15px;
+            color:
+                var(--muted);
 
-            color: var(--muted);
+            font-size: 12px;
 
-            font-size: 13px;
-
-            border-top: 1px solid var(--border);
+            border-top:
+                1px solid
+                var(--border);
         }
 
+
         footer strong {
-            color: var(--periwinkle);
+
+            color:
+                var(--light-purple);
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+        }
+
+
+        .footer-jp {
+
+            margin-top: 7px;
+
+            color:
+                var(--gold);
+
+            letter-spacing: 5px;
+
+            font-family:
+                "Noto Serif JP",
+                serif;
+        }
+
+
+        /* =====================================================
+           TABLET
+           ===================================================== */
+
+        @media (max-width: 900px) {
+
+            nav {
+
+                flex-direction: column;
+
+                padding:
+                    5px 0;
+            }
+
+
+            .nav-tabs {
+
+                width: 100%;
+            }
+
+
+            .nav-tabs button {
+
+                flex: 1;
+            }
+
+
+            .hero {
+
+                grid-template-columns:
+                    1fr;
+
+                text-align: center;
+
+                padding:
+                    50px 35px;
+            }
+
+
+            .hero-description {
+
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .hero-buttons {
+
+                justify-content:
+                    center;
+            }
+
+
+            .mascot-area {
+
+                order: -1;
+            }
+
+
+            .mascot-frame {
+
+                width: 250px;
+            }
+
+
+            .mascot {
+
+                font-size: 100px;
+            }
+
+
+            .prices {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .stats {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
         }
 
 
@@ -634,78 +2017,202 @@
            CELULAR
            ===================================================== */
 
-        @media (max-width: 800px) {
+        @media (max-width: 650px) {
 
             header {
-                padding: 12px 4%;
+
+                top: 7px;
+
+                width: 94%;
+
+                margin-top: 7px;
             }
 
-            nav {
-                flex-direction: column;
-                gap: 10px;
+
+            .logo {
+
+                width: 100%;
+
+                justify-content: center;
+
+                padding: 5px 0;
             }
+
 
             .nav-tabs {
+
+                display: grid;
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+
+                gap: 4px;
+            }
+
+
+            .nav-tabs button {
+
+                min-width: 0;
+
+                padding:
+                    9px 4px;
+
+                font-size: 10px;
+            }
+
+
+            main {
+
+                width: 92%;
+
+                padding:
+                    35px 0 55px;
+            }
+
+
+            .hero {
+
+                min-height: auto;
+
+                padding:
+                    40px 22px;
+
+                border-radius:
+                    27px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    clamp(
+                        45px,
+                        14vw,
+                        65px
+                    );
+
+                letter-spacing:
+                    -2px;
+            }
+
+
+            .jp-title {
+
+                font-size: 13px;
+
+                letter-spacing:
+                    4px;
+            }
+
+
+            .hero-description {
+
+                font-size:
+                    14px;
+            }
+
+
+            .hero-buttons {
+
+                flex-direction:
+                    column;
+            }
+
+
+            .button {
+
                 width: 100%;
             }
 
-            .nav-tabs button {
-                flex: 1;
-                min-width: 70px;
-                padding: 9px 6px;
-                font-size: 11px;
+
+            .mascot-frame {
+
+                width: 205px;
             }
 
-            main {
-                width: 92%;
-                padding-top: 30px;
-            }
-
-            .hero {
-                min-height: auto;
-
-                flex-direction: column;
-
-                text-align: center;
-
-                padding: 45px 25px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
 
             .mascot {
-                font-size: 90px;
+
+                font-size:
+                    78px;
             }
+
+
+            .mic {
+
+                width: 45px;
+
+                height: 45px;
+
+                bottom: 15px;
+
+                right: 8px;
+
+                font-size: 20px;
+            }
+
 
             .grid,
             .projects,
             .prices {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
             }
+
+
+            .stats {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
 
             .card,
             .project,
             .price-card {
-                padding: 23px;
+
+                padding:
+                    23px;
             }
+
+
+            .about-box {
+
+                padding:
+                    25px 20px;
+            }
+
 
             .contact {
-                padding: 45px 20px;
+
+                padding:
+                    50px 18px;
+
+                border-radius:
+                    27px;
             }
+
 
             .links {
-                flex-direction: column;
+
+                flex-direction:
+                    column;
             }
 
+
             .links a {
+
                 width: 100%;
             }
+
+
+            .ornament::before,
+            .ornament::after {
+
+                width: 55px;
+            }
+
         }
 
 
@@ -713,40 +2220,56 @@
            CELULAR PEQUENO
            ===================================================== */
 
-        @media (max-width: 430px) {
-
-            .logo {
-                font-size: 17px;
-            }
-
-            .nav-tabs {
-                gap: 3px;
-            }
+        @media (max-width: 380px) {
 
             .nav-tabs button {
-                font-size: 10px;
-                padding: 8px 4px;
+
+                font-size: 9px;
             }
+
+
+            .logo-text {
+
+                font-size: 16px;
+            }
+
 
             .hero h1 {
-                font-size: 48px;
+
+                font-size:
+                    43px;
             }
 
-            .small-title {
-                font-size: 11px;
-                letter-spacing: 2px;
+
+            .stats {
+
+                gap: 7px;
             }
 
-            .hero {
-                border-radius: 25px;
+
+            .stat {
+
+                padding:
+                    14px 8px;
             }
+
         }
 
     </style>
+
 </head>
 
 
 <body>
+
+
+    <!-- DECORAÇÕES DE FUNDO -->
+
+    <div class="floating one">花</div>
+
+    <div class="floating two">月</div>
+
+    <div class="floating three">✦</div>
 
 
     <!-- =====================================================
@@ -757,39 +2280,77 @@
 
         <nav>
 
+
             <div class="logo">
-                ✦ VINZS STUDIOS
+
+                <div class="logo-symbol">
+                    🦭
+                </div>
+
+
+                <div>
+
+                    <div class="logo-text">
+                        VINZS <span>STUDIOS</span>
+                    </div>
+
+                    <span class="logo-jp">
+                        紫音工房
+                    </span>
+
+                </div>
+
             </div>
+
 
             <div class="nav-tabs">
 
+
                 <button
                     class="active"
-                    onclick="openTab('inicio', this)">
+                    onclick="openTab('inicio', this)"
+                >
                     Início
                 </button>
 
+
                 <button
-                    onclick="openTab('portfolio', this)">
+                    onclick="openTab('portfolio', this)"
+                >
                     Portfólio
                 </button>
 
+
                 <button
-                    onclick="openTab('precos', this)">
+                    onclick="openTab('precos', this)"
+                >
                     Preços
                 </button>
 
+
                 <button
-                    onclick="openTab('termos', this)">
+                    onclick="openTab('termos', this)"
+                >
                     Termos
                 </button>
 
+
                 <button
-                    onclick="openTab('contato', this)">
+                    onclick="openTab('sobre', this)"
+                >
+                    Sobre
+                </button>
+
+
+                <button
+                    onclick="openTab('contato', this)"
+                >
                     Contato
                 </button>
 
+
             </div>
+
 
         </nav>
 
@@ -800,71 +2361,133 @@
 
 
         <!-- =================================================
-             ABA — INÍCIO
+             INÍCIO
              ================================================= -->
 
-        <section id="inicio" class="tab active">
+        <section
+            id="inicio"
+            class="tab active"
+        >
+
 
             <div class="hero">
 
+
                 <div class="hero-text">
 
-                    <div class="small-title">
-                        🎙️ Voice Acting · Dubbing · Fandub
+
+                    <div class="eyebrow">
+
+                        🪷 VOICE ACTING
+                        · DUBBING
+                        · FANDUB
+
                     </div>
 
+
                     <h1>
-                        VINZS<br>
+
+                        VINZS
+
+                        <br>
+
                         <span>STUDIOS</span>
+
                     </h1>
 
-                    <p>
-                        Vozes, personagens e histórias ganhando vida.
-                        Um pequeno estúdio focado em voice acting,
-                        dublagem e projetos criativos.
+
+                    <div class="jp-title">
+
+                        紫音工房
+
+                    </div>
+
+
+                    <p class="hero-description">
+
+                        Giving voices to characters
+                        & stories.
+
+                        <br>
+
+                        Um pequeno estúdio dedicado a
+                        transformar personagens, emoções
+                        e histórias em vozes.
+
                     </p>
 
+
                     <div class="hero-buttons">
+
 
                         <a
                             href="https://discord.gg/ShdWqtpZc"
                             target="_blank"
-                            class="button primary">
-                            Entrar no Discord
+                            rel="noopener noreferrer"
+                            class="button primary"
+                        >
+                            💬 Solicitar orçamento
                         </a>
 
-                        <a
-                            href="#"
+
+                        <button
+                            class="button secondary"
                             onclick="openTab('portfolio', document.querySelectorAll('.nav-tabs button')[1])"
-                            class="button secondary">
-                            Ver portfólio
-                        </a>
+                        >
+                            ✦ Conhecer o Studio
+                        </button>
+
 
                     </div>
 
+
                 </div>
 
-                <div class="mascot">
-                    🦭
+
+                <div class="mascot-area">
+
+
+                    <div class="mascot-frame">
+
+                        <div class="mascot">
+                            🦭
+                        </div>
+
+
+                        <div class="mic">
+                            🎙️
+                        </div>
+
+                    </div>
+
+
                 </div>
+
 
             </div>
 
 
-            <div style="height:25px;"></div>
+            <div class="ornament">
+                🪷
+            </div>
 
 
             <div class="heading">
 
-                <small>Sobre o estúdio</small>
+                <small>
+                    ✦ O Studio
+                </small>
+
 
                 <h2>
-                    Um espaço para dar voz.
+                    Voz para cada história.
                 </h2>
 
+
                 <p>
-                    O Vinzs Studios é meu espaço pessoal para trabalhos
-                    de voz, dublagem e projetos relacionados.
+                    O Vinzs Studios nasceu como um espaço
+                    para explorar voice acting, dublagem,
+                    personagens e projetos criativos.
                 </p>
 
             </div>
@@ -872,14 +2495,21 @@
 
             <div class="grid">
 
+
                 <div class="card">
 
-                    <h3>🎙️ Voice Acting</h3>
+                    <div class="card-icon">
+                        🎙️
+                    </div>
+
+                    <h3>
+                        Voice Acting
+                    </h3>
 
                     <p>
-                        Interpretação de personagens, falas e cenas
-                        buscando combinar emoção, personalidade e
-                        intenção.
+                        Interpretação de personagens,
+                        emoções e diferentes estilos
+                        de voz.
                     </p>
 
                 </div>
@@ -887,11 +2517,17 @@
 
                 <div class="card">
 
-                    <h3>🎬 Dublagem</h3>
+                    <div class="card-icon">
+                        🎬
+                    </div>
+
+                    <h3>
+                        Dublagem
+                    </h3>
 
                     <p>
-                        Trabalhos de dublagem para projetos,
-                        vídeos, personagens e fandubs.
+                        Dublagens para cenas, vídeos,
+                        animações e projetos independentes.
                     </p>
 
                 </div>
@@ -899,11 +2535,18 @@
 
                 <div class="card">
 
-                    <h3>🎭 Personagens</h3>
+                    <div class="card-icon">
+                        🎭
+                    </div>
+
+                    <h3>
+                        Personagens
+                    </h3>
 
                     <p>
-                        Vozes diferentes para personagens com
-                        personalidades e estilos variados.
+                        Criação e interpretação de vozes
+                        para personagens com personalidades
+                        diferentes.
                     </p>
 
                 </div>
@@ -911,140 +2554,179 @@
 
                 <div class="card">
 
-                    <h3>💜 Projetos</h3>
+                    <div class="card-icon">
+                        🪷
+                    </div>
+
+                    <h3>
+                        Fandub
+                    </h3>
 
                     <p>
-                        Aberto a projetos criativos que envolvam
-                        voz e interpretação.
+                        Projetos feitos por fãs,
+                        personagens e histórias da
+                        comunidade.
                     </p>
 
                 </div>
+
 
             </div>
+
 
         </section>
 
 
 
         <!-- =================================================
-             ABA — PORTFÓLIO
+             PORTFÓLIO
              ================================================= -->
 
-        <section id="portfolio" class="tab">
+        <section
+            id="portfolio"
+            class="tab"
+        >
+
 
             <div class="heading">
 
-                <small>Trabalhos</small>
+                <small>
+                    ✦ Trabalhos
+                </small>
 
-                <h2>Portfólio</h2>
+
+                <h2>
+                    Portfólio
+                </h2>
+
 
                 <p>
-                    Alguns dos projetos e trabalhos realizados
-                    pelo Vinzs Studios.
+                    Um espaço para reunir meus trabalhos,
+                    personagens e projetos.
                 </p>
 
+            </div>
+
+
+            <div class="ornament">
+                ✦
             </div>
 
 
             <div class="projects">
 
+
                 <div class="project">
 
-                    <div>
-                        <div class="project-number">
-                            PROJETO 01
-                        </div>
-
-                        <h3>
-                            Em breve...
-                        </h3>
-
-                        <p>
-                            Um novo trabalho poderá aparecer aqui.
-                        </p>
+                    <div class="project-number">
+                        PROJETO 01
                     </div>
+
+                    <h3>
+                        Em breve...
+                    </h3>
+
+                    <p>
+                        Um novo trabalho será apresentado
+                        aqui.
+                    </p>
 
                 </div>
 
 
                 <div class="project">
 
-                    <div>
-                        <div class="project-number">
-                            PROJETO 02
-                        </div>
-
-                        <h3>
-                            Em breve...
-                        </h3>
-
-                        <p>
-                            Espaço reservado para futuros trabalhos.
-                        </p>
+                    <div class="project-number">
+                        PROJETO 02
                     </div>
+
+                    <h3>
+                        Em breve...
+                    </h3>
+
+                    <p>
+                        Espaço reservado para futuros
+                        projetos.
+                    </p>
 
                 </div>
 
 
                 <div class="project">
 
-                    <div>
-                        <div class="project-number">
-                            PROJETO 03
-                        </div>
-
-                        <h3>
-                            Fandubs
-                        </h3>
-
-                        <p>
-                            Projetos de fandub e interpretações.
-                        </p>
+                    <div class="project-number">
+                        PROJETO 03
                     </div>
+
+                    <h3>
+                        Fandub
+                    </h3>
+
+                    <p>
+                        Projetos de fãs e interpretações
+                        de personagens.
+                    </p>
 
                 </div>
 
 
                 <div class="project">
 
-                    <div>
-                        <div class="project-number">
-                            PROJETO 04
-                        </div>
-
-                        <h3>
-                            Voice Acting
-                        </h3>
-
-                        <p>
-                            Trabalhos de interpretação de personagens.
-                        </p>
+                    <div class="project-number">
+                        PROJETO 04
                     </div>
 
+                    <h3>
+                        Voice Acting
+                    </h3>
+
+                    <p>
+                        Trabalhos de interpretação e
+                        criação de personagens.
+                    </p>
+
                 </div>
+
 
             </div>
+
 
         </section>
 
 
 
         <!-- =================================================
-             ABA — PREÇOS
+             PREÇOS
              ================================================= -->
 
-        <section id="precos" class="tab">
+        <section
+            id="precos"
+            class="tab"
+        >
+
 
             <div class="heading">
 
-                <small>Serviços</small>
+                <small>
+                    ✦ Serviços
+                </small>
 
-                <h2>Preços</h2>
+
+                <h2>
+                    Tabela de preços
+                </h2>
+
 
                 <p>
-                    Valores dos serviços do Vinzs Studios.
+                    Valores iniciais para os serviços
+                    do Vinzs Studios.
                 </p>
 
+            </div>
+
+
+            <div class="ornament">
+                🪷
             </div>
 
 
@@ -1053,109 +2735,181 @@
 
                 <div class="price-card">
 
+
                     <span class="tag">
                         BÁSICO
                     </span>
+
 
                     <h3>
                         Fala curta
                     </h3>
 
+
                     <div class="price">
                         R$ 10
                     </div>
 
+
                     <p>
-                        Para pequenas falas e participações.
+                        Para pequenas falas e
+                        participações.
                     </p>
 
+
                     <ul>
-                        <li>Até 5 falas</li>
-                        <li>Interpretação simples</li>
-                        <li>Entrega digital</li>
+
+                        <li>
+                            Até 5 falas
+                        </li>
+
+                        <li>
+                            Interpretação simples
+                        </li>
+
+                        <li>
+                            Entrega digital
+                        </li>
+
                     </ul>
+
 
                 </div>
 
 
+
                 <div class="price-card featured">
 
+
                     <span class="tag">
-                        MAIS PEDIDO
+                        ✦ MAIS PEDIDO
                     </span>
+
 
                     <h3>
                         Personagem
                     </h3>
 
+
                     <div class="price">
                         R$ 20
                     </div>
 
+
                     <p>
-                        Para personagens e cenas maiores.
+                        Para personagens e cenas
+                        maiores.
                     </p>
 
+
                     <ul>
-                        <li>Até 15 falas</li>
-                        <li>Interpretação de personagem</li>
-                        <li>Uma revisão</li>
-                        <li>Entrega digital</li>
+
+                        <li>
+                            Até 15 falas
+                        </li>
+
+                        <li>
+                            Interpretação de personagem
+                        </li>
+
+                        <li>
+                            Uma revisão
+                        </li>
+
+                        <li>
+                            Entrega digital
+                        </li>
+
                     </ul>
+
 
                 </div>
 
 
+
                 <div class="price-card">
+
 
                     <span class="tag">
                         PROJETO
                     </span>
 
+
                     <h3>
                         Projeto maior
                     </h3>
+
 
                     <div class="price">
                         Consulte
                     </div>
 
+
                     <p>
-                        Para projetos com grande quantidade
-                        de falas ou personagens.
+                        Para projetos maiores ou com
+                        muitos personagens.
                     </p>
 
+
                     <ul>
-                        <li>Orçamento personalizado</li>
-                        <li>Negociação do projeto</li>
-                        <li>Prazo combinado</li>
+
+                        <li>
+                            Orçamento personalizado
+                        </li>
+
+                        <li>
+                            Valor negociável
+                        </li>
+
+                        <li>
+                            Prazo combinado
+                        </li>
+
                     </ul>
+
 
                 </div>
 
+
             </div>
+
 
         </section>
 
 
 
         <!-- =================================================
-             ABA — TERMOS
+             TERMOS
              ================================================= -->
 
-        <section id="termos" class="tab">
+        <section
+            id="termos"
+            class="tab"
+        >
+
 
             <div class="heading">
 
-                <small>Informações</small>
+                <small>
+                    ✦ Informações
+                </small>
 
-                <h2>Termos de Condições</h2>
+
+                <h2>
+                    Termos de condições
+                </h2>
+
 
                 <p>
-                    Antes de solicitar um trabalho, leia as
-                    condições abaixo.
+                    Algumas informações importantes
+                    antes de solicitar um trabalho.
                 </p>
 
+            </div>
+
+
+            <div class="ornament">
+                規約
             </div>
 
 
@@ -1171,8 +2925,8 @@
                     <p>
                         50% do valor total deverá ser pago
                         antecipadamente para que o trabalho
-                        seja iniciado. Os 50% restantes deverão
-                        ser pagos conforme combinado.
+                        seja iniciado. Os 50% restantes serão
+                        pagos conforme combinado.
                     </p>
 
                 </div>
@@ -1181,13 +2935,13 @@
                 <div class="term">
 
                     <h3>
-                        🔄 Cancelamento e entrega
+                        🔄 Entrega e devolução
                     </h3>
 
                     <p>
-                        Caso a dublagem não seja entregue,
-                        os 50% pagos antecipadamente serão
-                        devolvidos ao cliente.
+                        Caso a dublagem não seja entregue
+                        pelo Vinzs Studios, os 50% pagos
+                        antecipadamente serão devolvidos.
                     </p>
 
                 </div>
@@ -1200,8 +2954,9 @@
                     </h3>
 
                     <p>
-                        Não realizo dublagens NSFW, ASMR ou
-                        trabalhos envolvendo fetiches.
+                        Não realizo dublagens NSFW,
+                        ASMR ou trabalhos envolvendo
+                        fetiches.
                     </p>
 
                 </div>
@@ -1214,10 +2969,10 @@
                     </h3>
 
                     <p>
-                        Alterações ou refações devem ser
-                        combinadas previamente. Mudanças
-                        grandes no roteiro após o início do
-                        trabalho podem alterar o valor.
+                        Alterações devem ser combinadas
+                        previamente. Mudanças grandes
+                        no roteiro depois do início podem
+                        alterar o valor do projeto.
                     </p>
 
                 </div>
@@ -1230,10 +2985,9 @@
                     </h3>
 
                     <p>
-                        O prazo de entrega será combinado
-                        antes do início do projeto e pode
-                        variar de acordo com o tamanho do
-                        trabalho.
+                        O prazo será combinado antes do
+                        início do projeto e pode variar
+                        de acordo com a complexidade.
                     </p>
 
                 </div>
@@ -1253,97 +3007,204 @@
 
                 </div>
 
+
             </div>
+
 
         </section>
 
 
 
         <!-- =================================================
-             ABA — CONTATO
+             SOBRE
              ================================================= -->
 
-        <section id="contato" class="tab">
+        <section
+            id="sobre"
+            class="tab"
+        >
+
+
+            <div class="heading">
+
+                <small>
+                    ✦ Quem está por trás
+                </small>
+
+
+                <h2>
+                    Sobre o Vinz
+                </h2>
+
+
+                <p>
+                    A pessoa por trás do Vinzs Studios.
+                </p>
+
+            </div>
+
+
+            <div class="about-box">
+
+
+                <p>
+
+                    Oi! Eu sou o Vinz.
+
+                    <br><br>
+
+                    O Vinzs Studios é meu espaço para
+                    trabalhar com voz, interpretação e
+                    personagens.
+
+                    <br><br>
+
+                    Meu objetivo é continuar evoluindo
+                    minha voz e criar interpretações que
+                    façam cada personagem parecer vivo.
+
+                </p>
+
+
+                <div class="ornament">
+                    🪷
+                </div>
+
+
+                <div class="stats">
+
+
+                    <div class="stat">
+
+                        <strong>
+                            🎙️
+                        </strong>
+
+                        <span>
+                            Voice Acting
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <strong>
+                            🎬
+                        </strong>
+
+                        <span>
+                            Dubbing
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <strong>
+                            🎭
+                        </strong>
+
+                        <span>
+                            Characters
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <strong>
+                            🦭
+                        </strong>
+
+                        <span>
+                            Seal Approved
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTATO
+             ================================================= -->
+
+        <section
+            id="contato"
+            class="tab"
+        >
+
 
             <div class="contact">
 
+
                 <h2>
-                    Vamos trabalhar juntos?
+                    Vamos criar algo?
                 </h2>
 
+
                 <p>
-                    Entre em contato comigo através das
-                    minhas redes.
+                    Quer solicitar um trabalho,
+                    conversar sobre um projeto ou
+                    acompanhar meu conteúdo?
                 </p>
 
 
                 <div class="links">
 
+
                     <a
                         href="https://discord.gg/ShdWqtpZc"
-                        target="_blank">
-                        💬 Discord
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        💜 Discord
                     </a>
 
 
                     <a
                         href="https://www.tiktok.com/@vinztheseal"
-                        target="_blank">
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         🎵 TikTok
                     </a>
 
 
                     <a
                         href="https://youtube.com/@vinztheseal"
-                        target="_blank">
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         ▶️ YouTube
                     </a>
 
 
                     <a
                         href="https://github.com/vinztheseal"
-                        target="_blank">
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         💻 GitHub
                     </a>
 
+
                 </div>
+
 
             </div>
 
-
-            <div style="height:25px;"></div>
-
-
-            <div class="grid">
-
-                <div class="card">
-
-                    <h3>
-                        Discord
-                    </h3>
-
-                    <p>
-                        Para conversar comigo, tirar dúvidas
-                        ou solicitar um orçamento.
-                    </p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <h3>
-                        Redes sociais
-                    </h3>
-
-                    <p>
-                        Acompanhe meus trabalhos e projetos
-                        através das minhas redes.
-                    </p>
-
-                </div>
-
-            </div>
 
         </section>
 
@@ -1358,64 +3219,111 @@
 
     <footer>
 
-        🦭 ✦ <strong>VINZS STUDIOS</strong> ✦ 🎙️
+        🦭 ✦
 
-        <br><br>
+        <strong>
+            VINZS STUDIOS
+        </strong>
 
-        © 2026 Vinz — Todos os direitos reservados.
+        ✦ 🎙️
+
+
+        <div class="footer-jp">
+
+            紫音工房
+
+        </div>
+
 
         <br>
 
-        Voice Acting · Dubbing · Fandub
+        © 2026 Vinz —
+        Todos os direitos reservados.
 
     </footer>
 
 
 
     <!-- =====================================================
-         JAVASCRIPT — SISTEMA DE ABAS
+         JAVASCRIPT — ABAS
          ===================================================== -->
 
     <script>
 
+
         function openTab(tabId, button) {
 
-            // Esconde todas as abas
-            const tabs = document.querySelectorAll(".tab");
+
+            /* Esconde todas as abas */
+
+            const tabs =
+                document.querySelectorAll(".tab");
+
 
             tabs.forEach(function(tab) {
+
                 tab.classList.remove("active");
+
             });
 
 
-            // Remove o estado ativo dos botões
-            const buttons = document.querySelectorAll(".nav-tabs button");
+
+            /* Remove o botão ativo */
+
+            const buttons =
+                document.querySelectorAll(
+                    ".nav-tabs button"
+                );
+
 
             buttons.forEach(function(btn) {
+
                 btn.classList.remove("active");
+
             });
 
 
-            // Mostra a aba escolhida
-            document.getElementById(tabId).classList.add("active");
+
+            /* Mostra a aba selecionada */
+
+            const selectedTab =
+                document.getElementById(tabId);
 
 
-            // Marca o botão escolhido
-            if (button) {
-                button.classList.add("active");
+            if (selectedTab) {
+
+                selectedTab.classList.add("active");
+
             }
 
 
-            // Volta para o topo
+
+            /* Ativa o botão */
+
+            if (button) {
+
+                button.classList.add("active");
+
+            }
+
+
+
+            /* Volta ao topo */
+
             window.scrollTo({
+
                 top: 0,
+
                 behavior: "smooth"
+
             });
 
         }
+
 
     </script>
 
 
 </body>
-</html>
+
+    </html>
